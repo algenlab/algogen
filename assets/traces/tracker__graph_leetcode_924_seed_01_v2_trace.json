@@ -1,0 +1,419 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Dijkstra",
+    "family": "graph"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-graph",
+    "svl-ext-view-table",
+    "svl-ext-view-list"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "graph",
+      "structure": {
+        "nodes": [
+          {
+            "id": "A",
+            "label": "A",
+            "styleKey": "idle_node",
+            "properties": {
+              "distance": 0
+            }
+          },
+          {
+            "id": "B",
+            "label": "B",
+            "styleKey": "idle_node",
+            "properties": {
+              "distance": null
+            }
+          },
+          {
+            "id": "C",
+            "label": "C",
+            "styleKey": "idle_node",
+            "properties": {
+              "distance": null
+            }
+          },
+          {
+            "id": "D",
+            "label": "D",
+            "styleKey": "idle_node",
+            "properties": {
+              "distance": null
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": "A",
+            "to": "B",
+            "directed": true,
+            "label": "4",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "A",
+            "to": "C",
+            "directed": true,
+            "label": "2",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "B",
+            "to": "D",
+            "directed": true,
+            "label": "3",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "directed": true,
+            "label": "1",
+            "styleKey": "normal_edge"
+          }
+        ]
+      }
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "distance_table",
+        "type": "table",
+        "title": "Distance Table",
+        "data": [
+          [
+            0,
+            null,
+            null,
+            null
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "dist"
+          ],
+          "col_headers": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        }
+      },
+      {
+        "view_id": "frontier",
+        "type": "list",
+        "title": "Frontier",
+        "data": [
+          "A(0)"
+        ]
+      },
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "current",
+            "A"
+          ],
+          [
+            "alt",
+            null
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "current",
+            "alt"
+          ],
+          "col_headers": [
+            "name",
+            "value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "current",
+        "initial_value": "A"
+      },
+      {
+        "name": "alt",
+        "initial_value": null
+      }
+    ],
+    "pseudocode": [
+      "def dijkstra(graph, source):",
+      "    Initialize distances: dist[source] = 0, others = infinity",
+      "    Initialize frontier: add source with distance 0",
+      "    while frontier is not empty:",
+      "        current = node in frontier with smallest distance",
+      "        for each neighbor of current:",
+      "            alt = dist[current] + edge_weight",
+      "            if alt < dist[neighbor]:",
+      "                dist[neighbor] = alt",
+      "                update frontier",
+      "        mark current as visited"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle_node": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "current_node": {
+          "backgroundColor": "#4CAF50",
+          "textColor": "#FFFFFF"
+        },
+        "visited_node": {
+          "backgroundColor": "#CCCCCC",
+          "textColor": "#000000"
+        }
+      },
+      "edgeStyles": {
+        "normal_edge": {
+          "stroke": "#666666",
+          "textColor": "#000000"
+        },
+        "relaxed_edge": {
+          "stroke": "#4CAF50",
+          "textColor": "#4CAF50"
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "popFromList",
+            "params": {
+              "view_id": "frontier",
+              "value": "A(0)"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Check A→B: 0 + 4 = 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "B(4)"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "B",
+                  "properties": {
+                    "distance": 4
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "distance_table",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "B"
+                }
+              ],
+              "styleKey": "relaxed_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Check A→C: 0 + 2 = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "C(2)"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "C",
+                  "properties": {
+                    "distance": 2
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "distance_table",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 2,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "C"
+                }
+              ],
+              "styleKey": "relaxed_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "visited_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 10,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Dijkstra算法完成！最短路径：A→C→D (总距离3)",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

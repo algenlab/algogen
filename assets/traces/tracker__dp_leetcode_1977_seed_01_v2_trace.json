@@ -1,0 +1,4139 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Longest Common Subsequence",
+    "family": "Dynamic Programming"
+  },
+  "required_extensions": [
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "table",
+      "data": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          3,
+          3
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          3,
+          4
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          4
+        ]
+      ],
+      "options": {
+        "row_headers": [
+          " ",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "col_headers": [
+          " ",
+          "A",
+          "C",
+          "D",
+          "F",
+          "E"
+        ]
+      }
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "i",
+            "0"
+          ],
+          [
+            "j",
+            "0"
+          ],
+          [
+            "s1[i-1]",
+            ""
+          ],
+          [
+            "s2[j-1]",
+            ""
+          ],
+          [
+            "result",
+            ""
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "i",
+            "j",
+            "s1[i-1]",
+            "s2[j-1]",
+            "result"
+          ],
+          "col_headers": [
+            "Variable",
+            "Value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "i",
+        "initial_value": 0
+      },
+      {
+        "name": "j",
+        "initial_value": 0
+      },
+      {
+        "name": "char1",
+        "initial_value": ""
+      },
+      {
+        "name": "char2",
+        "initial_value": ""
+      },
+      {
+        "name": "result",
+        "initial_value": ""
+      }
+    ],
+    "pseudocode": [
+      "def LCS(s1, s2):",
+      "    m, n = len(s1), len(s2)",
+      "    dp = [[0]*(n+1) for _ in range(m+1)]",
+      "    for i in range(1, m+1):",
+      "        for j in range(1, n+1):",
+      "            if s1[i-1] == s2[j-1]:",
+      "                dp[i][j] = dp[i-1][j-1] + 1",
+      "            else:",
+      "                dp[i][j] = max(dp[i-1][j], dp[i][j-1])",
+      "    return dp[m][n]"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000",
+          "borderColor": "#CCCCCC"
+        },
+        "current_cell": {
+          "backgroundColor": "#FFD700",
+          "textColor": "#000000",
+          "borderColor": "#FFA500"
+        },
+        "match_cell": {
+          "backgroundColor": "#90EE90",
+          "textColor": "#000000",
+          "borderColor": "#32CD32"
+        }
+      },
+      "tempStyles": {
+        "dep_arrow": {
+          "color": "#FF0000",
+          "strokeWidth": 2.5
+        },
+        "match_arrow": {
+          "color": "#008000",
+          "strokeWidth": 2.5
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Outer loop: i = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "A"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[0]='A' vs s2[0]='A'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 0
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 1
+              },
+              "styleKey": "match_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "styleKey": "match_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "Match: dp[1][1] = 0 + 1 = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Match: dp[1][1] = 0 + 1 = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "A"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[0]='A' vs s2[1]='C'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 2,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[1][2] = max(0, 1) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[1][2] = max(0, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "A"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[0]='A' vs s2[2]='D'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 3,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[1][3] = max(0, 1) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[1][3] = max(0, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "A"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "F"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[0]='A' vs s2[3]='F'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 4,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[1][4] = max(0, 1) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[1][4] = max(0, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "A"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "E"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[0]='A' vs s2[4]='E'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 5,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[1][5] = max(0, 1) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[1][5] = max(0, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Outer loop: i = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "B"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[1]='B' vs s2[0]='A'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[2][1] = max(1, 0) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[2][1] = max(1, 0) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "B"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[1]='B' vs s2[1]='C'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 2
+                },
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 2,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[2][2] = max(1, 1) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[2][2] = max(1, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "B"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[1]='B' vs s2[2]='D'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 3
+                },
+                {
+                  "row": 2,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 3,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[2][3] = max(1, 1) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[2][3] = max(1, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "B"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "F"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[1]='B' vs s2[3]='F'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 4
+                },
+                {
+                  "row": 2,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 4,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[2][4] = max(1, 1) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[2][4] = max(1, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "B"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "E"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[1]='B' vs s2[4]='E'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 5
+                },
+                {
+                  "row": 2,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 5,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[2][5] = max(1, 1) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[2][5] = max(1, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Outer loop: i = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "C"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[2]='C' vs s2[0]='A'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[3][1] = max(1, 0) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[3][1] = max(1, 0) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "C"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[2]='C' vs s2[1]='C'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 2
+              },
+              "styleKey": "match_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 2,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "styleKey": "match_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "Match: dp[3][2] = 1 + 1 = 2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Match: dp[3][2] = 1 + 1 = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "C"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[2]='C' vs s2[2]='D'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 3,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[3][3] = max(1, 2) = 2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[3][3] = max(1, 2) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "C"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "F"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[2]='C' vs s2[3]='F'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 4,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[3][4] = max(1, 2) = 2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[3][4] = max(1, 2) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "C"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "E"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[2]='C' vs s2[4]='E'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 5,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[3][5] = max(1, 2) = 2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[3][5] = max(1, 2) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Outer loop: i = 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "D"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[3]='D' vs s2[0]='A'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[4][1] = max(1, 0) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[4][1] = max(1, 0) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "D"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[3]='D' vs s2[1]='C'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 2,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[4][2] = max(2, 1) = 2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[4][2] = max(2, 1) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "D"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[3]='D' vs s2[2]='D'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 3
+              },
+              "styleKey": "match_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 3,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 3
+                }
+              ],
+              "styleKey": "match_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "Match: dp[4][3] = 2 + 1 = 3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Match: dp[4][3] = 2 + 1 = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "D"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "F"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[3]='D' vs s2[3]='F'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 4,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[4][4] = max(2, 3) = 3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[4][4] = max(2, 3) = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "D"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "E"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[3]='D' vs s2[4]='E'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 5,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[4][5] = max(2, 3) = 3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[4][5] = max(2, 3) = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Outer loop: i = 5",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "E"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[4]='E' vs s2[0]='A'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[5][1] = max(1, 0) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[5][1] = max(1, 0) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "E"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[4]='E' vs s2[1]='C'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 2,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[5][2] = max(2, 1) = 2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[5][2] = max(2, 1) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "E"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[4]='E' vs s2[2]='D'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 3,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[5][3] = max(3, 2) = 3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[5][3] = max(3, 2) = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "E"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "F"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[4]='E' vs s2[3]='F'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 4
+                },
+                {
+                  "row": 5,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 4,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[5][4] = max(3, 3) = 3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[5][4] = max(3, 3) = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "E"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "E"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[4]='E' vs s2[4]='E'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 5
+              },
+              "styleKey": "match_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 5,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 5
+                }
+              ],
+              "styleKey": "match_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "Match: dp[5][5] = 3 + 1 = 4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Match: dp[5][5] = 3 + 1 = 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Outer loop: i = 6",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "F"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[5]='F' vs s2[0]='A'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 6,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[6][1] = max(1, 0) = 1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[6][1] = max(1, 0) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "F"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[5]='F' vs s2[1]='C'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 6,
+                  "col": 2,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[6][2] = max(2, 1) = 2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[6][2] = max(2, 1) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "F"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[5]='F' vs s2[2]='D'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 6,
+                  "col": 3,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[6][3] = max(3, 2) = 3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[6][3] = max(3, 2) = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "F"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "F"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[5]='F' vs s2[3]='F'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 4
+              },
+              "styleKey": "match_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 6,
+                  "col": 4,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 4
+                }
+              ],
+              "styleKey": "match_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "Match: dp[6][4] = 3 + 1 = 4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Match: dp[6][4] = 3 + 1 = 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "F"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "E"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Comparing: s1[5]='F' vs s2[4]='E'",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 5
+                },
+                {
+                  "row": 6,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 6,
+                  "col": 5,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "No match: dp[6][5] = max(4, 4) = 4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[6][5] = max(4, 4) = 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 10,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "Final LCS length: 4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Longest Common Subsequence length: 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

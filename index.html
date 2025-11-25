@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIgoGen: LLMs as Tool Makers for Algorithm Visualization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        secondary: '#1a1a2e',
+                        dark: '#16213e',
+                        accent: '#e94560'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap');
+        
+        body {
+            background-color: #0f172a;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Tech Background Grid */
+        .tech-bg {
+            background-color: #050a14;
+            background-image: 
+                linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
+                linear-gradient(rgba(76, 175, 80, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(76, 175, 80, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            animation: bg-scroll 60s linear infinite;
+        }
+        
+        @keyframes bg-scroll {
+            0% { background-position: 0 0, 0 0, 0 0; }
+            100% { background-position: 0 0, 0 40px, 0 40px; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #4CAF50 0%, #00f260 50%, #0575E6 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(76, 175, 80, 0.3));
+        }
+        
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Neon Glow Effects */
+        .glow-hover {
+            transition: all 0.3s ease;
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 25px rgba(76, 175, 80, 0.15);
+            border-color: rgba(76, 175, 80, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Pipeline Flow Animation */
+        .pipeline-line {
+            background: linear-gradient(90deg, #334155 50%, #4CAF50 50%);
+            background-size: 20px 100%;
+            animation: flow 1s linear infinite;
+        }
+        @keyframes flow {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 0; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        
+        .code-highlight {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .comparison-wrapper {
+            position: relative;
+        }
+        .comparison-wrapper .comparison-overlay {
+            clip-path: inset(0 calc(100% - var(--slider-pos, 50%)) 0 0);
+            transition: clip-path 0.15s ease-out;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .comparison-wrapper .comparison-overlay {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body class="tech-bg">
+    <div id="app" class="relative min-h-screen overflow-x-hidden">
+        <!-- Navigation -->
+        <nav class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent" :class="{'bg-dark/80 backdrop-blur-xl border-white/5 shadow-2xl': scrolled, 'bg-transparent': !scrolled}">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="text-2xl font-bold tracking-tighter text-glow">AIgo<span class="text-primary drop-shadow-[0_0_8px_rgba(76,175,80,0.6)]">Gen</span></div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#pipeline" class="hover:text-primary transition">Methodology</a>
+                    <a href="#interactive" class="hover:text-primary transition">Interactive Demo</a>
+                    <a href="#gallery" class="hover:text-primary transition">Gallery</a>
+                    <a href="#" class="bg-white text-dark px-4 py-2 rounded-full hover:bg-gray-200 hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] transition font-bold">Read Paper</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <!-- 3D Background Placeholder -->
+            <div id="hero-canvas" class="absolute inset-0 z-0 opacity-40"></div>
+            
+            <div class="container mx-auto px-6 z-10 text-center relative">
+                <div class="inline-block mb-4 px-4 py-1 rounded-full glass-panel text-sm text-primary animate-pulse">
+                    Accepted to ACL 2026 (Simulated)
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight font-mono text-white tracking-tight h-[1.5em] flex items-center justify-center">
+                    {{ heroTitle }}
+                </h1>
+                <p id="hero-subtitle" class="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto font-light">
+                    Automated Code Generation for Algorithm Visualization with <span class="text-white font-semibold">99.5% Success Rate</span>.
+                </p>
+                
+                <!-- Hero code panel: will be filled by GSAP typewriter animation -->
+                <div id="hero-code" class="max-w-2xl mx-auto text-left font-mono text-sm text-green-300 bg-black/40 border border-green-500/40 rounded-xl p-4 mb-8 shadow-[0_0_30px_rgba(34,197,94,0.35)]">
+                    <div class="text-xs text-gray-400 mb-1"># LLM-generated tracker (AIgoGen)</div>
+                    <pre id="hero-code-content" class="whitespace-pre-wrap leading-relaxed"></pre>
+                </div>
+                
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a href="#interactive" class="px-8 py-4 bg-primary text-white rounded-lg font-bold text-lg hover:bg-green-500 transition transform hover:scale-105 shadow-[0_0_20px_rgba(76,175,80,0.4)] border border-green-400/20">
+                        Try Interactive Demo
+                    </a>
+                    <a href="#pipeline" class="px-8 py-4 glass-panel text-white rounded-lg font-bold text-lg hover:bg-white/5 hover:border-white/20 transition">
+                        How it Works
+                    </a>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-3 gap-8 max-w-4xl mx-auto text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-white hero-stat">200+</div>
+                        <div class="text-sm text-gray-400 uppercase tracking-wider">LeetCode Tasks</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-white hero-stat">99.5%</div>
+                        <div class="text-sm text-gray-400 uppercase tracking-wider">Success Rate</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-white hero-stat">Zero</div>
+                        <div class="text-sm text-gray-400 uppercase tracking-wider">Hallucination</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline Section -->
+        <section id="pipeline" class="py-24 relative border-t border-white/5">
+            <!-- Ambient Glow Background -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full bg-primary/5 blur-[120px] -z-10 pointer-events-none"></div>
+            
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">From Text to Pixels</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">
+                        AIgoGen decouples logic from rendering. Instead of generating pixels, it generates <span class="text-primary">Code Tools</span>.
+                    </p>
+                </div>
+
+                <div class="relative max-w-7xl mx-auto">
+                    <!-- Connecting Line Container -->
+                    <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-800 hidden md:block transform -translate-y-1/2 rounded-full overflow-hidden z-0">
+                        <!-- Animated Beam controlled by GSAP -->
+                        <div id="pipeline-beam" class="h-full w-full bg-gradient-to-r from-transparent via-primary to-transparent -translate-x-full"></div>
+                    </div>
+                    
+                    <!-- Pipeline cards: 2 columns on md, 4 on lg for better visibility -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                        <!-- Step 1 -->
+                        <div class="pipeline-step pipeline-step-1 glass-panel p-6 rounded-xl relative glow-hover transform transition-all duration-300">
+                            <div class="step-icon w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl rotate-3 flex items-center justify-center text-white font-bold text-xl mb-6 mx-auto shadow-[0_0_20px_rgba(59,130,246,0.4)] border border-blue-400/30 transform group-hover:rotate-6 transition">1</div>
+                            <h3 class="text-xl font-bold mb-2 text-center text-white">Task Input</h3>
+                            <p class="text-gray-400 text-sm text-center">Complex algorithm description (e.g. LeetCode)</p>
+                            <div class="mt-4 bg-black/40 border border-white/5 p-3 rounded text-xs font-mono text-gray-300 shadow-inner opacity-80">
+                                "Implement Dijkstra's algorithm..."
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="pipeline-step pipeline-step-2 glass-panel p-6 rounded-xl relative glow-hover transform transition-all duration-300">
+                            <div class="step-icon w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl -rotate-3 flex items-center justify-center text-white font-bold text-xl mb-6 mx-auto shadow-[0_0_20px_rgba(168,85,247,0.4)] border border-purple-400/30">2</div>
+                            <h3 class="text-xl font-bold mb-2 text-center text-white">Tool Maker</h3>
+                            <p class="text-gray-400 text-sm text-center">LLM generates Python Tracker</p>
+                            <div class="mt-4 bg-black/40 border border-white/5 p-3 rounded text-xs font-mono text-gray-300 shadow-inner opacity-80">
+                                <span class="text-pink-400">class</span> Visualizer:<br/>
+                                &nbsp;&nbsp;<span class="text-blue-400">def</span> add_node(...):
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="pipeline-step pipeline-step-3 glass-panel p-6 rounded-xl relative glow-hover transform transition-all duration-300">
+                            <div class="step-icon w-14 h-14 bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-2xl rotate-3 flex items-center justify-center text-white font-bold text-xl mb-6 mx-auto shadow-[0_0_20px_rgba(234,179,8,0.4)] border border-yellow-400/30">3</div>
+                            <h3 class="text-xl font-bold mb-2 text-center text-white">SVL Trace</h3>
+                            <p class="text-gray-400 text-sm text-center">Execution generates standard IR</p>
+                            <div class="mt-4 bg-black/40 border border-white/5 p-3 rounded text-xs font-mono text-gray-300 shadow-inner opacity-80">
+                                { "op": "addNode", "id": 1 }<br/>
+                                { "op": "highlight", "id": 1 }
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="pipeline-step pipeline-step-4 glass-panel p-6 rounded-xl relative glow-hover transform transition-all duration-300">
+                            <div class="step-icon w-14 h-14 bg-gradient-to-br from-primary to-green-700 rounded-2xl -rotate-3 flex items-center justify-center text-white font-bold text-xl mb-6 mx-auto shadow-[0_0_20px_rgba(76,175,80,0.4)] border border-green-400/30">4</div>
+                            <h3 class="text-xl font-bold mb-2 text-center text-white">Rendering</h3>
+                            <p class="text-gray-400 text-sm text-center">Deterministic Engines</p>
+                            <div class="mt-4 flex justify-center gap-2 opacity-80">
+                                <span class="px-2 py-1 bg-gray-800 rounded text-xs">Manim</span>
+                                <span class="px-2 py-1 bg-gray-800 rounded text-xs">Three.js</span>
+                                <span class="px-2 py-1 bg-gray-800 rounded text-xs">TikZ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Comparison Section -->
+        <section id="why" class="py-24 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">Why Not End-to-End Pixels?</h2>
+                    <p class="text-gray-400 max-w-3xl mx-auto">
+                        End-to-end generation often <span class="text-accent">hallucinates layouts</span> and breaks invariants.
+                        AIgoGen turns LLMs into <span class="text-primary">tool makers</span>, then delegates pixels to deterministic renderers.
+                    </p>
+                </div>
+
+                <div class="max-w-5xl mx-auto">
+                    <div
+                        class="comparison-wrapper relative w-full overflow-hidden rounded-2xl border border-gray-700 bg-black shadow-[0_0_40px_rgba(15,23,42,0.9)]"
+                        :style="{ '--slider-pos': comparisonPosition + '%' }"
+                    >
+                        <!-- E2E baseline: background layer -->
+                        <div class="absolute inset-0">
+                            <div class="w-full h-full bg-gradient-to-br from-red-500/40 via-purple-600/30 to-black flex items-center justify-center">
+                                <div class="max-w-sm px-6 py-4 bg-black/70 rounded-xl border border-red-500/70 shadow-xl">
+                                    <div class="text-xs font-mono text-red-300 mb-1">e2e_model.draw(graph)</div>
+                                    <div class="grid grid-cols-3 gap-2 mb-3">
+                                        <div class="h-10 rounded-lg bg-red-500/70"></div>
+                                        <div class="h-10 rounded-lg bg-purple-500/70 col-span-2"></div>
+                                        <div class="h-10 rounded-lg bg-pink-500/60 col-span-2"></div>
+                                        <div class="h-10 rounded-lg bg-red-400/80"></div>
+                                    </div>
+                                    <p class="text-xs text-red-100/90">
+                                        • Edges missing / crossing<br/>
+                                        • Node colors drift<br/>
+                                        • No step-level control
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 left-4 px-3 py-1 rounded-full text-[11px] font-semibold bg-black/80 border border-red-500/70 text-red-100 uppercase tracking-wide">
+                                E2E Model Output
+                            </div>
+                        </div>
+
+                        <!-- AIgoGen overlay: clipped by slider -->
+                        <div class="comparison-overlay absolute inset-0 pointer-events-none">
+                            <div class="w-full h-full bg-gradient-to-br from-emerald-500/40 via-sky-500/30 to-black flex items-center justify-center">
+                                <div class="max-w-sm px-6 py-4 bg-black/70 rounded-xl border border-emerald-400/70 shadow-xl">
+                                    <div class="text-xs font-mono text-emerald-300 mb-1">svl_trace · renderer</div>
+                                    <div class="grid grid-cols-3 gap-2 mb-3">
+                                        <div class="h-10 rounded-lg bg-emerald-400/90 col-span-2"></div>
+                                        <div class="h-10 rounded-lg bg-sky-400/90"></div>
+                                        <div class="h-10 rounded-lg bg-emerald-300/80"></div>
+                                        <div class="h-10 rounded-lg bg-sky-300/80 col-span-2"></div>
+                                        <div class="col-span-3 h-10 rounded-lg border border-dashed border-emerald-300/80 flex items-center justify-center text-[11px] text-emerald-200">
+                                            Same SVL · Manim / Three.js / TikZ
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-emerald-100/90">
+                                        • Structure preserved<br/>
+                                        • Timing encoded in trace<br/>
+                                        • Swap backends without retraining
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-[11px] font-semibold bg-black/80 border border-emerald-400/70 text-emerald-100 uppercase tracking-wide">
+                                AIgoGen (SVL + Renderers)
+                            </div>
+                        </div>
+
+                        <!-- Slider handle + line -->
+                        <div class="absolute inset-y-0 z-20 flex items-center" :style="{ left: comparisonPosition + '%' }">
+                            <div class="w-px h-full bg-white/50 shadow-[0_0_10px_rgba(148,163,184,0.8)]"></div>
+                            <div class="absolute left-1/2 -translate-x-1/2">
+                                <div class="w-9 h-9 rounded-full bg-white text-dark flex items-center justify-center shadow-xl border border-gray-300 pointer-events-none text-xs font-semibold select-none">
+                                    ⇤ ⇥
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Invisible range input (captures drag) -->
+                        <input
+                            type="range"
+                            v-model.number="comparisonPosition"
+                            min="0"
+                            max="100"
+                            class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
+                            aria-label="Drag to compare E2E model vs AIgoGen"
+                        />
+                    </div>
+
+                    <div class="mt-8 grid md:grid-cols-2 gap-6 text-sm text-gray-300">
+                        <div class="why-metric">
+                            <h3 class="font-semibold text-red-300 mb-2">Pixel-first (E2E) Pain Points</h3>
+                            <ul class="space-y-1 text-xs md:text-sm text-gray-300/90">
+                                <li>• Hard to enforce invariants like planarity or ordering</li>
+                                <li>• Every renderer change needs <span class="code-highlight">retraining</span></li>
+                                <li>• Debugging failures is almost impossible</li>
+                            </ul>
+                        </div>
+                        <div class="why-metric">
+                            <h3 class="font-semibold text-emerald-300 mb-2">AIgoGen Advantages</h3>
+                            <ul class="space-y-1 text-xs md:text-sm text-gray-300/90">
+                                <li>• LLM only generates <span class="code-highlight">SVL-compatible tools</span></li>
+                                <li>• Rendering is delegated to deterministic engines</li>
+                                <li>• Same trace powers videos, 3D demos and paper figures</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section id="interactive" class="py-24 bg-dark">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-end justify-between mb-8 gap-6">
+                    <div class="flex-1 min-w-0">
+                        <h2 class="text-4xl font-bold mb-2">Interactive Sandbox</h2>
+                        <p class="text-gray-400 mb-4">Experience the generated SVL traces in real-time 3D or exportable media.</p>
+
+                        <!-- Magic Toggle style render mode switcher -->
+                        <div class="flex flex-col gap-2 items-start">
+                            <div class="text-xs uppercase text-gray-500 tracking-widest">Render Mode</div>
+                            <div class="inline-flex bg-secondary/70 rounded-full p-1 border border-gray-700 shadow-inner">
+                                <button
+                                    v-for="mode in renderModes"
+                                    :key="mode.id"
+                                    @click="setRenderMode(mode.id)"
+                                    class="px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold transition flex items-center gap-1"
+                                    :class="activeRenderMode === mode.id ? 'bg-white text-dark shadow-md' : 'text-gray-300 hover:text-white'">
+                                    <span>{{ mode.label }}</span>
+                                    <span v-if="activeRenderMode === mode.id" class="hidden md:inline-block text-[10px] uppercase tracking-wide text-primary">{{ mode.badge }}</span>
+                                </button>
+                            </div>
+                            <p id="render-mode-description" class="mt-1 text-xs md:text-sm text-gray-400 max-w-xl">
+                                {{ currentRenderDescription }}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Algorithm Selector -->
+                    <div class="mt-2 md:mt-0">
+                        <label class="block text-sm text-gray-400 mb-1">Select Example:</label>
+                        <select v-model="selectedSample" @change="loadSample" class="bg-secondary border border-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:border-primary min-w-[250px]">
+                            <option v-for="sample in samples" :value="sample">
+                                {{ formatAlgoName(sample) }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Canvas Area -->
+                <div class="rounded-2xl overflow-hidden border border-gray-700 shadow-2xl bg-black relative" style="height: 600px;">
+                    
+                    <!-- 1. Three.js Container -->
+                    <div id="three-container" class="w-full h-full" v-show="activeRenderMode === 'three'"></div>
+                    
+                    <!-- 2. Manim Video Container -->
+                    <div v-if="activeRenderMode === 'manim'" class="w-full h-full flex items-center justify-center bg-gray-900">
+                        <video 
+                            :src="currentVideoPath" 
+                            class="w-full h-full object-contain"
+                            controls 
+                            autoplay
+                            playsinline
+                        ></video>
+                    </div>
+
+                    <!-- 3. TikZ/LaTeX Preview Container (Split View) -->
+                    <div v-if="activeRenderMode === 'tikz'" class="w-full h-full bg-[#1a1b26] flex overflow-hidden">
+                        
+                        <!-- Left Pane: LaTeX Source Code -->
+                        <div class="w-[35%] h-full border-r border-gray-700 flex flex-col">
+                            <div class="flex justify-between items-center px-4 py-2 border-b border-gray-700 bg-[#1a1b26]">
+                                <span class="text-gray-400 text-sm font-mono">{{ selectedSample?.tex_file || 'output.tex' }}</span>
+                                <span class="text-xs bg-primary/20 text-primary px-2 py-1 rounded">LaTeX</span>
+                            </div>
+                            <pre class="flex-1 overflow-auto p-4 font-mono text-xs text-gray-300 leading-relaxed whitespace-pre-wrap scrollbar-thin scrollbar-thumb-gray-700">{{ texContent }}</pre>
+                        </div>
+
+                        <!-- Right Pane: Paper Figure Preview -->
+                        <div class="w-[65%] h-full bg-gray-100 flex flex-col relative">
+                            <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur px-3 py-1 rounded shadow text-xs text-black font-serif border border-gray-200">
+                                Paper Figure Preview
+                            </div>
+                            <div class="flex-1 overflow-auto p-8 flex items-center justify-center bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNjY2MiIG9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==')]">
+                                <div class="bg-white shadow-2xl p-2 max-w-full">
+                                    <img 
+                                        v-if="currentImagePath" 
+                                        :src="currentImagePath" 
+                                        alt="TikZ Generated Figure" 
+                                        class="max-w-full h-auto block"
+                                    >
+                                    <div v-else class="p-8 text-gray-400 text-sm">Generating Preview...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Overlay Controls (Only show for Three.js) -->
+                    <div v-show="activeRenderMode === 'three'" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-md px-6 py-3 rounded-full border border-gray-700 flex items-center gap-4 z-20">
+                        <button @click="renderer?.reset()" class="text-white hover:text-primary transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"></path></svg>
+                        </button>
+                        <button @click="togglePlay" class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white hover:bg-green-600 transition shadow-lg shadow-green-500/30">
+                            <span v-if="isPlaying">⏸</span>
+                            <span v-else class="ml-1">▶</span>
+                        </button>
+                        <input type="range" min="0.5" max="3" step="0.1" v-model="speed" @input="updateSpeed" class="w-24 accent-primary">
+                        <span class="text-xs font-mono w-12">{{ speed }}x</span>
+                    </div>
+
+                    <!-- Info Overlay -->
+                    <div class="absolute top-6 left-6 bg-black/80 backdrop-blur-md p-4 rounded-xl border border-gray-700 max-w-xs z-20">
+                        <h4 class="font-bold text-primary mb-2">{{ currentSampleInfo.category }}</h4>
+                        <div class="text-sm text-gray-300 font-mono">
+                            Task: {{ currentSampleInfo.task_id }}<br/>
+                            Seed: {{ currentSampleInfo.seed }}
+                        </div>
+                        <div class="mt-3 text-xs text-gray-500">
+                            Scroll to zoom • Drag to rotate
+                        </div>
+                    </div>
+                    
+                    <!-- Loading Overlay -->
+                    <div v-if="loading" class="absolute inset-0 flex items-center justify-center bg-black/90 z-30">
+                        <div class="text-primary animate-pulse font-mono text-xl">Loading Trace...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Gallery -->
+        <section id="gallery" class="py-24 bg-secondary">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold mb-12 text-center">Generated Video Gallery</h2>
+                
+                <!-- Filters -->
+                <div class="flex flex-wrap justify-center gap-3 mb-12">
+                    <button 
+                        v-for="cat in categories" 
+                        :key="cat"
+                        @click="filterCategory = cat"
+                        class="px-4 py-2 rounded-full text-sm font-semibold transition"
+                        :class="filterCategory === cat ? 'bg-white text-dark' : 'bg-dark text-gray-400 hover:text-white border border-gray-700'"
+                    >
+                        {{ capitalize(cat) }}
+                    </button>
+                </div>
+
+                <!-- Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div
+                        v-for="video in filteredVideos"
+                        :key="video.id"
+                        class="group relative rounded-xl overflow-hidden bg-dark border border-gray-800 hover:border-gray-600 transition hover:-translate-y-1 cursor-pointer"
+                        @click="openVideo(video)"
+                    >
+                        <!-- Video Preview (Click to play modal or just play inline) -->
+                        <div class="aspect-video bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                            <video 
+                                :src="video.video_file" 
+                                class="w-full h-full object-cover"
+                                muted 
+                                loop 
+                                playsinline
+                                @mouseenter="playVideoPreview"
+                                @mouseleave="pauseVideoPreview"
+                                @loadedmetadata="console.log('✓ Video loaded:', video.video_file)"
+                                @error="console.error('✗ Video error:', video.video_file, $event.target.error)"
+                            ></video>
+                            
+                            <div class="absolute top-2 left-2 bg-black/70 px-2 py-1 rounded text-xs font-mono text-white pointer-events-none">
+                                {{ video.category }}
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-black/70 px-2 py-1 rounded text-xs font-mono text-white">
+                                {{ video.task_id }}
+                            </div>
+                        </div>
+                        
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-xs font-bold text-primary uppercase tracking-wide">{{ video.category }}</span>
+                                    <h4 class="text-white font-medium mt-1">LeetCode {{ video.task_id }}</h4>
+                                </div>
+                                <a :href="video.video_file" target="_blank" class="text-gray-500 hover:text-white">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div v-if="hasMoreVideos" class="text-center mt-12">
+                    <button @click="visibleLimit += 9" class="px-6 py-3 border border-gray-600 rounded-lg text-gray-300 hover:bg-white/5 transition">
+                        Load More
+                    </button>
+                </div>
+
+                <!-- Video Modal -->
+                <div
+                    v-if="selectedVideoModal"
+                    class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center px-4"
+                    @click.self="closeVideo"
+                >
+                    <div class="relative max-w-4xl w-full">
+                        <button
+                            class="absolute -top-10 right-0 text-gray-400 hover:text-white"
+                            @click="closeVideo"
+                        >
+                            ✕
+                        </button>
+                        <video
+                            :src="selectedVideoModal.video_file"
+                            class="w-full h-auto rounded-lg bg-black"
+                            controls
+                            autoplay
+                            playsinline
+                        ></video>
+                        <div class="mt-3 text-center text-sm text-gray-300 font-mono">
+                            {{ selectedVideoModal.category }} · LeetCode {{ selectedVideoModal.task_id }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-12 border-t border-gray-800 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 AIgoGen Team. Created for ACL 2026 Submission.</p>
+        </footer>
+    </div>
+
+    <script src="js/svl_three_renderer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

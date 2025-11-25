@@ -1,0 +1,2079 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Bubble Sort",
+    "family": "sorting"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-array",
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "array",
+      "structure": [
+        {
+          "index": 0,
+          "value": 64,
+          "state": "idle"
+        },
+        {
+          "index": 1,
+          "value": 34,
+          "state": "idle"
+        },
+        {
+          "index": 2,
+          "value": 25,
+          "state": "idle"
+        },
+        {
+          "index": 3,
+          "value": 12,
+          "state": "idle"
+        },
+        {
+          "index": 4,
+          "value": 22,
+          "state": "idle"
+        },
+        {
+          "index": 5,
+          "value": 11,
+          "state": "idle"
+        },
+        {
+          "index": 6,
+          "value": 90,
+          "state": "idle"
+        }
+      ]
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "i",
+            0
+          ],
+          [
+            "j",
+            0
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "i",
+            "j"
+          ],
+          "col_headers": [
+            "Variable",
+            "Value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "i",
+        "initial_value": 0
+      },
+      {
+        "name": "j",
+        "initial_value": 0
+      }
+    ],
+    "pseudocode": [
+      "def bubble_sort(arr):",
+      "    n = len(arr)",
+      "    for i in range(n):",
+      "        for j in range(0, n-i-1):",
+      "            if arr[j] > arr[j+1]:",
+      "                arr[j], arr[j+1] = arr[j+1], arr[j]"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "comparing": {
+          "backgroundColor": "#FFD700",
+          "textColor": "#000000"
+        },
+        "swapped": {
+          "backgroundColor": "#90EE90",
+          "textColor": "#000000"
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 0
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 0,
+                  "value": 34
+                },
+                {
+                  "index": 1,
+                  "value": 64
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 1,
+                  "value": 25
+                },
+                {
+                  "index": 2,
+                  "value": 64
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 2,
+                  "value": 12
+                },
+                {
+                  "index": 3,
+                  "value": 64
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 3,
+                  "value": 22
+                },
+                {
+                  "index": 4,
+                  "value": 64
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4,
+                5
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4,
+                5
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 4,
+                  "value": 11
+                },
+                {
+                  "index": 5,
+                  "value": 64
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4,
+                5
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4,
+                5
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 5
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5,
+                6
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5,
+                6
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5,
+                6
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 0,
+                  "value": 25
+                },
+                {
+                  "index": 1,
+                  "value": 34
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 1,
+                  "value": 12
+                },
+                {
+                  "index": 2,
+                  "value": 34
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 2,
+                  "value": 22
+                },
+                {
+                  "index": 3,
+                  "value": 34
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 3,
+                  "value": 11
+                },
+                {
+                  "index": 4,
+                  "value": 34
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4,
+                5
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4,
+                5
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4,
+                5
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 2
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 0,
+                  "value": 12
+                },
+                {
+                  "index": 1,
+                  "value": 25
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 1,
+                  "value": 22
+                },
+                {
+                  "index": 2,
+                  "value": 25
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 2,
+                  "value": 11
+                },
+                {
+                  "index": 3,
+                  "value": 25
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 3
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 1,
+                  "value": 11
+                },
+                {
+                  "index": 2,
+                  "value": 22
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 4
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 0,
+                  "value": 11
+                },
+                {
+                  "index": 1,
+                  "value": 12
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 5
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 6
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 1,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "styleKey": "idle"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Bubble Sort completed! Array is now sorted.",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

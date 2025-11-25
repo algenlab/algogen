@@ -1,0 +1,724 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Maximum Subarray Sum with One Deletion",
+    "family": "Dynamic Programming"
+  },
+  "required_extensions": [
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "table",
+      "data": [
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "options": {
+        "row_headers": [
+          "dp0",
+          "dp1"
+        ],
+        "col_headers": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "i",
+            "0"
+          ],
+          [
+            "max_sum",
+            "-1000000000"
+          ],
+          [
+            "result",
+            "None"
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "i",
+            "max_sum",
+            "result"
+          ],
+          "col_headers": [
+            "name",
+            "value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "i",
+        "initial_value": 0
+      },
+      {
+        "name": "max_sum",
+        "initial_value": -1000000000
+      },
+      {
+        "name": "result",
+        "initial_value": null
+      }
+    ],
+    "pseudocode": [
+      "def maximumSum(arr):",
+      "    n = len(arr)",
+      "    if n == 0: return 0",
+      "    if n == 1: return arr[0]",
+      "    dp0 = [0] * (n + 1)",
+      "    dp1 = [0] * (n + 1)",
+      "    max_sum = -10**9",
+      "    ",
+      "    for i in range(1, n + 1):",
+      "        dp0[i] = max(arr[i-1], dp0[i-1] + arr[i-1])",
+      "        dp1[i] = max(dp0[i-1], dp1[i-1] + arr[i-1])",
+      "        max_sum = max(max_sum, dp0[i], dp1[i])",
+      "    ",
+      "    return max_sum"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "current_cell": {
+          "backgroundColor": "#FFD700",
+          "textColor": "#000000"
+        },
+        "comparing": {
+          "backgroundColor": "#FF6B6B",
+          "textColor": "#000000"
+        }
+      },
+      "tempStyles": {
+        "dep_arrow": {
+          "color": "#FF0000",
+          "strokeWidth": 2.5
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 0,
+                  "value": 0
+                },
+                {
+                  "row": 1,
+                  "col": 0,
+                  "value": 0
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 0,
+                  "col": 1
+                },
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 0
+                }
+              ],
+              "to_cell": {
+                "row": 0,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 10,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 0
+                },
+                {
+                  "row": 1,
+                  "col": 0
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 11,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 0,
+                  "col": 2
+                },
+                {
+                  "row": 1,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 2,
+                  "value": -1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 0,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 10,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 2,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 1
+                },
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 11,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 0,
+                  "col": 3
+                },
+                {
+                  "row": 1,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 3,
+                  "value": -2
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 0,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 10,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 3,
+                  "value": -1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 2
+                },
+                {
+                  "row": 1,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 11,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 0,
+                  "col": 4
+                },
+                {
+                  "row": 1,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 4,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 0,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 10,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 4,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 3
+                },
+                {
+                  "row": 1,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 11,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Maximum subarray sum with one deletion: 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

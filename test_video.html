@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+            font-family: monospace;
+            padding: 40px;
+        }
+        video {
+            max-width: 600px;
+            display: block;
+            margin: 20px 0;
+            border: 2px solid #4CAF50;
+        }
+        .info {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .success { color: #4CAF50; }
+        .error { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <h1>AIgoGen 视频播放测试</h1>
+    
+    <div class="info">
+        <h2>测试说明</h2>
+        <p>此页面用于测试视频文件是否能在你的浏览器中正常播放。</p>
+        <p>如果下面的视频能播放，说明文件和浏览器都没问题。</p>
+    </div>
+
+    <h2>测试视频 1: Array</h2>
+    <video controls muted playsinline>
+        <source src="assets/videos/array_leetcode_1186_seed_02.mp4" type="video/mp4">
+        你的浏览器不支持 video 标签。
+    </video>
+
+    <h2>测试视频 2: DP</h2>
+    <video controls muted playsinline>
+        <source src="assets/videos/dp_leetcode_2167_seed_01.mp4" type="video/mp4">
+        你的浏览器不支持 video 标签。
+    </video>
+
+    <h2>测试视频 3: Graph</h2>
+    <video controls muted playsinline>
+        <source src="assets/videos/graph_leetcode_924_seed_01.mp4" type="video/mp4">
+        你的浏览器不支持 video 标签。
+    </video>
+
+    <div class="info">
+        <h2>诊断结果</h2>
+        <div id="diagnosis">检测中...</div>
+    </div>
+
+    <script>
+        const videos = document.querySelectorAll('video');
+        const diagnosis = document.getElementById('diagnosis');
+        let results = [];
+
+        videos.forEach((video, index) => {
+            video.addEventListener('loadedmetadata', () => {
+                results.push(`<p class="success">✓ 视频 ${index + 1}: 成功加载 (时长: ${video.duration.toFixed(1)}s)</p>`);
+                updateDiagnosis();
+            });
+
+            video.addEventListener('error', (e) => {
+                const error = video.error;
+                let errorMsg = '未知错误';
+                if (error) {
+                    switch(error.code) {
+                        case 1: errorMsg = 'MEDIA_ERR_ABORTED - 用户中止'; break;
+                        case 2: errorMsg = 'MEDIA_ERR_NETWORK - 网络错误'; break;
+                        case 3: errorMsg = 'MEDIA_ERR_DECODE - 解码错误（浏览器不支持此编码）'; break;
+                        case 4: errorMsg = 'MEDIA_ERR_SRC_NOT_SUPPORTED - 格式不支持'; break;
+                    }
+                }
+                results.push(`<p class="error">✗ 视频 ${index + 1}: 失败 - ${errorMsg}</p>`);
+                updateDiagnosis();
+            });
+        });
+
+        function updateDiagnosis() {
+            diagnosis.innerHTML = results.join('');
+        }
+
+        // 浏览器信息
+        setTimeout(() => {
+            results.push(`<p><strong>浏览器:</strong> ${navigator.userAgent}</p>`);
+            results.push(`<p><strong>支持的视频编码:</strong></p>`);
+            const videoEl = document.createElement('video');
+            const codecs = [
+                'video/mp4; codecs="avc1.42E01E"',  // H.264
+                'video/webm; codecs="vp8"',          // VP8
+                'video/webm; codecs="vp9"',          // VP9
+            ];
+            codecs.forEach(codec => {
+                const support = videoEl.canPlayType(codec);
+                const status = support === 'probably' ? '✓ 完全支持' : 
+                              support === 'maybe' ? '? 可能支持' : '✗ 不支持';
+                results.push(`<p>&nbsp;&nbsp;${codec}: ${status}</p>`);
+            });
+            updateDiagnosis();
+        }, 1000);
+    </script>
+</body>
+</html>

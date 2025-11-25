@@ -1,0 +1,480 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Minimum Absolute Sum Difference",
+    "family": "Sorting"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-array",
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "array",
+      "structure": [
+        {
+          "index": 0,
+          "value": 1,
+          "state": "idle"
+        },
+        {
+          "index": 1,
+          "value": 7,
+          "state": "idle"
+        },
+        {
+          "index": 2,
+          "value": 5,
+          "state": "idle"
+        }
+      ]
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "i",
+            null
+          ],
+          [
+            "j",
+            null
+          ],
+          [
+            "pivot",
+            null
+          ],
+          [
+            "total_sum",
+            0
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "i",
+            "j",
+            "pivot",
+            "total_sum"
+          ],
+          "col_headers": [
+            "variable",
+            "value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "i",
+        "initial_value": null
+      },
+      {
+        "name": "j",
+        "initial_value": null
+      },
+      {
+        "name": "pivot",
+        "initial_value": null
+      },
+      {
+        "name": "total_sum",
+        "initial_value": 0
+      }
+    ],
+    "pseudocode": [
+      "def minimum_absolute_sum_diff(nums):",
+      "    # Step 1: Sort the array using quicksort",
+      "    sorted_nums = quicksort(nums)",
+      "    # Step 2: Calculate absolute differences",
+      "    total_sum = 0",
+      "    for i in range(1, len(sorted_nums)):",
+      "        total_sum += abs(sorted_nums[i] - sorted_nums[i-1])",
+      "    return total_sum",
+      "",
+      "def quicksort(arr, low, high):",
+      "    if low < high:",
+      "        pi = partition(arr, low, high)",
+      "        quicksort(arr, low, pi-1)",
+      "        quicksort(arr, pi+1, high)",
+      "",
+      "def partition(arr, low, high):",
+      "    pivot = arr[high]",
+      "    i = low - 1",
+      "    for j in range(low, high):",
+      "        if arr[j] <= pivot:",
+      "            i += 1",
+      "            arr[i], arr[j] = arr[j], arr[i]",
+      "    arr[i+1], arr[high] = arr[high], arr[i+1]",
+      "    return i+1"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "comparing": {
+          "backgroundColor": "#FFD700",
+          "textColor": "#000000"
+        },
+        "swapped": {
+          "backgroundColor": "#90EE90",
+          "textColor": "#000000"
+        },
+        "pivot": {
+          "backgroundColor": "#FF6B6B",
+          "textColor": "#FFFFFF"
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 17,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "pivot"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": 5
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Pivot: 5",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 19,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Compare arr[0]=1 with pivot=5",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 19,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Compare arr[1]=7 with pivot=5",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 21,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 1,
+                  "value": 5
+                },
+                {
+                  "index": 2,
+                  "value": 7
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "swapped"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Place pivot at position 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1,
+                2
+              ],
+              "styleKey": "idle"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": null
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": null
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": null
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "|5 - 1| = 4, Total: 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": 6
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "|7 - 5| = 2, Total: 6",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Algorithm completed! Total sum: 6",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

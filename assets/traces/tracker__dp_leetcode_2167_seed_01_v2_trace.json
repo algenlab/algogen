@@ -1,0 +1,2823 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Longest Common Subsequence",
+    "family": "Dynamic Programming"
+  },
+  "required_extensions": [
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "table",
+      "data": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          3,
+          3
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          3,
+          4
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          4
+        ]
+      ],
+      "options": {
+        "row_headers": [
+          "0",
+          "'A'",
+          "'B'",
+          "'C'",
+          "'D'",
+          "'E'",
+          "'F'"
+        ],
+        "col_headers": [
+          "0",
+          "'A'",
+          "'C'",
+          "'D'",
+          "'F'",
+          "'E'"
+        ]
+      }
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "i",
+            "0"
+          ],
+          [
+            "j",
+            "0"
+          ],
+          [
+            "s1[i-1]",
+            ""
+          ],
+          [
+            "s2[j-1]",
+            ""
+          ],
+          [
+            "result",
+            "0"
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "i",
+            "j",
+            "s1[i-1]",
+            "s2[j-1]",
+            "result"
+          ],
+          "col_headers": [
+            "name",
+            "value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "i",
+        "initial_value": 0
+      },
+      {
+        "name": "j",
+        "initial_value": 0
+      },
+      {
+        "name": "char1",
+        "initial_value": ""
+      },
+      {
+        "name": "char2",
+        "initial_value": ""
+      },
+      {
+        "name": "result",
+        "initial_value": 0
+      }
+    ],
+    "pseudocode": [
+      "def lcs(s1, s2):",
+      "    m, n = len(s1), len(s2)",
+      "    dp = [[0]*(n+1) for _ in range(m+1)]",
+      "    for i in range(1, m+1):",
+      "        for j in range(1, n+1):",
+      "            if s1[i-1] == s2[j-1]:",
+      "                dp[i][j] = dp[i-1][j-1] + 1",
+      "            else:",
+      "                dp[i][j] = max(dp[i-1][j], dp[i][j-1])",
+      "    return dp[m][n]"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "backgroundColor": "#E8E8E8",
+          "textColor": "#000000",
+          "borderColor": "#666666"
+        },
+        "current_cell": {
+          "backgroundColor": "#FFD700",
+          "textColor": "#000000",
+          "borderColor": "#FFA500"
+        },
+        "matched_cell": {
+          "backgroundColor": "#90EE90",
+          "textColor": "#000000",
+          "borderColor": "#006400"
+        }
+      },
+      "tempStyles": {
+        "dep_arrow": {
+          "color": "#FF0000",
+          "strokeWidth": 2.5
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "0"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'A'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'A'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 0
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Match: 'A'='A', dp[1][1] = 0+1 = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'A'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'C'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 2,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[1][2] = max(0, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'A'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'D'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 3,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[1][3] = max(0, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'A'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'F'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 4,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[1][4] = max(0, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'A'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'E'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 5,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[1][5] = max(0, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'B'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'A'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[2][1] = max(1, 0) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'B'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'C'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 2,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 2
+                },
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[2][2] = max(1, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'B'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'D'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 3,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 3
+                },
+                {
+                  "row": 2,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[2][3] = max(1, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'B'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'F'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 4,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 4
+                },
+                {
+                  "row": 2,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[2][4] = max(1, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'B'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'E'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 5,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 5
+                },
+                {
+                  "row": 2,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[2][5] = max(1, 1) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'C'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'A'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[3][1] = max(1, 0) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'C'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'C'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 2,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Match: 'C'='C', dp[3][2] = 1+1 = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'C'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'D'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 3,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[3][3] = max(1, 2) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'C'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'F'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 4,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[3][4] = max(1, 2) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'C'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'E'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 5,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[3][5] = max(1, 2) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'D'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'A'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[4][1] = max(1, 0) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'D'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'C'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 2,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[4][2] = max(2, 1) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'D'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'D'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 3,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Match: 'D'='D', dp[4][3] = 2+1 = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'D'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'F'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 4,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[4][4] = max(2, 3) = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'D'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'E'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 5,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[4][5] = max(2, 3) = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'E'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'A'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[5][1] = max(1, 0) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'E'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'C'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 2,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[5][2] = max(2, 1) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'E'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'D'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 3,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[5][3] = max(3, 2) = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'E'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'F'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 4,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 4
+                },
+                {
+                  "row": 5,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[5][4] = max(3, 3) = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'E'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'E'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 5,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Match: 'E'='E', dp[5][5] = 3+1 = 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "6"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'F'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'A'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 1
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 6,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 1
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[6][1] = max(1, 0) = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "6"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'F'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'C'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 2
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 6,
+                  "col": 2,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 2
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[6][2] = max(2, 1) = 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "6"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'F'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'D'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 3
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 6,
+                  "col": 3,
+                  "value": 3
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 3
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[6][3] = max(3, 2) = 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "6"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'F'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'F'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 4
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 6,
+                  "col": 4,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 4
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Match: 'F'='F', dp[6][4] = 3+1 = 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "6"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "5"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "'F'"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "'E'"
+                }
+              ]
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "data_state",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 5
+                }
+              ],
+              "styleKey": "current_cell"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "data_state",
+              "updates": [
+                {
+                  "row": 6,
+                  "col": 5,
+                  "value": 4
+                }
+              ]
+            }
+          },
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "data_state",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 5
+                },
+                {
+                  "row": 6,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 5
+              },
+              "styleKey": "dep_arrow"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "No match: dp[6][5] = max(4, 4) = 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "LCS length: 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,773 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Maximum Score From Removing Substrings",
+    "family": "Tree Traversal"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-tree",
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "tree",
+      "structure": {
+        "root": "1",
+        "nodes": [
+          {
+            "id": "1",
+            "label": "1",
+            "parent": null,
+            "children": [
+              "2",
+              "3"
+            ],
+            "properties": {
+              "value": 5
+            },
+            "styleKey": "idle_node"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "parent": "1",
+            "children": [
+              "4"
+            ],
+            "properties": {
+              "value": 3
+            },
+            "styleKey": "idle_node"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "parent": "1",
+            "children": [],
+            "properties": {
+              "value": 8
+            },
+            "styleKey": "idle_node"
+          },
+          {
+            "id": "4",
+            "label": "4",
+            "parent": "2",
+            "children": [],
+            "properties": {
+              "value": 1
+            },
+            "styleKey": "idle_node"
+          }
+        ]
+      }
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "score_panel",
+        "type": "table",
+        "title": "Node Scores",
+        "data": [
+          [
+            "Node",
+            "Score"
+          ],
+          [
+            "1",
+            null
+          ],
+          [
+            "2",
+            null
+          ],
+          [
+            "3",
+            null
+          ],
+          [
+            "4",
+            null
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "Header",
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "col_headers": [
+            "Property",
+            "Value"
+          ]
+        }
+      },
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "current_node",
+            null
+          ],
+          [
+            "left_score",
+            null
+          ],
+          [
+            "right_score",
+            null
+          ],
+          [
+            "current_score",
+            null
+          ],
+          [
+            "max_score",
+            null
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "current_node",
+            "left_score",
+            "right_score",
+            "current_score",
+            "max_score"
+          ],
+          "col_headers": [
+            "Variable",
+            "Value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "current_node",
+        "initial_value": null
+      },
+      {
+        "name": "left_score",
+        "initial_value": null
+      },
+      {
+        "name": "right_score",
+        "initial_value": null
+      },
+      {
+        "name": "current_score",
+        "initial_value": null
+      },
+      {
+        "name": "max_score",
+        "initial_value": null
+      }
+    ],
+    "pseudocode": [
+      "def calculate_max_score(node):",
+      "    if node is None: return 0",
+      "    left_score = calculate_max_score(node.left)",
+      "    right_score = calculate_max_score(node.right)",
+      "    current_score = node.value + max(left_score, right_score)",
+      "    return current_score",
+      "",
+      "max_score = calculate_max_score(root)"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle_node": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "current_node": {
+          "backgroundColor": "#4CAF50",
+          "textColor": "#FFFFFF"
+        },
+        "visited_node": {
+          "backgroundColor": "#CCCCCC",
+          "textColor": "#000000"
+        },
+        "processing_node": {
+          "backgroundColor": "#FFD700",
+          "textColor": "#000000"
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 1,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "1"
+              ],
+              "styleKey": "processing_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 1,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "2"
+              ],
+              "styleKey": "processing_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 1,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "4"
+              ],
+              "styleKey": "processing_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Node is None, returning 0",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Node is None, returning 0",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "score_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "4"
+              ],
+              "styleKey": "visited_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Node is None, returning 0",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "score_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "2"
+              ],
+              "styleKey": "visited_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 1,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "3"
+              ],
+              "styleKey": "processing_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Node is None, returning 0",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Node is None, returning 0",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "8"
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "score_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "8"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "3"
+              ],
+              "styleKey": "visited_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "8"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "13"
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "score_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "13"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "1"
+              ],
+              "styleKey": "visited_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "13"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Maximum Score: 13",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

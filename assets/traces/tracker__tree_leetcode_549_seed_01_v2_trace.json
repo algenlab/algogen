@@ -1,0 +1,449 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Binary Tree Longest Consecutive Sequence II",
+    "family": "tree"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-tree",
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "tree",
+      "structure": {
+        "root": "1",
+        "nodes": [
+          {
+            "id": "1",
+            "label": "5",
+            "parent": null,
+            "children": [
+              "2",
+              "3"
+            ],
+            "properties": {
+              "value": 5
+            },
+            "styleKey": "idle_node"
+          },
+          {
+            "id": "2",
+            "label": "3",
+            "parent": "1",
+            "children": [
+              "4"
+            ],
+            "properties": {
+              "value": 3
+            },
+            "styleKey": "idle_node"
+          },
+          {
+            "id": "3",
+            "label": "8",
+            "parent": "1",
+            "children": [],
+            "properties": {
+              "value": 8
+            },
+            "styleKey": "idle_node"
+          },
+          {
+            "id": "4",
+            "label": "1",
+            "parent": "2",
+            "children": [],
+            "properties": {
+              "value": 1
+            },
+            "styleKey": "idle_node"
+          }
+        ]
+      }
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "current_node",
+            null
+          ],
+          [
+            "inc",
+            null
+          ],
+          [
+            "dec",
+            null
+          ],
+          [
+            "max_length",
+            "0"
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "current_node",
+            "inc",
+            "dec",
+            "max_length"
+          ],
+          "col_headers": [
+            "name",
+            "value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "max_length",
+        "initial_value": 0
+      },
+      {
+        "name": "current_node",
+        "initial_value": null
+      },
+      {
+        "name": "inc",
+        "initial_value": null
+      },
+      {
+        "name": "dec",
+        "initial_value": null
+      }
+    ],
+    "pseudocode": [
+      "def longestConsecutive(root):",
+      "    max_length = 0",
+      "    def dfs(node):",
+      "        nonlocal max_length",
+      "        if not node: return (0, 0)",
+      "        left_inc, left_dec = dfs(node.left)",
+      "        right_inc, right_dec = dfs(node.right)",
+      "        inc = 1; dec = 1",
+      "        if node.left:",
+      "            if node.left.value == node.value + 1:",
+      "                inc = max(inc, left_inc + 1)",
+      "            if node.left.value == node.value - 1:",
+      "                dec = max(dec, left_dec + 1)",
+      "        if node.right:",
+      "            if node.right.value == node.value + 1:",
+      "                inc = max(inc, right_inc + 1)",
+      "            if node.right.value == node.value - 1:",
+      "                dec = max(dec, right_dec + 1)",
+      "        max_length = max(max_length, inc + dec - 1)",
+      "        return (inc, dec)",
+      "    dfs(root)",
+      "    return max_length"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "idle_node": {
+        "backgroundColor": "#F0F0F0",
+        "textColor": "#000000"
+      },
+      "current_node": {
+        "backgroundColor": "#4CAF50",
+        "textColor": "#FFFFFF"
+      },
+      "visited_node": {
+        "backgroundColor": "#CCCCCC",
+        "textColor": "#000000"
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "1"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "2"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "4"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 17,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "4"
+              ],
+              "styleKey": "visited_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 17,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "2"
+              ],
+              "styleKey": "visited_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "3"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 17,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "3"
+              ],
+              "styleKey": "visited_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 17,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "1"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "1"
+              ],
+              "styleKey": "visited_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 19,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Algorithm completed! Longest consecutive sequence length: 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

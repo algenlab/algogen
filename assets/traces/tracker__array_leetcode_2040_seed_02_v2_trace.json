@@ -1,0 +1,3659 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Kth Smallest Product of Two Sorted Arrays",
+    "family": "binary_search"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-array",
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "array",
+      "structure": [
+        {
+          "index": 0,
+          "value": -4,
+          "state": "idle"
+        },
+        {
+          "index": 1,
+          "value": -2,
+          "state": "idle"
+        },
+        {
+          "index": 2,
+          "value": 0,
+          "state": "idle"
+        },
+        {
+          "index": 3,
+          "value": 3,
+          "state": "idle"
+        }
+      ]
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "nums2_array",
+        "type": "array",
+        "title": "Second Array",
+        "data": [
+          {
+            "index": 0,
+            "value": -3,
+            "state": "idle"
+          },
+          {
+            "index": 1,
+            "value": -1,
+            "state": "idle"
+          },
+          {
+            "index": 2,
+            "value": 2,
+            "state": "idle"
+          },
+          {
+            "index": 3,
+            "value": 4,
+            "state": "idle"
+          }
+        ]
+      },
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "low",
+            null
+          ],
+          [
+            "high",
+            null
+          ],
+          [
+            "mid",
+            null
+          ],
+          [
+            "count",
+            null
+          ],
+          [
+            "current_num1",
+            null
+          ],
+          [
+            "threshold",
+            null
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "low",
+            "high",
+            "mid",
+            "count",
+            "current_num1",
+            "threshold"
+          ],
+          "col_headers": [
+            "name",
+            "value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "low",
+        "initial_value": null
+      },
+      {
+        "name": "high",
+        "initial_value": null
+      },
+      {
+        "name": "mid",
+        "initial_value": null
+      },
+      {
+        "name": "count",
+        "initial_value": null
+      },
+      {
+        "name": "current_num1",
+        "initial_value": null
+      },
+      {
+        "name": "threshold",
+        "initial_value": null
+      }
+    ],
+    "pseudocode": [
+      "def kthSmallestProduct(nums1, nums2, k):",
+      "    # 确定乘积的可能范围",
+      "    low = min(nums1[0]*nums2[0], nums1[0]*nums2[-1], nums1[-1]*nums2[0], nums1[-1]*nums2[-1])",
+      "    high = max(nums1[0]*nums2[0], nums1[0]*nums2[-1], nums1[-1]*nums2[0], nums1[-1]*nums2[-1])",
+      "    ",
+      "    # 二分查找第k小的乘积",
+      "    while low <= high:",
+      "        mid = (low + high) // 2",
+      "        count = countPairs(nums1, nums2, mid)",
+      "        ",
+      "        if count < k:",
+      "            low = mid + 1",
+      "        else:",
+      "            high = mid - 1",
+      "    ",
+      "    return low",
+      "",
+      "def countPairs(nums1, nums2, target):",
+      "    # 统计乘积 <= target 的对数",
+      "    count = 0",
+      "    # 对nums1中的每个元素，在nums2中使用二分查找统计",
+      "    for num1 in nums1:",
+      "        if num1 > 0:",
+      "            # 正数：nums2需要 <= target/num1",
+      "            threshold = target / num1",
+      "            # 在nums2中找第一个 > threshold的索引",
+      "            left, right = 0, len(nums2)",
+      "            while left < right:",
+      "                mid = (left + right) // 2",
+      "                if nums2[mid] > threshold:",
+      "                    right = mid",
+      "                else:",
+      "                    left = mid + 1",
+      "            count += left",
+      "        elif num1 < 0:",
+      "            # 负数：nums2需要 >= target/num1",
+      "            threshold = target / num1",
+      "            # 在nums2中找第一个 >= threshold的索引",
+      "            left, right = 0, len(nums2)",
+      "            while left < right:",
+      "                mid = (left + right) // 2",
+      "                if nums2[mid] >= threshold:",
+      "                    right = mid",
+      "                else:",
+      "                    left = mid + 1",
+      "            count += len(nums2) - left",
+      "        else:  # num1 == 0",
+      "            if target >= 0:",
+      "                count += len(nums2)",
+      "    return count"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "current": {
+          "backgroundColor": "#4CAF50",
+          "textColor": "#FFFFFF"
+        },
+        "comparing": {
+          "backgroundColor": "#FFD700",
+          "textColor": "#000000"
+        },
+        "processed": {
+          "backgroundColor": "#CCCCCC",
+          "textColor": "#000000"
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "-16"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "12"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "初始范围: low=-16, high=12",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "-2"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "二分查找: mid=-2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "-4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "0.50"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "负数 -4: 寻找nums2中 ≥ 0.50的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 ≥ 0.50",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 ≥ 0.50",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 2 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "-2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "1.00"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "负数 -2: 寻找nums2中 ≥ 1.00的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 ≥ 1.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 ≥ 1.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 2 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "-0.67"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "正数 3: 寻找nums2中 ≤ -0.67的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 > -0.67",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 > -0.67",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 25,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 2 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "6"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 11,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "count=6 >= k=5, 调整high",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "-3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "-10"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "二分查找: mid=-10",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "-4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "2.50"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "负数 -4: 寻找nums2中 ≥ 2.50的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 ≥ 2.50",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[3] = 4 是否 ≥ 2.50",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 1 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "-2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "5.00"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "负数 -2: 寻找nums2中 ≥ 5.00的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 ≥ 5.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[3] = 4 是否 ≥ 5.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 0 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "-3.33"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "正数 3: 寻找nums2中 ≤ -3.33的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 > -3.33",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 > -3.33",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[0] = -3 是否 > -3.33",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                0
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 25,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 0 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "count=1 < k=5, 调整low",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "-9"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "-6"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "二分查找: mid=-6",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "-4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "1.50"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "负数 -4: 寻找nums2中 ≥ 1.50的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 ≥ 1.50",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 ≥ 1.50",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 2 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "-2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "3.00"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "负数 -2: 寻找nums2中 ≥ 3.00的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 ≥ 3.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[3] = 4 是否 ≥ 3.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 1 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "-2.00"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "正数 3: 寻找nums2中 ≤ -2.00的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 > -2.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 > -2.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[0] = -3 是否 > -2.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                0
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 25,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 1 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "count=4 < k=5, 调整low",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "-5"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "-4"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "二分查找: mid=-4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "-4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "1.00"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "负数 -4: 寻找nums2中 ≥ 1.00的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 ≥ 1.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 ≥ 1.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 2 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "-2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "2.00"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "负数 -2: 寻找nums2中 ≥ 2.00的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 ≥ 2.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 ≥ 2.00",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 2 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "-1.33"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "正数 3: 寻找nums2中 ≤ -1.33的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 > -1.33",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 > -1.33",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[0] = -3 是否 > -1.33",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                0
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 25,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 1 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 11,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "count=5 >= k=5, 调整high",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "-5"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "-5"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "二分查找: mid=-5",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "-4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "1.25"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "负数 -4: 寻找nums2中 ≥ 1.25的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 ≥ 1.25",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 ≥ 1.25",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 2 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "-2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "2.50"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "负数 -2: 寻找nums2中 ≥ 2.50的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 ≥ 2.50",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[3] = 4 是否 ≥ 2.50",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 1 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "current"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "-1.67"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "正数 3: 寻找nums2中 ≤ -1.67的元素",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[2] = 2 是否 > -1.67",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[1] = -1 是否 > -1.67",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "检查nums2[0] = -3 是否 > -1.67",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                0
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 25,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "找到 1 个元素满足条件",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "processed"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "count=4 < k=5, 调整low",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "-4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "算法完成！第5小的乘积是: -4",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "styleKey": "idle"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "view_id": "nums2_array",
+              "indices": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

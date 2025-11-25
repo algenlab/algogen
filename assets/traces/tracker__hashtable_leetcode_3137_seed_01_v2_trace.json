@@ -1,0 +1,491 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Minimum Operations to Make Word K-Periodic",
+    "family": "Hashtable"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-hashtable",
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "hashtable",
+      "structure": {
+        "size": 8,
+        "buckets": [
+          {
+            "index": 0,
+            "items": []
+          },
+          {
+            "index": 1,
+            "items": []
+          },
+          {
+            "index": 2,
+            "items": []
+          },
+          {
+            "index": 3,
+            "items": []
+          },
+          {
+            "index": 4,
+            "items": []
+          },
+          {
+            "index": 5,
+            "items": []
+          },
+          {
+            "index": 6,
+            "items": []
+          },
+          {
+            "index": 7,
+            "items": []
+          }
+        ]
+      }
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "word",
+            "leetcodeleet"
+          ],
+          [
+            "k",
+            4
+          ],
+          [
+            "n",
+            13
+          ],
+          [
+            "total_segments",
+            3
+          ],
+          [
+            "max_freq",
+            0
+          ],
+          [
+            "total_ops",
+            0
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "word",
+            "k",
+            "n",
+            "total_segments",
+            "max_freq",
+            "total_ops"
+          ],
+          "col_headers": [
+            "Variable",
+            "Value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "word",
+        "initial_value": "leetcodeleet"
+      },
+      {
+        "name": "k",
+        "initial_value": 4
+      },
+      {
+        "name": "n",
+        "initial_value": 13
+      },
+      {
+        "name": "total_segments",
+        "initial_value": 3
+      },
+      {
+        "name": "max_freq",
+        "initial_value": 0
+      },
+      {
+        "name": "total_ops",
+        "initial_value": 0
+      }
+    ],
+    "pseudocode": [
+      "def min_operations_to_k_periodic(word, k):",
+      "    n = len(word)",
+      "    total_segments = n // k",
+      "    freq_map = {}",
+      "    for i in range(0, n, k):",
+      "        substring = word[i:i+k]",
+      "        freq_map[substring] = freq_map.get(substring, 0) + 1",
+      "    max_freq = max(freq_map.values()) if freq_map else 0",
+      "    return total_segments - max_freq"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "current_bucket": {
+          "backgroundColor": "#FFD700",
+          "textColor": "#000000"
+        },
+        "inserted": {
+          "backgroundColor": "#90EE90",
+          "textColor": "#000000"
+        },
+        "updated": {
+          "backgroundColor": "#87CEEB",
+          "textColor": "#000000"
+        }
+      },
+      "tempStyles": {
+        "hash_display": {
+          "color": "#FF6B6B",
+          "strokeWidth": 2
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "3"
+                },
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "0"
+                },
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Segment 1: processing 'leet' at position 0",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "highlightBucket",
+            "params": {
+              "bucket_index": 2,
+              "styleKey": "current_bucket"
+            }
+          },
+          {
+            "op": "showHash",
+            "params": {
+              "input_key": "leet",
+              "output_hash": 2,
+              "bucket_index": 2
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Hash('leet') = 2 (bucket 2)",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "insertIntoBucket",
+            "params": {
+              "bucket_index": 2,
+              "element": {
+                "key": "leet",
+                "value": 1
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Insert new substring 'leet' with frequency 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "highlightBucket",
+            "params": {
+              "bucket_index": 2,
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Segment 2: processing 'code' at position 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "highlightBucket",
+            "params": {
+              "bucket_index": 3,
+              "styleKey": "current_bucket"
+            }
+          },
+          {
+            "op": "showHash",
+            "params": {
+              "input_key": "code",
+              "output_hash": 3,
+              "bucket_index": 3
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Hash('code') = 3 (bucket 3)",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "insertIntoBucket",
+            "params": {
+              "bucket_index": 3,
+              "element": {
+                "key": "code",
+                "value": 1
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Insert new substring 'code' with frequency 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "highlightBucket",
+            "params": {
+              "bucket_index": 3,
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Segment 3: processing 'leet' at position 8",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "highlightBucket",
+            "params": {
+              "bucket_index": 2,
+              "styleKey": "current_bucket"
+            }
+          },
+          {
+            "op": "showHash",
+            "params": {
+              "input_key": "leet",
+              "output_hash": 2,
+              "bucket_index": 2
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Hash('leet') = 2 (bucket 2)",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateInBucket",
+            "params": {
+              "bucket_index": 2,
+              "key": "leet",
+              "value": 2
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Update 'leet': 1 → 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "highlightBucket",
+            "params": {
+              "bucket_index": 2,
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "2"
+                },
+                {
+                  "row": 5,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Algorithm completed: max_frequency = 2, total_operations = 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

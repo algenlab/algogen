@@ -1,0 +1,1178 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Find Closest Node to Given Two Nodes",
+    "family": "graph"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-graph",
+    "svl-ext-view-table",
+    "svl-ext-view-list"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "graph",
+      "structure": {
+        "nodes": [
+          {
+            "id": "A",
+            "label": "A",
+            "styleKey": "idle_node",
+            "properties": {
+              "distance1": null,
+              "distance2": null
+            }
+          },
+          {
+            "id": "B",
+            "label": "B",
+            "styleKey": "idle_node",
+            "properties": {
+              "distance1": null,
+              "distance2": null
+            }
+          },
+          {
+            "id": "C",
+            "label": "C",
+            "styleKey": "idle_node",
+            "properties": {
+              "distance1": null,
+              "distance2": null
+            }
+          },
+          {
+            "id": "D",
+            "label": "D",
+            "styleKey": "idle_node",
+            "properties": {
+              "distance1": null,
+              "distance2": null
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": "A",
+            "to": "B",
+            "directed": true,
+            "label": "4",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "A",
+            "to": "C",
+            "directed": true,
+            "label": "2",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "B",
+            "to": "D",
+            "directed": true,
+            "label": "3",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "directed": true,
+            "label": "1",
+            "styleKey": "normal_edge"
+          }
+        ]
+      }
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "frontier1",
+        "type": "list",
+        "title": "Frontier (BFS from A)",
+        "data": []
+      },
+      {
+        "view_id": "frontier2",
+        "type": "list",
+        "title": "Frontier (BFS from B)",
+        "data": []
+      },
+      {
+        "view_id": "distance_table1",
+        "type": "table",
+        "title": "Distances from A",
+        "data": [
+          [
+            null,
+            null,
+            null,
+            null
+          ]
+        ],
+        "options": {
+          "col_headers": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        }
+      },
+      {
+        "view_id": "distance_table2",
+        "type": "table",
+        "title": "Distances from B",
+        "data": [
+          [
+            null,
+            null,
+            null,
+            null
+          ]
+        ],
+        "options": {
+          "col_headers": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        }
+      },
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "current_node",
+            null
+          ],
+          [
+            "result",
+            null
+          ],
+          [
+            "min_max_dist",
+            null
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "current_node",
+            "result",
+            "min_max_dist"
+          ],
+          "col_headers": [
+            "name",
+            "value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "current_node",
+        "initial_value": null
+      },
+      {
+        "name": "result",
+        "initial_value": null
+      },
+      {
+        "name": "min_max_dist",
+        "initial_value": null
+      }
+    ],
+    "pseudocode": [
+      "def find_closest_node(graph, node1, node2):",
+      "    # Perform BFS from both nodes",
+      "    dist1 = BFS(graph, node1)",
+      "    dist2 = BFS(graph, node2)",
+      "    min_max_dist = float('inf')",
+      "    result = -1",
+      "    for node in graph:",
+      "        if dist1[node] != -1 and dist2[node] != -1:",
+      "            curr_max = max(dist1[node], dist2[node])",
+      "            if curr_max < min_max_dist:",
+      "                min_max_dist = curr_max",
+      "                result = node",
+      "    return result",
+      "",
+      "def BFS(graph, start):",
+      "    dist = {node: -1 for node in graph}",
+      "    queue = deque([start])",
+      "    dist[start] = 0",
+      "    while queue:",
+      "        current = queue.popleft()",
+      "        for neighbor in graph[current]:",
+      "            if dist[neighbor] == -1:",
+      "                dist[neighbor] = dist[current] + 1",
+      "                queue.append(neighbor)",
+      "    return dist"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle_node": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "current_node": {
+          "backgroundColor": "#4CAF50",
+          "textColor": "#FFFFFF"
+        },
+        "visited_node": {
+          "backgroundColor": "#CCCCCC",
+          "textColor": "#000000"
+        },
+        "idle_cell": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "current_cell": {
+          "backgroundColor": "#FFD700",
+          "textColor": "#000000"
+        }
+      },
+      "edgeStyles": {
+        "normal_edge": {
+          "stroke": "#666666",
+          "textColor": "#000000"
+        },
+        "active_edge": {
+          "stroke": "#FF0000",
+          "textColor": "#FF0000"
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 16,
+      "operations": [
+        [
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "A",
+                  "properties": {
+                    "distance1": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "distance_table1",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 0,
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier1",
+              "value": "A(0)"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "popFromList",
+            "params": {
+              "view_id": "frontier1",
+              "value": "A(0)"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 21,
+      "operations": [
+        [
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "B",
+                  "properties": {
+                    "distance1": 1
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "distance_table1",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier1",
+              "value": "B(1)"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "B"
+                }
+              ],
+              "styleKey": "active_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 21,
+      "operations": [
+        [
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "C",
+                  "properties": {
+                    "distance1": 1
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "distance_table1",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 2,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier1",
+              "value": "C(1)"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "C"
+                }
+              ],
+              "styleKey": "active_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "visited_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "B"
+                },
+                {
+                  "from": "A",
+                  "to": "C"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "popFromList",
+            "params": {
+              "view_id": "frontier1",
+              "value": "B(1)"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "B"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 21,
+      "operations": [
+        [
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "D",
+                  "properties": {
+                    "distance1": 2
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "distance_table1",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 3,
+                  "value": 2
+                }
+              ]
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier1",
+              "value": "D(2)"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "B",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "active_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "visited_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "B",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "popFromList",
+            "params": {
+              "view_id": "frontier1",
+              "value": "C(1)"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "visited_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "popFromList",
+            "params": {
+              "view_id": "frontier1",
+              "value": "D(2)"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "visited_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 16,
+      "operations": [
+        [
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "B",
+                  "properties": {
+                    "distance2": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "distance_table2",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": 0
+                }
+              ]
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier2",
+              "value": "B(0)"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "popFromList",
+            "params": {
+              "view_id": "frontier2",
+              "value": "B(0)"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "B"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 21,
+      "operations": [
+        [
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "D",
+                  "properties": {
+                    "distance2": 1
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "distance_table2",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 3,
+                  "value": 1
+                }
+              ]
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier2",
+              "value": "D(1)"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "B",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "active_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "visited_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "B",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "popFromList",
+            "params": {
+              "view_id": "frontier2",
+              "value": "D(1)"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "visited_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "-1"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "∞"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 12,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "idle_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "B"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 10,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "B"
+                },
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "New best node: B with max distance 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 12,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "idle_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 12,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "idle_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 12,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "idle_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Final result: Node B with maximum distance 1",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "current_node"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

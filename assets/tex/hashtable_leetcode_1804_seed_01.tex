@@ -1,0 +1,129 @@
+\documentclass[tikz, border=20pt]{standalone}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, fit, backgrounds, shapes.misc, matrix, calc}
+
+\definecolor{svlcolor0}{HTML}{F0F0F0}
+\definecolor{svlcolor1}{HTML}{000000}
+\definecolor{svlcolor2}{HTML}{4CAF50}
+\definecolor{svlcolor3}{HTML}{FFFFFF}
+\definecolor{svlcolor4}{HTML}{2196F3}
+\definecolor{svlcolor5}{HTML}{FF9800}
+\tikzset{
+  code_line/.style={anchor=west, font=\ttfamily},
+  code_highlight/.style={code_line, fill=yellow!20, rounded corners=2pt, inner sep=2pt},
+  element_idle/.style={draw=black!60, fill=black!10, minimum size=1cm, line width=1pt, rounded corners=2pt},
+  element_idle_node/.style={circle, draw=black!60, fill=black!10, minimum size=1.0cm, line width=1pt, align=center, font=\small},
+  element_current_node/.style={element_idle_node, fill=yellow!30},
+  element_default/.style={element_idle},
+  edge_normal_edge/.style={line width=1.2pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  edge_tree_edge/.style={edge_normal_edge},
+  cell_current_cell/.style={fill=yellow!20, rounded corners=1pt},
+  box_default_boundary/.style={draw=black!50, dashed, rounded corners=3pt, inner sep=8pt},
+  dep_arrow/.style={color=red!70, line width=1pt, ->, >=Stealth},
+  comment_default_comment/.style={draw=black!30, fill=white, rounded corners=2pt, inner sep=2pt},
+  element_idle_node/.style={circle, draw=black!60, fill=svlcolor0, text=svlcolor1, minimum size=1.0cm, line width=1pt, align=center, font=\small, text depth=0.5ex},
+  cell_idle_node/.style={fill=svlcolor0, draw=black!60, rounded corners=1pt},
+  element_current_node/.style={circle, draw=black!60, fill=svlcolor2, text=svlcolor3, minimum size=1.0cm, line width=1pt, align=center, font=\small, text depth=0.5ex},
+  cell_current_node/.style={fill=svlcolor2, draw=black!60, rounded corners=1pt},
+  element_visited_node/.style={circle, draw=black!60, fill=svlcolor4, text=svlcolor3, minimum size=1.0cm, line width=1pt, align=center, font=\small, text depth=0.5ex},
+  cell_visited_node/.style={fill=svlcolor4, draw=black!60, rounded corners=1pt},
+  element_new_node/.style={circle, draw=black!60, fill=svlcolor5, text=svlcolor3, minimum size=1.0cm, line width=1pt, align=center, font=\small, text depth=0.5ex},
+  cell_new_node/.style={fill=svlcolor5, draw=black!60, rounded corners=1pt},
+  edge_idle_node/.style={line width=1.5pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  dep_idle_node/.style={color=black!60, line width=1.5pt, ->, >=Stealth},
+  edge_current_node/.style={line width=1.5pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  dep_current_node/.style={color=black!60, line width=1.5pt, ->, >=Stealth},
+  edge_visited_node/.style={line width=1.5pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  dep_visited_node/.style={color=black!60, line width=1.5pt, ->, >=Stealth},
+  edge_new_node/.style={line width=1.5pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  dep_new_node/.style={color=black!60, line width=1.5pt, ->, >=Stealth},
+  cell_changed/.style={fill=yellow!25, rounded corners=1pt}
+}
+\begin{document}
+\begin{tikzpicture}[x=1cm, y=1cm, every node/.style={transform shape}]
+\path (0, 1.0) -- (0, 0);
+\node[font=\huge\bfseries, anchor=north west] (title_node) at (0,0) {Trie Implementation};
+\node[font=\small\itshape, color=black!70, below=0.1cm of title_node.south west, anchor=north west] (subtitle_node) {Frame 50: Process};
+\node[font=\normalsize, fill=black!5, rounded corners=2pt, inner sep=3pt, below=0.1cm of subtitle_node.south west, anchor=north west] (vars_node) {\texttt{current\_key}=apple, \texttt{current\_char}=e, \texttt{current\_node}=node\_4, \texttt{operation}=search, \texttt{result}=processing};
+\node (left_col_start) [below=0.8cm of vars_node.south west, anchor=north west] {};
+\node[font=\bfseries, anchor=west, fill=black!3, rounded corners, inner sep=5pt] (pseudo_title) [below=1.5cm of left_col_start, anchor=north] {Pseudocode:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_0) at ($(pseudo_title.south west) + (0, -0.05)$) {\hspace*{0.0em}class TrieNode:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_1) at ($(pseudo_line_0.south west) + (0, -0.05)$) {\hspace*{2.0em}def \_\_init\_\_(self):};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_2) at ($(pseudo_line_1.south west) + (0, -0.05)$) {\hspace*{4.0em}self.children = \{\}  \# 字符到子节点的映射};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_3) at ($(pseudo_line_2.south west) + (0, -0.05)$) {\hspace*{4.0em}self.count = 0      \# 前缀计数};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_4) at ($(pseudo_line_3.south west) + (0, -0.05)$) {\hspace*{4.0em}self.end\_count = 0  \# 单词结束计数};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_5) at ($(pseudo_line_4.south west) + (0, -0.05)$) {\hspace*{0.0em}};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_6) at ($(pseudo_line_5.south west) + (0, -0.05)$) {\hspace*{0.0em}class Trie:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_7) at ($(pseudo_line_6.south west) + (0, -0.05)$) {\hspace*{2.0em}def \_\_init\_\_(self):};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_8) at ($(pseudo_line_7.south west) + (0, -0.05)$) {\hspace*{4.0em}self.root = TrieNode()};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_9) at ($(pseudo_line_8.south west) + (0, -0.05)$) {\hspace*{0.0em}};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_10) at ($(pseudo_line_9.south west) + (0, -0.05)$) {\hspace*{2.0em}def insert(self, word):};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_11) at ($(pseudo_line_10.south west) + (0, -0.05)$) {\hspace*{4.0em}node = self.root};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_12) at ($(pseudo_line_11.south west) + (0, -0.05)$) {\hspace*{4.0em}for char in word:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_13) at ($(pseudo_line_12.south west) + (0, -0.05)$) {\hspace*{6.0em}if char not in node.children:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_14) at ($(pseudo_line_13.south west) + (0, -0.05)$) {\hspace*{8.0em}node.children[char] = TrieNode()};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_15) at ($(pseudo_line_14.south west) + (0, -0.05)$) {\hspace*{6.0em}node = node.children[char]};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_16) at ($(pseudo_line_15.south west) + (0, -0.05)$) {\hspace*{6.0em}node.count += 1};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_17) at ($(pseudo_line_16.south west) + (0, -0.05)$) {\hspace*{4.0em}node.end\_count += 1};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_18) at ($(pseudo_line_17.south west) + (0, -0.05)$) {\hspace*{0.0em}};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_19) at ($(pseudo_line_18.south west) + (0, -0.05)$) {\hspace*{2.0em}def search(self, word):};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_20) at ($(pseudo_line_19.south west) + (0, -0.05)$) {\hspace*{4.0em}node = self.root};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_21) at ($(pseudo_line_20.south west) + (0, -0.05)$) {\hspace*{4.0em}for char in word:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_22) at ($(pseudo_line_21.south west) + (0, -0.05)$) {\hspace*{6.0em}if char not in node.children:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_23) at ($(pseudo_line_22.south west) + (0, -0.05)$) {\hspace*{8.0em}return False};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_24) at ($(pseudo_line_23.south west) + (0, -0.05)$) {\hspace*{6.0em}node = node.children[char]};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_25) at ($(pseudo_line_24.south west) + (0, -0.05)$) {\hspace*{4.0em}return node.end\_count > 0};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_26) at ($(pseudo_line_25.south west) + (0, -0.05)$) {\hspace*{0.0em}};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_27) at ($(pseudo_line_26.south west) + (0, -0.05)$) {\hspace*{2.0em}def delete(self, word):};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_28) at ($(pseudo_line_27.south west) + (0, -0.05)$) {\hspace*{4.0em}node = self.root};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_29) at ($(pseudo_line_28.south west) + (0, -0.05)$) {\hspace*{4.0em}for char in word:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_30) at ($(pseudo_line_29.south west) + (0, -0.05)$) {\hspace*{6.0em}if char not in node.children:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_31) at ($(pseudo_line_30.south west) + (0, -0.05)$) {\hspace*{8.0em}return False};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_32) at ($(pseudo_line_31.south west) + (0, -0.05)$) {\hspace*{6.0em}node = node.children[char]};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_33) at ($(pseudo_line_32.south west) + (0, -0.05)$) {\hspace*{6.0em}node.count -= 1};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_34) at ($(pseudo_line_33.south west) + (0, -0.05)$) {\hspace*{4.0em}node.end\_count -= 1};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_35) at ($(pseudo_line_34.south west) + (0, -0.05)$) {\hspace*{4.0em}return True};
+\node[fit=(pseudo_title) (pseudo_line_0) (pseudo_line_1) (pseudo_line_2) (pseudo_line_3) (pseudo_line_4) (pseudo_line_5) (pseudo_line_6) (pseudo_line_7) (pseudo_line_8) (pseudo_line_9) (pseudo_line_10) (pseudo_line_11) (pseudo_line_12) (pseudo_line_13) (pseudo_line_14) (pseudo_line_15) (pseudo_line_16) (pseudo_line_17) (pseudo_line_18) (pseudo_line_19) (pseudo_line_20) (pseudo_line_21) (pseudo_line_22) (pseudo_line_23) (pseudo_line_24) (pseudo_line_25) (pseudo_line_26) (pseudo_line_27) (pseudo_line_28) (pseudo_line_29) (pseudo_line_30) (pseudo_line_31) (pseudo_line_32) (pseudo_line_33) (pseudo_line_34) (pseudo_line_35), inner sep=0.2cm] (pseudo_block) {};
+\node[font=\bfseries, below=1.5cm of pseudo_block] (title_vars_panel) {Variables};
+\matrix (matrix_vars_panel) [below=0.5cm of title_vars_panel, matrix of nodes, nodes={minimum size=1.0cm, anchor=center}, column sep=1pt, row sep=1pt] {
+current\_key & apple \\
+current\_char & e \\
+current\_node & node\_4 \\
+operation & search \\
+result & processing \\
+};
+\node[fit=(title_vars_panel) (matrix_vars_panel-1-1), inner sep=0.1cm] (aux_view_block_0) {};
+\node[fit=(title_vars_panel) (matrix_vars_panel-1-1), inner sep=0.1cm] (first_aux_view_block) {};
+\node[fit=(title_vars_panel) (matrix_vars_panel-1-1), inner sep=0.1cm] (last_aux_view_block) {};
+\node[fit={(first_aux_view_block) (last_aux_view_block)}, inner sep=0.1cm] (aux_full_block) {};
+\node[fit={(pseudo_block) (aux_full_block)}, inner sep=0pt] (left_column_box) {};
+\node (right_col_start) at ($(left_column_box.north east) + (4.5cm, 0)$) {};
+\begin{scope}[shift={($(right_col_start) + (0, 0.0)$)}]
+\node[element_current_node] (root) at (0.0, 6.0) {\bfseries root};
+\node[element_current_node] (node_1) at (-1.0, 4.0) {\bfseries a};
+\node[element_current_node] (node_6) at (1.0, 4.0) {\bfseries b};
+\node[element_current_node] (node_2) at (-1.0, 2.0) {\bfseries p};
+\node[element_current_node] (node_7) at (1.0, 2.0) {\bfseries a};
+\node[element_current_node] (node_3) at (-1.0, 0.0) {\bfseries p};
+\node[element_current_node] (node_8) at (1.0, 0.0) {\bfseries n};
+\node[element_current_node] (node_4) at (-1.0, -2.0) {\bfseries l};
+\node[element_current_node] (node_9) at (1.0, -2.0) {\bfseries a};
+\node[element_visited_node] (node_5) at (-1.0, -4.0) {\bfseries e};
+\node[element_current_node] (node_10) at (1.0, -4.0) {\bfseries n};
+\node[element_visited_node] (node_11) at (0.0, -6.0) {\bfseries a};
+\draw[edge_tree_edge, ->] (root) to (node_1);
+\draw[edge_tree_edge, ->] (root) to (node_6);
+\draw[edge_tree_edge, ->] (node_1) to (node_2);
+\draw[edge_tree_edge, ->] (node_2) to (node_3);
+\draw[edge_tree_edge, ->] (node_3) to (node_4);
+\draw[edge_tree_edge, ->] (node_4) to (node_5);
+\draw[edge_tree_edge, ->] (node_6) to (node_7);
+\draw[edge_tree_edge, ->] (node_7) to (node_8);
+\draw[edge_tree_edge, ->] (node_8) to (node_9);
+\draw[edge_tree_edge, ->] (node_9) to (node_10);
+\draw[edge_tree_edge, ->] (node_10) to (node_11);
+\end{scope}
+\path (title_node.north west) -- (current bounding box.south east);
+\end{tikzpicture}
+\end{document}

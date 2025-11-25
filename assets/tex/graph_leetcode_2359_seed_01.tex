@@ -1,0 +1,135 @@
+\documentclass[tikz, border=20pt]{standalone}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, fit, backgrounds, shapes.misc, matrix, calc}
+
+\definecolor{svlcolor0}{HTML}{F0F0F0}
+\definecolor{svlcolor1}{HTML}{000000}
+\definecolor{svlcolor2}{HTML}{4CAF50}
+\definecolor{svlcolor3}{HTML}{FFFFFF}
+\definecolor{svlcolor4}{HTML}{CCCCCC}
+\definecolor{svlcolor5}{HTML}{FFD700}
+\definecolor{svlcolor6}{HTML}{666666}
+\definecolor{svlcolor7}{HTML}{FF0000}
+\tikzset{
+  code_line/.style={anchor=west, font=\ttfamily},
+  code_highlight/.style={code_line, fill=yellow!20, rounded corners=2pt, inner sep=2pt},
+  element_idle/.style={draw=black!60, fill=black!10, minimum size=1cm, line width=1pt, rounded corners=2pt},
+  element_idle_node/.style={circle, draw=black!60, fill=black!10, minimum size=1.0cm, line width=1pt, align=center, font=\small},
+  element_current_node/.style={element_idle_node, fill=yellow!30},
+  element_default/.style={element_idle},
+  edge_normal_edge/.style={line width=1.2pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  edge_tree_edge/.style={edge_normal_edge},
+  cell_current_cell/.style={fill=yellow!20, rounded corners=1pt},
+  box_default_boundary/.style={draw=black!50, dashed, rounded corners=3pt, inner sep=8pt},
+  dep_arrow/.style={color=red!70, line width=1pt, ->, >=Stealth},
+  comment_default_comment/.style={draw=black!30, fill=white, rounded corners=2pt, inner sep=2pt},
+  element_idle_node/.style={circle, draw=black!60, fill=svlcolor0, text=svlcolor1, minimum size=1.0cm, line width=1pt, align=center, font=\small, text depth=0.5ex},
+  cell_idle_node/.style={fill=svlcolor0, draw=black!60, rounded corners=1pt},
+  element_current_node/.style={circle, draw=black!60, fill=svlcolor2, text=svlcolor3, minimum size=1.0cm, line width=1pt, align=center, font=\small, text depth=0.5ex},
+  cell_current_node/.style={fill=svlcolor2, draw=black!60, rounded corners=1pt},
+  element_visited_node/.style={circle, draw=black!60, fill=svlcolor4, text=svlcolor1, minimum size=1.0cm, line width=1pt, align=center, font=\small, text depth=0.5ex},
+  cell_visited_node/.style={fill=svlcolor4, draw=black!60, rounded corners=1pt},
+  cell_idle_cell/.style={fill=svlcolor0, rounded corners=1pt},
+  cell_idle_cell/.style={fill=svlcolor0, draw=black!60, rounded corners=1pt},
+  cell_current_cell/.style={fill=svlcolor5, rounded corners=1pt},
+  cell_current_cell/.style={fill=svlcolor5, draw=black!60, rounded corners=1pt},
+  edge_idle_node/.style={line width=1.5pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  dep_idle_node/.style={color=black!60, line width=1.5pt, ->, >=Stealth},
+  edge_current_node/.style={line width=1.5pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  dep_current_node/.style={color=black!60, line width=1.5pt, ->, >=Stealth},
+  edge_visited_node/.style={line width=1.5pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  dep_visited_node/.style={color=black!60, line width=1.5pt, ->, >=Stealth},
+  edge_idle_cell/.style={line width=1.5pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  dep_idle_cell/.style={color=black!60, line width=1.5pt, ->, >=Stealth},
+  edge_current_cell/.style={line width=1.5pt, color=black!60, shorten >=2pt, shorten <=2pt},
+  dep_current_cell/.style={color=black!60, line width=1.5pt, ->, >=Stealth},
+  cell_changed/.style={fill=yellow!25, rounded corners=1pt},
+  edge_normal_edge/.style={line width=1.5pt, color=svlcolor6, shorten >=2pt, shorten <=2pt},
+  dep_normal_edge/.style={color=svlcolor6, line width=1.5pt, ->, >=Stealth},
+  edge_active_edge/.style={line width=1.5pt, color=svlcolor7, shorten >=2pt, shorten <=2pt},
+  dep_active_edge/.style={color=svlcolor7, line width=1.5pt, ->, >=Stealth}
+}
+\begin{document}
+\begin{tikzpicture}[x=1cm, y=1cm, every node/.style={transform shape}]
+\path (0, 1.0) -- (0, 0);
+\node[font=\huge\bfseries, anchor=north west] (title_node) at (0,0) {Find Closest Node to Given Two Nodes};
+\node[font=\small\itshape, color=black!70, below=0.1cm of title_node.south west, anchor=north west] (subtitle_node) {Frame 22: Process};
+\node[font=\normalsize, fill=black!5, rounded corners=2pt, inner sep=3pt, below=0.1cm of subtitle_node.south west, anchor=north west] (vars_node) {\texttt{current\_node}=B, \texttt{result}=-1, \texttt{min\_max\_dist}=∞};
+\node (left_col_start) [below=0.8cm of vars_node.south west, anchor=north west] {};
+\node[font=\bfseries, anchor=west, fill=black!3, rounded corners, inner sep=5pt] (pseudo_title) [below=1.5cm of left_col_start, anchor=north] {Pseudocode:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_0) at ($(pseudo_title.south west) + (0, -0.05)$) {\hspace*{0.0em}def find\_closest\_node(graph, node1, node2):};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_1) at ($(pseudo_line_0.south west) + (0, -0.05)$) {\hspace*{2.0em}\# Perform BFS from both nodes};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_2) at ($(pseudo_line_1.south west) + (0, -0.05)$) {\hspace*{2.0em}dist1 = BFS(graph, node1)};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_3) at ($(pseudo_line_2.south west) + (0, -0.05)$) {\hspace*{2.0em}dist2 = BFS(graph, node2)};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_4) at ($(pseudo_line_3.south west) + (0, -0.05)$) {\hspace*{2.0em}min\_max\_dist = float('inf')};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_5) at ($(pseudo_line_4.south west) + (0, -0.05)$) {\hspace*{2.0em}result = -1};
+\node[code_highlight, font=\ttfamily, anchor=north west] (pseudo_line_6) at ($(pseudo_line_5.south west) + (0, -0.05)$) {\hspace*{2.0em}for node in graph:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_7) at ($(pseudo_line_6.south west) + (0, -0.05)$) {\hspace*{4.0em}if dist1[node] != -1 and dist2[node] != -1:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_8) at ($(pseudo_line_7.south west) + (0, -0.05)$) {\hspace*{6.0em}curr\_max = max(dist1[node], dist2[node])};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_9) at ($(pseudo_line_8.south west) + (0, -0.05)$) {\hspace*{6.0em}if curr\_max < min\_max\_dist:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_10) at ($(pseudo_line_9.south west) + (0, -0.05)$) {\hspace*{8.0em}min\_max\_dist = curr\_max};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_11) at ($(pseudo_line_10.south west) + (0, -0.05)$) {\hspace*{8.0em}result = node};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_12) at ($(pseudo_line_11.south west) + (0, -0.05)$) {\hspace*{2.0em}return result};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_13) at ($(pseudo_line_12.south west) + (0, -0.05)$) {\hspace*{0.0em}};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_14) at ($(pseudo_line_13.south west) + (0, -0.05)$) {\hspace*{0.0em}def BFS(graph, start):};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_15) at ($(pseudo_line_14.south west) + (0, -0.05)$) {\hspace*{2.0em}dist = \{node: -1 for node in graph\}};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_16) at ($(pseudo_line_15.south west) + (0, -0.05)$) {\hspace*{2.0em}queue = deque([start])};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_17) at ($(pseudo_line_16.south west) + (0, -0.05)$) {\hspace*{2.0em}dist[start] = 0};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_18) at ($(pseudo_line_17.south west) + (0, -0.05)$) {\hspace*{2.0em}while queue:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_19) at ($(pseudo_line_18.south west) + (0, -0.05)$) {\hspace*{4.0em}current = queue.popleft()};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_20) at ($(pseudo_line_19.south west) + (0, -0.05)$) {\hspace*{4.0em}for neighbor in graph[current]:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_21) at ($(pseudo_line_20.south west) + (0, -0.05)$) {\hspace*{6.0em}if dist[neighbor] == -1:};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_22) at ($(pseudo_line_21.south west) + (0, -0.05)$) {\hspace*{8.0em}dist[neighbor] = dist[current] + 1};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_23) at ($(pseudo_line_22.south west) + (0, -0.05)$) {\hspace*{8.0em}queue.append(neighbor)};
+\node[code_line, font=\ttfamily, anchor=north west] (pseudo_line_24) at ($(pseudo_line_23.south west) + (0, -0.05)$) {\hspace*{2.0em}return dist};
+\node[fit=(pseudo_title) (pseudo_line_0) (pseudo_line_1) (pseudo_line_2) (pseudo_line_3) (pseudo_line_4) (pseudo_line_5) (pseudo_line_6) (pseudo_line_7) (pseudo_line_8) (pseudo_line_9) (pseudo_line_10) (pseudo_line_11) (pseudo_line_12) (pseudo_line_13) (pseudo_line_14) (pseudo_line_15) (pseudo_line_16) (pseudo_line_17) (pseudo_line_18) (pseudo_line_19) (pseudo_line_20) (pseudo_line_21) (pseudo_line_22) (pseudo_line_23) (pseudo_line_24), inner sep=0.2cm] (pseudo_block) {};
+\node[font=\bfseries, below=1.5cm of pseudo_block] (title_frontier1) {Frontier (BFS from A)};
+
+\matrix (list_frontier1_0) [matrix of nodes, nodes={anchor=west}, column sep=0.5cm, below=0.3cm of title_frontier1] {
+        \node[font=\small\bfseries] {List:}; &
+        \node[font=\tt, text width=30em] {}; \\
+    };
+\node[fit=(title_frontier1) (list_frontier1_0), inner sep=0.1cm] (aux_view_block_0) {};
+\node[fit=(title_frontier1) (list_frontier1_0), inner sep=0.1cm] (first_aux_view_block) {};
+\node[font=\bfseries, below=1.5cm of aux_view_block_0] (title_frontier2) {Frontier (BFS from B)};
+
+\matrix (list_frontier2_0) [matrix of nodes, nodes={anchor=west}, column sep=0.5cm, below=0.3cm of title_frontier2] {
+        \node[font=\small\bfseries] {List:}; &
+        \node[font=\tt, text width=30em] {}; \\
+    };
+\node[fit=(title_frontier2) (list_frontier2_0), inner sep=0.1cm] (aux_view_block_1) {};
+\node[font=\bfseries, below=1.5cm of aux_view_block_1] (title_distance_table1) {Distances from A};
+\matrix (matrix_distance_table1) [below=0.5cm of title_distance_table1, matrix of nodes, nodes={minimum size=1.0cm, anchor=center}, column sep=1pt, row sep=1pt] {
+0 & 1 & 1 & 2 \\
+};
+\node[fit=(title_distance_table1) (matrix_distance_table1-1-1), inner sep=0.1cm] (aux_view_block_2) {};
+\node[font=\bfseries, below=1.5cm of aux_view_block_2] (title_distance_table2) {Distances from B};
+\matrix (matrix_distance_table2) [below=0.5cm of title_distance_table2, matrix of nodes, nodes={minimum size=1.0cm, anchor=center}, column sep=1pt, row sep=1pt] {
+- & 0 & - & 1 \\
+};
+\node[fit=(title_distance_table2) (matrix_distance_table2-1-1), inner sep=0.1cm] (aux_view_block_3) {};
+\node[font=\bfseries, below=1.5cm of aux_view_block_3] (title_vars_panel) {Variables};
+\matrix (matrix_vars_panel) [below=0.5cm of title_vars_panel, matrix of nodes, nodes={minimum size=1.0cm, anchor=center}, column sep=1pt, row sep=1pt] {
+current\_node & B \\
+result & -1 \\
+min\_max\_dist & ∞ \\
+};
+\node[fit=(title_vars_panel) (matrix_vars_panel-1-1), inner sep=0.1cm] (aux_view_block_4) {};
+\node[fit=(title_vars_panel) (matrix_vars_panel-1-1), inner sep=0.1cm] (last_aux_view_block) {};
+\node[fit={(first_aux_view_block) (last_aux_view_block)}, inner sep=0.1cm] (aux_full_block) {};
+\node[fit={(pseudo_block) (aux_full_block)}, inner sep=0pt] (left_column_box) {};
+\node (right_col_start) at ($(left_column_box.north east) + (4.5cm, 0)$) {};
+\begin{scope}[shift={($(right_col_start) + (0, 0.0)$)}]
+\node[element_idle_node, align=center] (A) at (-3.5, 0.0) {\bfseries A};
+\node[element_current_node, align=center] (B) at (0.0, 0.0) {\bfseries B};
+\node[element_visited_node, align=center] (C) at (3.5, 0.0) {\bfseries C};
+\node[element_visited_node, align=center] (D) at (-3.5, -3.5) {\bfseries D};
+\draw[edge_normal_edge, ->] (A) to node[midway, font=\tiny, fill=white, auto=left, sloped, inner sep=1pt] {4}  (B);
+\draw[edge_normal_edge, ->] (A) to node[midway, font=\tiny, fill=white, auto=left, sloped, inner sep=1pt] {2}  (C);
+\draw[edge_normal_edge, ->] (B) to node[midway, font=\tiny, fill=white, auto=left, sloped, inner sep=1pt] {3}  (D);
+\draw[edge_normal_edge, ->] (C) to node[midway, font=\tiny, fill=white, auto=left, sloped, inner sep=1pt] {1}  (D);
+\end{scope}
+\path (title_node.north west) -- (current bounding box.south east);
+\end{tikzpicture}
+\end{document}

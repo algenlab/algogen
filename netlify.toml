@@ -1,0 +1,12 @@
+[build]
+  publish = "."
+  # 可选：如果需要重新生成 data.json
+  command = "python3 scripts/generate_manifest.py || echo 'skip manifest generation'"
+
+[build.environment]
+  PYTHON_VERSION = "3.9"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

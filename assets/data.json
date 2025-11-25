@@ -1,0 +1,2089 @@
+{
+  "stats": {
+    "total_tasks": 200,
+    "categories": [
+      "array",
+      "dp",
+      "graph",
+      "tree",
+      "sorting",
+      "hashtable"
+    ]
+  },
+  "samples": [
+    {
+      "id": "array_2040",
+      "category": "array",
+      "task_id": "2040",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_2040_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_2040_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2040_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2040_seed_02.mp4",
+      "image_file": "array_leetcode_2040_seed_02.png",
+      "tex_file": "array_leetcode_2040_seed_02.tex"
+    },
+    {
+      "id": "dp_1977",
+      "category": "dp",
+      "task_id": "1977",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1977_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1977_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1977_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1977_seed_01.mp4",
+      "image_file": "dp_leetcode_1977_seed_01.png",
+      "tex_file": "dp_leetcode_1977_seed_01.tex"
+    },
+    {
+      "id": "graph_2359",
+      "category": "graph",
+      "task_id": "2359",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_2359_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_2359_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_2359_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_2359_seed_01.mp4",
+      "image_file": "graph_leetcode_2359_seed_01.png",
+      "tex_file": "graph_leetcode_2359_seed_01.tex"
+    },
+    {
+      "id": "tree_1717",
+      "category": "tree",
+      "task_id": "1717",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_1717_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_1717_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_1717_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_1717_seed_01.mp4",
+      "image_file": "tree_leetcode_1717_seed_01.png",
+      "tex_file": "tree_leetcode_1717_seed_01.tex"
+    },
+    {
+      "id": "sorting_1851",
+      "category": "sorting",
+      "task_id": "1851",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_1851_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_1851_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1851_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1851_seed_01.mp4",
+      "image_file": "sorting_leetcode_1851_seed_01.png",
+      "tex_file": "sorting_leetcode_1851_seed_01.tex"
+    },
+    {
+      "id": "hashtable_1804",
+      "category": "hashtable",
+      "task_id": "1804",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_1804_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_1804_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_1804_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_1804_seed_01.mp4",
+      "image_file": "hashtable_leetcode_1804_seed_01.png",
+      "tex_file": "hashtable_leetcode_1804_seed_01.tex"
+    }
+  ],
+  "all_videos": [
+    {
+      "id": "array_204",
+      "category": "array",
+      "task_id": "204",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_204_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_204_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_204_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_204_seed_01.mp4"
+    },
+    {
+      "id": "array_410",
+      "category": "array",
+      "task_id": "410",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_410_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_410_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_410_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_410_seed_01.mp4"
+    },
+    {
+      "id": "array_453",
+      "category": "array",
+      "task_id": "453",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_453_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_453_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_453_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_453_seed_02.mp4"
+    },
+    {
+      "id": "array_475",
+      "category": "array",
+      "task_id": "475",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_475_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_475_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_475_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_475_seed_01.mp4"
+    },
+    {
+      "id": "array_477",
+      "category": "array",
+      "task_id": "477",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_477_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_477_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_477_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_477_seed_02.mp4"
+    },
+    {
+      "id": "array_525",
+      "category": "array",
+      "task_id": "525",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_525_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_525_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_525_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_525_seed_01.mp4"
+    },
+    {
+      "id": "array_565",
+      "category": "array",
+      "task_id": "565",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_565_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_565_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_565_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_565_seed_01.mp4"
+    },
+    {
+      "id": "array_594",
+      "category": "array",
+      "task_id": "594",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_594_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_594_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_594_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_594_seed_03.mp4"
+    },
+    {
+      "id": "array_724",
+      "category": "array",
+      "task_id": "724",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_724_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_724_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_724_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_724_seed_01.mp4"
+    },
+    {
+      "id": "array_731",
+      "category": "array",
+      "task_id": "731",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_731_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_731_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_731_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_731_seed_01.mp4"
+    },
+    {
+      "id": "array_775",
+      "category": "array",
+      "task_id": "775",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_775_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_775_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_775_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_775_seed_01.mp4"
+    },
+    {
+      "id": "array_817",
+      "category": "array",
+      "task_id": "817",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_817_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_817_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_817_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_817_seed_02.mp4"
+    },
+    {
+      "id": "array_844",
+      "category": "array",
+      "task_id": "844",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_844_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_844_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_844_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_844_seed_01.mp4"
+    },
+    {
+      "id": "array_852",
+      "category": "array",
+      "task_id": "852",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_852_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_852_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_852_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_852_seed_02.mp4"
+    },
+    {
+      "id": "array_861",
+      "category": "array",
+      "task_id": "861",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_861_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_861_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_861_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_861_seed_01.mp4"
+    },
+    {
+      "id": "array_870",
+      "category": "array",
+      "task_id": "870",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_870_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_870_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_870_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_870_seed_02.mp4"
+    },
+    {
+      "id": "array_945",
+      "category": "array",
+      "task_id": "945",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_945_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_945_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_945_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_945_seed_01.mp4"
+    },
+    {
+      "id": "array_946",
+      "category": "array",
+      "task_id": "946",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_946_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_946_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_946_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_946_seed_01.mp4"
+    },
+    {
+      "id": "array_969",
+      "category": "array",
+      "task_id": "969",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_969_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_969_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_969_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_969_seed_02.mp4"
+    },
+    {
+      "id": "array_1004",
+      "category": "array",
+      "task_id": "1004",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_1004_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_1004_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1004_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1004_seed_01.mp4"
+    },
+    {
+      "id": "array_1007",
+      "category": "array",
+      "task_id": "1007",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_1007_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_1007_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1007_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1007_seed_02.mp4"
+    },
+    {
+      "id": "array_1011",
+      "category": "array",
+      "task_id": "1011",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_1011_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_1011_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1011_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1011_seed_01.mp4"
+    },
+    {
+      "id": "array_1186",
+      "category": "array",
+      "task_id": "1186",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_1186_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_1186_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1186_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1186_seed_02.mp4"
+    },
+    {
+      "id": "array_1207",
+      "category": "array",
+      "task_id": "1207",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_1207_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_1207_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1207_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1207_seed_01.mp4"
+    },
+    {
+      "id": "array_1250",
+      "category": "array",
+      "task_id": "1250",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_1250_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_1250_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1250_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1250_seed_03.mp4"
+    },
+    {
+      "id": "array_1253",
+      "category": "array",
+      "task_id": "1253",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_1253_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_1253_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1253_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1253_seed_02.mp4"
+    },
+    {
+      "id": "array_1299",
+      "category": "array",
+      "task_id": "1299",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_1299_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_1299_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1299_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1299_seed_01.mp4"
+    },
+    {
+      "id": "array_1343",
+      "category": "array",
+      "task_id": "1343",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_1343_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_1343_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1343_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1343_seed_02.mp4"
+    },
+    {
+      "id": "array_1346",
+      "category": "array",
+      "task_id": "1346",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_1346_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_1346_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1346_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1346_seed_01.mp4"
+    },
+    {
+      "id": "array_1386",
+      "category": "array",
+      "task_id": "1386",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_1386_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_1386_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1386_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1386_seed_01.mp4"
+    },
+    {
+      "id": "array_1409",
+      "category": "array",
+      "task_id": "1409",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_1409_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_1409_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1409_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1409_seed_03.mp4"
+    },
+    {
+      "id": "array_1438",
+      "category": "array",
+      "task_id": "1438",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_1438_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_1438_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1438_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1438_seed_02.mp4"
+    },
+    {
+      "id": "array_1524",
+      "category": "array",
+      "task_id": "1524",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_1524_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_1524_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1524_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1524_seed_02.mp4"
+    },
+    {
+      "id": "array_1558",
+      "category": "array",
+      "task_id": "1558",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_1558_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_1558_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1558_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1558_seed_02.mp4"
+    },
+    {
+      "id": "array_1605",
+      "category": "array",
+      "task_id": "1605",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_1605_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_1605_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1605_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1605_seed_02.mp4"
+    },
+    {
+      "id": "array_1606",
+      "category": "array",
+      "task_id": "1606",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_1606_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_1606_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1606_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1606_seed_03.mp4"
+    },
+    {
+      "id": "array_1652",
+      "category": "array",
+      "task_id": "1652",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_1652_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_1652_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1652_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1652_seed_01.mp4"
+    },
+    {
+      "id": "array_1664",
+      "category": "array",
+      "task_id": "1664",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_1664_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_1664_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1664_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1664_seed_03.mp4"
+    },
+    {
+      "id": "array_1703",
+      "category": "array",
+      "task_id": "1703",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_1703_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_1703_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1703_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1703_seed_02.mp4"
+    },
+    {
+      "id": "array_1838",
+      "category": "array",
+      "task_id": "1838",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_1838_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_1838_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1838_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1838_seed_01.mp4"
+    },
+    {
+      "id": "array_1887",
+      "category": "array",
+      "task_id": "1887",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_1887_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_1887_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1887_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1887_seed_03.mp4"
+    },
+    {
+      "id": "array_1906",
+      "category": "array",
+      "task_id": "1906",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_1906_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_1906_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1906_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1906_seed_02.mp4"
+    },
+    {
+      "id": "array_1975",
+      "category": "array",
+      "task_id": "1975",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_1975_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_1975_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_1975_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_1975_seed_01.mp4"
+    },
+    {
+      "id": "array_2029",
+      "category": "array",
+      "task_id": "2029",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_2029_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_2029_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2029_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2029_seed_03.mp4"
+    },
+    {
+      "id": "array_2040",
+      "category": "array",
+      "task_id": "2040",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_2040_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_2040_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2040_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2040_seed_02.mp4"
+    },
+    {
+      "id": "array_2057",
+      "category": "array",
+      "task_id": "2057",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_2057_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_2057_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2057_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2057_seed_03.mp4"
+    },
+    {
+      "id": "array_2155",
+      "category": "array",
+      "task_id": "2155",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2155_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2155_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2155_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2155_seed_01.mp4"
+    },
+    {
+      "id": "array_2233",
+      "category": "array",
+      "task_id": "2233",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_2233_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_2233_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2233_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2233_seed_02.mp4"
+    },
+    {
+      "id": "array_2257",
+      "category": "array",
+      "task_id": "2257",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2257_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2257_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2257_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2257_seed_01.mp4"
+    },
+    {
+      "id": "array_2293",
+      "category": "array",
+      "task_id": "2293",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_2293_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_2293_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2293_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2293_seed_02.mp4"
+    },
+    {
+      "id": "array_2303",
+      "category": "array",
+      "task_id": "2303",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2303_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2303_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2303_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2303_seed_01.mp4"
+    },
+    {
+      "id": "array_2410",
+      "category": "array",
+      "task_id": "2410",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2410_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2410_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2410_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2410_seed_01.mp4"
+    },
+    {
+      "id": "array_2432",
+      "category": "array",
+      "task_id": "2432",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2432_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2432_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2432_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2432_seed_01.mp4"
+    },
+    {
+      "id": "array_2491",
+      "category": "array",
+      "task_id": "2491",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_2491_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_2491_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2491_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2491_seed_02.mp4"
+    },
+    {
+      "id": "array_2502",
+      "category": "array",
+      "task_id": "2502",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2502_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2502_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2502_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2502_seed_01.mp4"
+    },
+    {
+      "id": "array_2506",
+      "category": "array",
+      "task_id": "2506",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2506_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2506_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2506_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2506_seed_01.mp4"
+    },
+    {
+      "id": "array_2528",
+      "category": "array",
+      "task_id": "2528",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2528_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2528_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2528_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2528_seed_01.mp4"
+    },
+    {
+      "id": "array_2532",
+      "category": "array",
+      "task_id": "2532",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2532_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2532_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2532_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2532_seed_01.mp4"
+    },
+    {
+      "id": "array_2574",
+      "category": "array",
+      "task_id": "2574",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2574_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2574_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2574_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2574_seed_01.mp4"
+    },
+    {
+      "id": "array_2592",
+      "category": "array",
+      "task_id": "2592",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2592_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2592_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2592_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2592_seed_01.mp4"
+    },
+    {
+      "id": "array_2678",
+      "category": "array",
+      "task_id": "2678",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2678_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2678_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2678_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2678_seed_01.mp4"
+    },
+    {
+      "id": "array_2825",
+      "category": "array",
+      "task_id": "2825",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2825_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2825_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2825_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2825_seed_01.mp4"
+    },
+    {
+      "id": "array_2909",
+      "category": "array",
+      "task_id": "2909",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_2909_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_2909_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2909_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2909_seed_02.mp4"
+    },
+    {
+      "id": "array_2917",
+      "category": "array",
+      "task_id": "2917",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2917_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2917_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2917_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2917_seed_01.mp4"
+    },
+    {
+      "id": "array_2948",
+      "category": "array",
+      "task_id": "2948",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_2948_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_2948_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2948_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2948_seed_01.mp4"
+    },
+    {
+      "id": "array_2954",
+      "category": "array",
+      "task_id": "2954",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_2954_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_2954_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2954_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2954_seed_02.mp4"
+    },
+    {
+      "id": "array_2963",
+      "category": "array",
+      "task_id": "2963",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_2963_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_2963_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2963_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2963_seed_03.mp4"
+    },
+    {
+      "id": "array_2966",
+      "category": "array",
+      "task_id": "2966",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_2966_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_2966_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_2966_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_2966_seed_02.mp4"
+    },
+    {
+      "id": "array_3000",
+      "category": "array",
+      "task_id": "3000",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_3000_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_3000_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3000_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3000_seed_01.mp4"
+    },
+    {
+      "id": "array_3012",
+      "category": "array",
+      "task_id": "3012",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_3012_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_3012_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3012_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3012_seed_02.mp4"
+    },
+    {
+      "id": "array_3194",
+      "category": "array",
+      "task_id": "3194",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_3194_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_3194_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3194_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3194_seed_01.mp4"
+    },
+    {
+      "id": "array_3254",
+      "category": "array",
+      "task_id": "3254",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_3254_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_3254_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3254_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3254_seed_01.mp4"
+    },
+    {
+      "id": "array_3264",
+      "category": "array",
+      "task_id": "3264",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_3264_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_3264_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3264_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3264_seed_02.mp4"
+    },
+    {
+      "id": "array_3488",
+      "category": "array",
+      "task_id": "3488",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_3488_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_3488_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3488_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3488_seed_01.mp4"
+    },
+    {
+      "id": "array_3489",
+      "category": "array",
+      "task_id": "3489",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_3489_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_3489_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3489_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3489_seed_01.mp4"
+    },
+    {
+      "id": "array_3508",
+      "category": "array",
+      "task_id": "3508",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_3508_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_3508_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3508_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3508_seed_01.mp4"
+    },
+    {
+      "id": "array_3524",
+      "category": "array",
+      "task_id": "3524",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_3524_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_3524_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3524_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3524_seed_01.mp4"
+    },
+    {
+      "id": "array_3537",
+      "category": "array",
+      "task_id": "3537",
+      "seed": "01",
+      "trace_file": "tracker__array_leetcode_3537_seed_01_v2_trace.json",
+      "video_file": "array_leetcode_3537_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3537_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3537_seed_01.mp4"
+    },
+    {
+      "id": "array_3577",
+      "category": "array",
+      "task_id": "3577",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_3577_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_3577_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3577_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3577_seed_02.mp4"
+    },
+    {
+      "id": "array_3587",
+      "category": "array",
+      "task_id": "3587",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_3587_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_3587_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3587_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3587_seed_03.mp4"
+    },
+    {
+      "id": "array_3630",
+      "category": "array",
+      "task_id": "3630",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_3630_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_3630_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3630_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3630_seed_03.mp4"
+    },
+    {
+      "id": "array_3634",
+      "category": "array",
+      "task_id": "3634",
+      "seed": "03",
+      "trace_file": "tracker__array_leetcode_3634_seed_03_v2_trace.json",
+      "video_file": "array_leetcode_3634_seed_03.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3634_seed_03_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3634_seed_03.mp4"
+    },
+    {
+      "id": "array_3639",
+      "category": "array",
+      "task_id": "3639",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_3639_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_3639_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3639_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3639_seed_02.mp4"
+    },
+    {
+      "id": "array_3691",
+      "category": "array",
+      "task_id": "3691",
+      "seed": "02",
+      "trace_file": "tracker__array_leetcode_3691_seed_02_v2_trace.json",
+      "video_file": "array_leetcode_3691_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__array_leetcode_3691_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/array_leetcode_3691_seed_02.mp4"
+    },
+    {
+      "id": "dp_5",
+      "category": "dp",
+      "task_id": "5",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_5_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_5_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_5_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_5_seed_01.mp4"
+    },
+    {
+      "id": "dp_416",
+      "category": "dp",
+      "task_id": "416",
+      "seed": "02",
+      "trace_file": "tracker__dp_leetcode_416_seed_02_v2_trace.json",
+      "video_file": "dp_leetcode_416_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_416_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_416_seed_02.mp4"
+    },
+    {
+      "id": "dp_818",
+      "category": "dp",
+      "task_id": "818",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_818_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_818_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_818_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_818_seed_01.mp4"
+    },
+    {
+      "id": "dp_823",
+      "category": "dp",
+      "task_id": "823",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_823_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_823_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_823_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_823_seed_01.mp4"
+    },
+    {
+      "id": "dp_1000",
+      "category": "dp",
+      "task_id": "1000",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1000_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1000_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1000_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1000_seed_01.mp4"
+    },
+    {
+      "id": "dp_1143",
+      "category": "dp",
+      "task_id": "1143",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1143_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1143_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1143_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1143_seed_01.mp4"
+    },
+    {
+      "id": "dp_1262",
+      "category": "dp",
+      "task_id": "1262",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1262_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1262_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1262_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1262_seed_01.mp4"
+    },
+    {
+      "id": "dp_1278",
+      "category": "dp",
+      "task_id": "1278",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1278_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1278_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1278_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1278_seed_01.mp4"
+    },
+    {
+      "id": "dp_1397",
+      "category": "dp",
+      "task_id": "1397",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1397_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1397_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1397_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1397_seed_01.mp4"
+    },
+    {
+      "id": "dp_1641",
+      "category": "dp",
+      "task_id": "1641",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1641_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1641_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1641_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1641_seed_01.mp4"
+    },
+    {
+      "id": "dp_1751",
+      "category": "dp",
+      "task_id": "1751",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1751_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1751_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1751_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1751_seed_01.mp4"
+    },
+    {
+      "id": "dp_1947",
+      "category": "dp",
+      "task_id": "1947",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1947_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1947_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1947_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1947_seed_01.mp4"
+    },
+    {
+      "id": "dp_1977",
+      "category": "dp",
+      "task_id": "1977",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1977_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1977_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1977_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1977_seed_01.mp4"
+    },
+    {
+      "id": "dp_1987",
+      "category": "dp",
+      "task_id": "1987",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_1987_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_1987_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_1987_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_1987_seed_01.mp4"
+    },
+    {
+      "id": "dp_2008",
+      "category": "dp",
+      "task_id": "2008",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_2008_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_2008_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_2008_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_2008_seed_01.mp4"
+    },
+    {
+      "id": "dp_2100",
+      "category": "dp",
+      "task_id": "2100",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_2100_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_2100_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_2100_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_2100_seed_01.mp4"
+    },
+    {
+      "id": "dp_2167",
+      "category": "dp",
+      "task_id": "2167",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_2167_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_2167_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_2167_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_2167_seed_01.mp4"
+    },
+    {
+      "id": "dp_2218",
+      "category": "dp",
+      "task_id": "2218",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_2218_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_2218_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_2218_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_2218_seed_01.mp4"
+    },
+    {
+      "id": "dp_2266",
+      "category": "dp",
+      "task_id": "2266",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_2266_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_2266_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_2266_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_2266_seed_01.mp4"
+    },
+    {
+      "id": "dp_2267",
+      "category": "dp",
+      "task_id": "2267",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_2267_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_2267_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_2267_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_2267_seed_01.mp4"
+    },
+    {
+      "id": "dp_2466",
+      "category": "dp",
+      "task_id": "2466",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_2466_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_2466_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_2466_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_2466_seed_01.mp4"
+    },
+    {
+      "id": "dp_2999",
+      "category": "dp",
+      "task_id": "2999",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_2999_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_2999_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_2999_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_2999_seed_01.mp4"
+    },
+    {
+      "id": "dp_3144",
+      "category": "dp",
+      "task_id": "3144",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_3144_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_3144_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_3144_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_3144_seed_01.mp4"
+    },
+    {
+      "id": "dp_3202",
+      "category": "dp",
+      "task_id": "3202",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_3202_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_3202_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_3202_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_3202_seed_01.mp4"
+    },
+    {
+      "id": "dp_3251",
+      "category": "dp",
+      "task_id": "3251",
+      "seed": "02",
+      "trace_file": "tracker__dp_leetcode_3251_seed_02_v2_trace.json",
+      "video_file": "dp_leetcode_3251_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_3251_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_3251_seed_02.mp4"
+    },
+    {
+      "id": "dp_3320",
+      "category": "dp",
+      "task_id": "3320",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_3320_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_3320_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_3320_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_3320_seed_01.mp4"
+    },
+    {
+      "id": "dp_3628",
+      "category": "dp",
+      "task_id": "3628",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_3628_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_3628_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_3628_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_3628_seed_01.mp4"
+    },
+    {
+      "id": "dp_3651",
+      "category": "dp",
+      "task_id": "3651",
+      "seed": "01",
+      "trace_file": "tracker__dp_leetcode_3651_seed_01_v2_trace.json",
+      "video_file": "dp_leetcode_3651_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_3651_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_3651_seed_01.mp4"
+    },
+    {
+      "id": "dp_3670",
+      "category": "dp",
+      "task_id": "3670",
+      "seed": "02",
+      "trace_file": "tracker__dp_leetcode_3670_seed_02_v2_trace.json",
+      "video_file": "dp_leetcode_3670_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__dp_leetcode_3670_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/dp_leetcode_3670_seed_02.mp4"
+    },
+    {
+      "id": "graph_207",
+      "category": "graph",
+      "task_id": "207",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_207_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_207_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_207_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_207_seed_01.mp4"
+    },
+    {
+      "id": "graph_211",
+      "category": "graph",
+      "task_id": "211",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_211_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_211_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_211_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_211_seed_01.mp4"
+    },
+    {
+      "id": "graph_433",
+      "category": "graph",
+      "task_id": "433",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_433_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_433_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_433_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_433_seed_01.mp4"
+    },
+    {
+      "id": "graph_834",
+      "category": "graph",
+      "task_id": "834",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_834_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_834_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_834_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_834_seed_01.mp4"
+    },
+    {
+      "id": "graph_924",
+      "category": "graph",
+      "task_id": "924",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_924_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_924_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_924_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_924_seed_01.mp4"
+    },
+    {
+      "id": "graph_994",
+      "category": "graph",
+      "task_id": "994",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_994_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_994_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_994_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_994_seed_01.mp4"
+    },
+    {
+      "id": "graph_1020",
+      "category": "graph",
+      "task_id": "1020",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_1020_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_1020_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_1020_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_1020_seed_01.mp4"
+    },
+    {
+      "id": "graph_1254",
+      "category": "graph",
+      "task_id": "1254",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_1254_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_1254_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_1254_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_1254_seed_01.mp4"
+    },
+    {
+      "id": "graph_1302",
+      "category": "graph",
+      "task_id": "1302",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_1302_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_1302_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_1302_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_1302_seed_01.mp4"
+    },
+    {
+      "id": "graph_1415",
+      "category": "graph",
+      "task_id": "1415",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_1415_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_1415_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_1415_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_1415_seed_01.mp4"
+    },
+    {
+      "id": "graph_1728",
+      "category": "graph",
+      "task_id": "1728",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_1728_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_1728_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_1728_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_1728_seed_01.mp4"
+    },
+    {
+      "id": "graph_1761",
+      "category": "graph",
+      "task_id": "1761",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_1761_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_1761_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_1761_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_1761_seed_01.mp4"
+    },
+    {
+      "id": "graph_1926",
+      "category": "graph",
+      "task_id": "1926",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_1926_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_1926_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_1926_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_1926_seed_01.mp4"
+    },
+    {
+      "id": "graph_1938",
+      "category": "graph",
+      "task_id": "1938",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_1938_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_1938_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_1938_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_1938_seed_01.mp4"
+    },
+    {
+      "id": "graph_1992",
+      "category": "graph",
+      "task_id": "1992",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_1992_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_1992_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_1992_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_1992_seed_01.mp4"
+    },
+    {
+      "id": "graph_2359",
+      "category": "graph",
+      "task_id": "2359",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_2359_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_2359_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_2359_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_2359_seed_01.mp4"
+    },
+    {
+      "id": "graph_2421",
+      "category": "graph",
+      "task_id": "2421",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_2421_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_2421_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_2421_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_2421_seed_01.mp4"
+    },
+    {
+      "id": "graph_3017",
+      "category": "graph",
+      "task_id": "3017",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_3017_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_3017_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_3017_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_3017_seed_01.mp4"
+    },
+    {
+      "id": "graph_3112",
+      "category": "graph",
+      "task_id": "3112",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_3112_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_3112_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_3112_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_3112_seed_01.mp4"
+    },
+    {
+      "id": "graph_3286",
+      "category": "graph",
+      "task_id": "3286",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_3286_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_3286_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_3286_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_3286_seed_01.mp4"
+    },
+    {
+      "id": "graph_3342",
+      "category": "graph",
+      "task_id": "3342",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_3342_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_3342_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_3342_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_3342_seed_01.mp4"
+    },
+    {
+      "id": "graph_3600",
+      "category": "graph",
+      "task_id": "3600",
+      "seed": "01",
+      "trace_file": "tracker__graph_leetcode_3600_seed_01_v2_trace.json",
+      "video_file": "graph_leetcode_3600_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__graph_leetcode_3600_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/graph_leetcode_3600_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_205",
+      "category": "hashtable",
+      "task_id": "205",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_205_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_205_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_205_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_205_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_290",
+      "category": "hashtable",
+      "task_id": "290",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_290_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_290_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_290_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_290_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_387",
+      "category": "hashtable",
+      "task_id": "387",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_387_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_387_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_387_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_387_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_705",
+      "category": "hashtable",
+      "task_id": "705",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_705_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_705_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_705_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_705_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_1189",
+      "category": "hashtable",
+      "task_id": "1189",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_1189_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_1189_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_1189_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_1189_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_1347",
+      "category": "hashtable",
+      "task_id": "1347",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_1347_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_1347_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_1347_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_1347_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_1554",
+      "category": "hashtable",
+      "task_id": "1554",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_1554_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_1554_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_1554_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_1554_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_1804",
+      "category": "hashtable",
+      "task_id": "1804",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_1804_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_1804_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_1804_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_1804_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_1941",
+      "category": "hashtable",
+      "task_id": "1941",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_1941_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_1941_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_1941_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_1941_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_2048",
+      "category": "hashtable",
+      "task_id": "2048",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_2048_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_2048_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_2048_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_2048_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_2083",
+      "category": "hashtable",
+      "task_id": "2083",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_2083_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_2083_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_2083_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_2083_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_2423",
+      "category": "hashtable",
+      "task_id": "2423",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_2423_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_2423_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_2423_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_2423_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_2434",
+      "category": "hashtable",
+      "task_id": "2434",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_2434_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_2434_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_2434_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_2434_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_2716",
+      "category": "hashtable",
+      "task_id": "2716",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_2716_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_2716_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_2716_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_2716_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_3103",
+      "category": "hashtable",
+      "task_id": "3103",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_3103_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_3103_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_3103_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_3103_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_3137",
+      "category": "hashtable",
+      "task_id": "3137",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_3137_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_3137_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_3137_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_3137_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_3518",
+      "category": "hashtable",
+      "task_id": "3518",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_3518_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_3518_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_3518_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_3518_seed_01.mp4"
+    },
+    {
+      "id": "hashtable_3662",
+      "category": "hashtable",
+      "task_id": "3662",
+      "seed": "01",
+      "trace_file": "tracker__hashtable_leetcode_3662_seed_01_v2_trace.json",
+      "video_file": "hashtable_leetcode_3662_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__hashtable_leetcode_3662_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/hashtable_leetcode_3662_seed_01.mp4"
+    },
+    {
+      "id": "sorting_179",
+      "category": "sorting",
+      "task_id": "179",
+      "seed": "02",
+      "trace_file": "tracker__sorting_leetcode_179_seed_02_v2_trace.json",
+      "video_file": "sorting_leetcode_179_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_179_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_179_seed_02.mp4"
+    },
+    {
+      "id": "sorting_389",
+      "category": "sorting",
+      "task_id": "389",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_389_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_389_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_389_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_389_seed_01.mp4"
+    },
+    {
+      "id": "sorting_950",
+      "category": "sorting",
+      "task_id": "950",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_950_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_950_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_950_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_950_seed_01.mp4"
+    },
+    {
+      "id": "sorting_1029",
+      "category": "sorting",
+      "task_id": "1029",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_1029_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_1029_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1029_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1029_seed_01.mp4"
+    },
+    {
+      "id": "sorting_1122",
+      "category": "sorting",
+      "task_id": "1122",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_1122_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_1122_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1122_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1122_seed_01.mp4"
+    },
+    {
+      "id": "sorting_1337",
+      "category": "sorting",
+      "task_id": "1337",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_1337_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_1337_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1337_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1337_seed_01.mp4"
+    },
+    {
+      "id": "sorting_1365",
+      "category": "sorting",
+      "task_id": "1365",
+      "seed": "02",
+      "trace_file": "tracker__sorting_leetcode_1365_seed_02_v2_trace.json",
+      "video_file": "sorting_leetcode_1365_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1365_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1365_seed_02.mp4"
+    },
+    {
+      "id": "sorting_1365",
+      "category": "sorting",
+      "task_id": "1365",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_1365_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_1365_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1365_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1365_seed_01.mp4"
+    },
+    {
+      "id": "sorting_1451",
+      "category": "sorting",
+      "task_id": "1451",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_1451_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_1451_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1451_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1451_seed_01.mp4"
+    },
+    {
+      "id": "sorting_1710",
+      "category": "sorting",
+      "task_id": "1710",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_1710_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_1710_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1710_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1710_seed_01.mp4"
+    },
+    {
+      "id": "sorting_1818",
+      "category": "sorting",
+      "task_id": "1818",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_1818_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_1818_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1818_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1818_seed_01.mp4"
+    },
+    {
+      "id": "sorting_1833",
+      "category": "sorting",
+      "task_id": "1833",
+      "seed": "02",
+      "trace_file": "tracker__sorting_leetcode_1833_seed_02_v2_trace.json",
+      "video_file": "sorting_leetcode_1833_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1833_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1833_seed_02.mp4"
+    },
+    {
+      "id": "sorting_1851",
+      "category": "sorting",
+      "task_id": "1851",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_1851_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_1851_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1851_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1851_seed_01.mp4"
+    },
+    {
+      "id": "sorting_1943",
+      "category": "sorting",
+      "task_id": "1943",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_1943_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_1943_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_1943_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_1943_seed_01.mp4"
+    },
+    {
+      "id": "sorting_2135",
+      "category": "sorting",
+      "task_id": "2135",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_2135_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_2135_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_2135_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_2135_seed_01.mp4"
+    },
+    {
+      "id": "sorting_2164",
+      "category": "sorting",
+      "task_id": "2164",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_2164_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_2164_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_2164_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_2164_seed_01.mp4"
+    },
+    {
+      "id": "sorting_2274",
+      "category": "sorting",
+      "task_id": "2274",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_2274_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_2274_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_2274_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_2274_seed_01.mp4"
+    },
+    {
+      "id": "sorting_2454",
+      "category": "sorting",
+      "task_id": "2454",
+      "seed": "02",
+      "trace_file": "tracker__sorting_leetcode_2454_seed_02_v2_trace.json",
+      "video_file": "sorting_leetcode_2454_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_2454_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_2454_seed_02.mp4"
+    },
+    {
+      "id": "sorting_2512",
+      "category": "sorting",
+      "task_id": "2512",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_2512_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_2512_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_2512_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_2512_seed_01.mp4"
+    },
+    {
+      "id": "sorting_2542",
+      "category": "sorting",
+      "task_id": "2542",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_2542_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_2542_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_2542_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_2542_seed_01.mp4"
+    },
+    {
+      "id": "sorting_2580",
+      "category": "sorting",
+      "task_id": "2580",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_2580_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_2580_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_2580_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_2580_seed_01.mp4"
+    },
+    {
+      "id": "sorting_2780",
+      "category": "sorting",
+      "task_id": "2780",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_2780_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_2780_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_2780_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_2780_seed_01.mp4"
+    },
+    {
+      "id": "sorting_3081",
+      "category": "sorting",
+      "task_id": "3081",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_3081_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_3081_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_3081_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_3081_seed_01.mp4"
+    },
+    {
+      "id": "sorting_3446",
+      "category": "sorting",
+      "task_id": "3446",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_3446_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_3446_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_3446_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_3446_seed_01.mp4"
+    },
+    {
+      "id": "sorting_3517",
+      "category": "sorting",
+      "task_id": "3517",
+      "seed": "01",
+      "trace_file": "tracker__sorting_leetcode_3517_seed_01_v2_trace.json",
+      "video_file": "sorting_leetcode_3517_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_3517_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_3517_seed_01.mp4"
+    },
+    {
+      "id": "sorting_3684",
+      "category": "sorting",
+      "task_id": "3684",
+      "seed": "02",
+      "trace_file": "tracker__sorting_leetcode_3684_seed_02_v2_trace.json",
+      "video_file": "sorting_leetcode_3684_seed_02.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__sorting_leetcode_3684_seed_02_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/sorting_leetcode_3684_seed_02.mp4"
+    },
+    {
+      "id": "tree_95",
+      "category": "tree",
+      "task_id": "95",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_95_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_95_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_95_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_95_seed_01.mp4"
+    },
+    {
+      "id": "tree_100",
+      "category": "tree",
+      "task_id": "100",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_100_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_100_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_100_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_100_seed_01.mp4"
+    },
+    {
+      "id": "tree_105",
+      "category": "tree",
+      "task_id": "105",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_105_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_105_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_105_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_105_seed_01.mp4"
+    },
+    {
+      "id": "tree_110",
+      "category": "tree",
+      "task_id": "110",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_110_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_110_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_110_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_110_seed_01.mp4"
+    },
+    {
+      "id": "tree_230",
+      "category": "tree",
+      "task_id": "230",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_230_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_230_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_230_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_230_seed_01.mp4"
+    },
+    {
+      "id": "tree_426",
+      "category": "tree",
+      "task_id": "426",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_426_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_426_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_426_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_426_seed_01.mp4"
+    },
+    {
+      "id": "tree_429",
+      "category": "tree",
+      "task_id": "429",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_429_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_429_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_429_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_429_seed_01.mp4"
+    },
+    {
+      "id": "tree_513",
+      "category": "tree",
+      "task_id": "513",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_513_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_513_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_513_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_513_seed_01.mp4"
+    },
+    {
+      "id": "tree_549",
+      "category": "tree",
+      "task_id": "549",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_549_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_549_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_549_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_549_seed_01.mp4"
+    },
+    {
+      "id": "tree_589",
+      "category": "tree",
+      "task_id": "589",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_589_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_589_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_589_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_589_seed_01.mp4"
+    },
+    {
+      "id": "tree_623",
+      "category": "tree",
+      "task_id": "623",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_623_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_623_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_623_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_623_seed_01.mp4"
+    },
+    {
+      "id": "tree_652",
+      "category": "tree",
+      "task_id": "652",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_652_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_652_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_652_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_652_seed_01.mp4"
+    },
+    {
+      "id": "tree_971",
+      "category": "tree",
+      "task_id": "971",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_971_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_971_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_971_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_971_seed_01.mp4"
+    },
+    {
+      "id": "tree_1261",
+      "category": "tree",
+      "task_id": "1261",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_1261_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_1261_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_1261_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_1261_seed_01.mp4"
+    },
+    {
+      "id": "tree_1325",
+      "category": "tree",
+      "task_id": "1325",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_1325_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_1325_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_1325_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_1325_seed_01.mp4"
+    },
+    {
+      "id": "tree_1650",
+      "category": "tree",
+      "task_id": "1650",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_1650_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_1650_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_1650_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_1650_seed_01.mp4"
+    },
+    {
+      "id": "tree_1717",
+      "category": "tree",
+      "task_id": "1717",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_1717_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_1717_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_1717_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_1717_seed_01.mp4"
+    },
+    {
+      "id": "tree_1960",
+      "category": "tree",
+      "task_id": "1960",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_1960_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_1960_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_1960_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_1960_seed_01.mp4"
+    },
+    {
+      "id": "tree_2925",
+      "category": "tree",
+      "task_id": "2925",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_2925_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_2925_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_2925_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_2925_seed_01.mp4"
+    },
+    {
+      "id": "tree_3575",
+      "category": "tree",
+      "task_id": "3575",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_3575_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_3575_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_3575_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_3575_seed_01.mp4"
+    },
+    {
+      "id": "tree_3703",
+      "category": "tree",
+      "task_id": "3703",
+      "seed": "01",
+      "trace_file": "tracker__tree_leetcode_3703_seed_01_v2_trace.json",
+      "video_file": "tree_leetcode_3703_seed_01.mp4",
+      "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_3703_seed_01_v2_trace.json",
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_3703_seed_01.mp4"
+    }
+  ]
+}

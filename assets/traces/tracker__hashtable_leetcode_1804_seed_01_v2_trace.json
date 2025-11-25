@@ -1,0 +1,2265 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Trie Implementation",
+    "family": "tree"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-tree",
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "tree",
+      "structure": {
+        "root": "root",
+        "nodes": [
+          {
+            "id": "root",
+            "label": "root",
+            "parent": null,
+            "children": [],
+            "properties": {
+              "count": 0,
+              "end_count": 0
+            },
+            "styleKey": "idle_node"
+          }
+        ]
+      }
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "current_key",
+            null
+          ],
+          [
+            "current_char",
+            null
+          ],
+          [
+            "current_node",
+            "root"
+          ],
+          [
+            "operation",
+            null
+          ],
+          [
+            "result",
+            null
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "key",
+            "char",
+            "node",
+            "op",
+            "result"
+          ],
+          "col_headers": [
+            "variable",
+            "value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "current_key",
+        "initial_value": null
+      },
+      {
+        "name": "current_char",
+        "initial_value": null
+      },
+      {
+        "name": "current_node",
+        "initial_value": "root"
+      },
+      {
+        "name": "operation",
+        "initial_value": null
+      },
+      {
+        "name": "result",
+        "initial_value": null
+      }
+    ],
+    "pseudocode": [
+      "class TrieNode:",
+      "    def __init__(self):",
+      "        self.children = {}  # 字符到子节点的映射",
+      "        self.count = 0      # 前缀计数",
+      "        self.end_count = 0  # 单词结束计数",
+      "",
+      "class Trie:",
+      "    def __init__(self):",
+      "        self.root = TrieNode()",
+      "",
+      "    def insert(self, word):",
+      "        node = self.root",
+      "        for char in word:",
+      "            if char not in node.children:",
+      "                node.children[char] = TrieNode()",
+      "            node = node.children[char]",
+      "            node.count += 1",
+      "        node.end_count += 1",
+      "",
+      "    def search(self, word):",
+      "        node = self.root",
+      "        for char in word:",
+      "            if char not in node.children:",
+      "                return False",
+      "            node = node.children[char]",
+      "        return node.end_count > 0",
+      "",
+      "    def delete(self, word):",
+      "        node = self.root",
+      "        for char in word:",
+      "            if char not in node.children:",
+      "                return False",
+      "            node = node.children[char]",
+      "            node.count -= 1",
+      "        node.end_count -= 1",
+      "        return True"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle_node": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "current_node": {
+          "backgroundColor": "#4CAF50",
+          "textColor": "#FFFFFF"
+        },
+        "visited_node": {
+          "backgroundColor": "#2196F3",
+          "textColor": "#FFFFFF"
+        },
+        "new_node": {
+          "backgroundColor": "#FF9800",
+          "textColor": "#FFFFFF"
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "apple"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "insert"
+                },
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "processing"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Start insert operation for key: apple",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "root"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "root"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "a"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "root",
+              "node": {
+                "id": "node_1",
+                "label": "a",
+                "parent": "root",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: a",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_1"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_1",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "p"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "node_1",
+              "node": {
+                "id": "node_2",
+                "label": "p",
+                "parent": "node_1",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: p",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_2"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_2",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 10,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "p"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 11,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "node_2",
+              "node": {
+                "id": "node_3",
+                "label": "p",
+                "parent": "node_2",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: p",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 12,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_3"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_3",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "l"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "node_3",
+              "node": {
+                "id": "node_4",
+                "label": "l",
+                "parent": "node_3",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: l",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_4"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_4",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 16,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "e"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 17,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "node_4",
+              "node": {
+                "id": "node_5",
+                "label": "e",
+                "parent": "node_4",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: e",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_5"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_5",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_5"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 19,
+      "operations": [
+        [
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_5",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 1
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_5"
+              ],
+              "styleKey": "visited_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "success"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Insert completed for key: apple",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 20,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "banana"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "insert"
+                },
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "processing"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Start insert operation for key: banana",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 21,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "root"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "root"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "b"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "root",
+              "node": {
+                "id": "node_6",
+                "label": "b",
+                "parent": "root",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: b",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 24,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_6"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_6",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_6"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 25,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "a"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 26,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "node_6",
+              "node": {
+                "id": "node_7",
+                "label": "a",
+                "parent": "node_6",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: a",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_7"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_7",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_7"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 28,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "n"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 29,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "node_7",
+              "node": {
+                "id": "node_8",
+                "label": "n",
+                "parent": "node_7",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: n",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 30,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_8"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_8",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_8"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "a"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "node_8",
+              "node": {
+                "id": "node_9",
+                "label": "a",
+                "parent": "node_8",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: a",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 33,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_9"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_9",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_9"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "n"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 35,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "node_9",
+              "node": {
+                "id": "node_10",
+                "label": "n",
+                "parent": "node_9",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: n",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 36,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_10"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_10",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_10"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 37,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "a"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 38,
+      "operations": [
+        [
+          {
+            "op": "addChild",
+            "params": {
+              "parent_id": "node_10",
+              "node": {
+                "id": "node_11",
+                "label": "a",
+                "parent": "node_10",
+                "children": [],
+                "properties": {
+                  "count": 0,
+                  "end_count": 0
+                },
+                "styleKey": "new_node"
+              }
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Created new node for character: a",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 39,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_11"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_11",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_11"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 40,
+      "operations": [
+        [
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_11",
+                  "properties": {
+                    "count": 1,
+                    "end_count": 1
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_11"
+              ],
+              "styleKey": "visited_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "success"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Insert completed for key: banana",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 41,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "apple"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "search"
+                },
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "processing"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Start search operation for key: apple",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 42,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "root"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "root"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 43,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "a"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 44,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_1"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_1"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 45,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "p"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 46,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_2"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_2"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 47,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "p"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 48,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_3"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_3"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 49,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "l"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 50,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_4"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_4"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 51,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "e"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 52,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_5"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_5"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 53,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_5"
+              ],
+              "styleKey": "visited_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Search result for 'apple': True",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 54,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "banana"
+                },
+                {
+                  "row": 3,
+                  "col": 1,
+                  "value": "delete"
+                },
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "processing"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Start delete operation for key: banana",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 55,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "root"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "root"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 56,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "b"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 57,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_6"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_6",
+                  "properties": {
+                    "count": 0,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_6"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 58,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "a"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 59,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_7"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_7",
+                  "properties": {
+                    "count": 0,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_7"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 60,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "n"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 61,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_8"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_8",
+                  "properties": {
+                    "count": 0,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_8"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 62,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "a"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 63,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_9"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_9",
+                  "properties": {
+                    "count": 0,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_9"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 64,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "n"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 65,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_10"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_10",
+                  "properties": {
+                    "count": 0,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_10"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 66,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "a"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 67,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_11"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_11",
+                  "properties": {
+                    "count": 0,
+                    "end_count": 1
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 2,
+                  "col": 1,
+                  "value": "node_11"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 68,
+      "operations": [
+        [
+          {
+            "op": "updateNodeProperties",
+            "params": {
+              "updates": [
+                {
+                  "id": "node_11",
+                  "properties": {
+                    "count": 0,
+                    "end_count": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "node_11"
+              ],
+              "styleKey": "visited_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 4,
+                  "col": 1,
+                  "value": "success"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Delete completed for key: banana",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}
