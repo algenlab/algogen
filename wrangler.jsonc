@@ -2,6 +2,15 @@
   "name": "aigogen-anon",
   "compatibility_date": "2026-01-04",
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "exclude": [
+      ".git/**",
+      ".github/**",
+      ".wrangler/**",
+      "node_modules/**",
+      "**/*.log",
+      "**/*.pem",
+      "**/*.key"
+    ]
   }
 }
