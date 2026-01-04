@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIGOGEN: Tool-Generated Verifiable Traces for Reliable Algorithm Visualization</title>
+    <title>ALGOGEN: Tool-Generated Verifiable Traces for Reliable Algorithm Visualization</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -133,7 +133,7 @@
         <!-- Navigation -->
         <nav class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent" :class="{'bg-dark/80 backdrop-blur-xl border-white/5 shadow-2xl': scrolled, 'bg-transparent': !scrolled}">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <div class="text-2xl font-bold tracking-tighter text-glow">AIgo<span class="text-primary drop-shadow-[0_0_8px_rgba(76,175,80,0.6)]">Gen</span></div>
+                <div class="text-2xl font-bold tracking-tighter text-glow">Algo<span class="text-primary drop-shadow-[0_0_8px_rgba(76,175,80,0.6)]">Gen</span></div>
                 <div class="hidden md:flex space-x-8 text-sm font-medium">
                     <a href="#pipeline" class="hover:text-primary transition">Methodology</a>
                     <a href="#interactive" class="hover:text-primary transition">Interactive Demo</a>
@@ -157,7 +157,7 @@
                 
                 <!-- Hero code panel: will be filled by GSAP typewriter animation -->
                 <div id="hero-code" class="max-w-2xl mx-auto text-left font-mono text-sm text-green-300 bg-black/40 border border-green-500/40 rounded-xl p-4 mb-8 shadow-[0_0_30px_rgba(34,197,94,0.35)]">
-                    <div class="text-xs text-gray-400 mb-1"># LLM-generated tracker (AIgoGen)</div>
+                    <div class="text-xs text-gray-400 mb-1"># LLM-generated tracker (AlgoGen)</div>
                     <pre id="hero-code-content" class="whitespace-pre-wrap leading-relaxed"></pre>
                 </div>
                 
@@ -196,7 +196,7 @@
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold mb-4">From Text to Traces</h2>
                     <p class="text-gray-400 max-w-2xl mx-auto">
-                        AIgoGen decouples algorithm logic from rendering. Instead of directly authoring renderer-level scripts, it generates <span class="text-primary">Code Tools</span> and verifiable traces.
+                        AlgoGen decouples algorithm logic from rendering. Instead of directly authoring renderer-level scripts, it generates <span class="text-primary">Code Tools</span> and verifiable traces.
                     </p>
                 </div>
 
@@ -397,7 +397,7 @@
                     <h2 class="text-4xl font-bold mb-4">Why Not End-to-End Scripts?</h2>
                     <p class="text-gray-400 max-w-3xl mx-auto">
                         End-to-end Manim script generation forces the model to jointly handle algorithmic correctness, layout, and renderer APIs inside one long program, leading to unverifiable code, layout jitter, and cascading errors on complex tasks.
-                        AIgoGen instead turns LLMs into <span class="text-primary">tool makers</span> that emit verifiable execution traces, which deterministic renderers replay into videos and interactive scenes.
+                        AlgoGen instead turns LLMs into <span class="text-primary">tool makers</span> that emit verifiable execution traces, which deterministic renderers replay into videos and interactive scenes.
                     </p>
                 </div>
 
@@ -429,7 +429,7 @@
                             </div>
                         </div>
 
-                        <!-- AIgoGen overlay: clipped by slider -->
+                        <!-- AlgoGen overlay: clipped by slider -->
                         <div class="comparison-overlay absolute inset-0 pointer-events-none">
                             <div class="w-full h-full bg-gradient-to-br from-emerald-500/40 via-sky-500/30 to-black flex items-center justify-center">
                                 <div class="max-w-sm px-6 py-4 bg-black/70 rounded-xl border border-emerald-400/70 shadow-xl">
@@ -451,7 +451,7 @@
                                 </div>
                             </div>
                             <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-[11px] font-semibold bg-black/80 border border-emerald-400/70 text-emerald-100 uppercase tracking-wide">
-                                AIgoGen (SVL + Renderers)
+                                AlgoGen (SVL + Renderers)
                             </div>
                         </div>
 
@@ -472,7 +472,7 @@
                             min="0"
                             max="100"
                             class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
-                            aria-label="Drag to compare E2E model vs AIgoGen"
+                            aria-label="Drag to compare E2E model vs AlgoGen"
                         />
                     </div>
 
@@ -486,7 +486,7 @@
                             </ul>
                         </div>
                         <div class="why-metric">
-                            <h3 class="font-semibold text-emerald-300 mb-2">AIgoGen Advantages</h3>
+                            <h3 class="font-semibold text-emerald-300 mb-2">AlgoGen Advantages</h3>
                             <ul class="space-y-1 text-xs md:text-sm text-gray-300/90">
                                 <li>• LLM outputs an instrumented Python tracker plus a schema-validated <span class="code-highlight">trace IR</span>, so execution steps are locally checkable and comparable to references</li>
                                 <li>• The same validated trace is reusable across inputs and backends (Manim videos, TikZ figures, Three.js), decoupling algorithm logic from rendering details</li>

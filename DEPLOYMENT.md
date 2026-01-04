@@ -1,4 +1,4 @@
-# AIgoGen Project Page - 部署指南
+# AlgoGen Project Page - 部署指南
 
 ## 完成状态
 
@@ -71,9 +71,9 @@ python3 -m http.server 8080
 ```nginx
 server {
     listen 80;
-    server_name aigogen.example.com;
+    server_name algogen.example.com;
     
-    root /var/www/aigogen/project_page;
+    root /var/www/algogen/project_page;
     index index.html;
     
     location / {
@@ -119,8 +119,8 @@ CMD ["nginx", "-g", "daemon off;"]
 构建和运行:
 
 ```bash
-docker build -t aigogen-page .
-docker run -p 8080:80 aigogen-page
+docker build -t algogen-page .
+docker run -p 8080:80 algogen-page
 ```
 
 ## 性能优化
@@ -196,7 +196,7 @@ video_file: isSample(v) ? v.video_file : `../../tracker_v2/.../videos_720p/${v.v
 video_file: `assets/videos/${v.video_file}`
 
 // 或使用CDN
-video_file: `https://cdn.example.com/aigogen/videos/${v.video_file}`
+video_file: `https://cdn.example.com/algogen/videos/${v.video_file}`
 ```
 
 ## 故障排查

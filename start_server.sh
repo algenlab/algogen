@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# AIgoGen Project Page - Local Server Starter
+# AlgoGen Project Page - Local Server Starter
 # 启动本地HTTP服务器以查看项目页面
 
 PORT=8080
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "=========================================="
-echo "AIgoGen Project Page Server"
+echo "AlgoGen Project Page Server"
 echo "=========================================="
 echo ""
 echo "Starting server at: http://localhost:$PORT"

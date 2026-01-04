@@ -1,6 +1,6 @@
-# AIgoGen Project Page
+# AlgoGen Project Page
 
-这是AIgoGen论文的交互式项目展示页面，展示了基于LLM的算法可视化生成系统。
+这是AlgoGen论文的交互式项目展示页面，展示了基于LLM的算法可视化生成系统。
 
 ## 功能特性
 
@@ -124,4 +124,4 @@ python3 scripts/generate_manifest.py
 
 ## License
 
-与AIgoGen论文项目相同的License。
+与AlgoGen论文项目相同的License。

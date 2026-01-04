@@ -213,7 +213,7 @@ createApp({
             selectedVideoModal.value = null;
         };
 
-        const heroTitle = ref("AIgoGen: LLMs as Tool Makers");
+        const heroTitle = ref("AlgoGen: LLMs as Tool Makers");
 
         // Decryption Text Effect Logic
         const decryptText = (targetText, elementRef, speed = 50) => {
@@ -294,7 +294,7 @@ createApp({
         // Lifecycle
         onMounted(async () => {
             // Trigger decryption effect
-            decryptText("AIgoGen: LLMs as Tool Makers", heroTitle);
+            decryptText("AlgoGen: LLMs as Tool Makers", heroTitle);
 
             try {
                 window.addEventListener('scroll', handleScroll, { passive: true });

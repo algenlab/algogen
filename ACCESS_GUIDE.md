@@ -1,4 +1,4 @@
-# AIgoGen Project Page 跨机器访问指南
+# AlgoGen Project Page 跨机器访问指南
 
 ## 问题诊断
 
@@ -158,9 +158,9 @@ A: 如果是 DHCP 分配的，可能会变。可以在路由器上设置静态 I
 ### Q: 能用域名吗？
 A: 可以，如果你的网络有 DNS 服务器或者在 Windows 的 `C:\Windows\System32\drivers\etc\hosts` 文件中添加：
 ```
-10.24.116.47    aigogen.local
+10.24.116.47    algogen.local
 ```
-然后访问 `http://aigogen.local:8081`
+然后访问 `http://algogen.local:8081`
 
 ### Q: 视频还是不能播放？
 A: 打开浏览器开发者工具 (F12)，切换到 Network 标签，刷新页面，查看：

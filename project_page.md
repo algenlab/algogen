@@ -1,16 +1,10 @@
-
-
-
-
-
-
-基于你提供的论文 **"LLMs as Tool Makers: Automated Code Generation and Evaluation for Algorithm Visualization (AIgoGen)"**，我理解这是一个非常有分量的工作：利用 LLM 生成“Tracker（追踪器）”代码，从而解耦逻辑与渲染，实现 99.5% 的生成成功率，并支持 Manim、TikZ 和 Three.js 多端渲染。
+基于你提供的论文 **"LLMs as Tool Makers: Automated Code Generation and Evaluation for Algorithm Visualization (AlgoGen)"**，我理解这是一个非常有分量的工作：利用 LLM 生成“Tracker（追踪器）”代码，从而解耦逻辑与渲染，实现 99.5% 的生成成功率，并支持 Manim、TikZ 和 Three.js 多端渲染。
 
 *注意：你提到的 `讨论记录.md` 目前看起来是空的（只有一行），所以我主要基于论文的核心贡献来构思网页设计。*
 
 要打造一个 **“炫酷、丝滑”** 且符合顶级学术会议（如 ACL/CVPR/SIGGRAPH）标准的 Project Page，核心在于**“Show, Don't Just Tell”**。既然你们已经有了 Three.js 的渲染产物，网页本身就应该是一个**大型的可交互 Demo**。
 
-以下是我为你构思的 **AIgoGen Project Page 设计方案**：
+以下是我为你构思的 **AlgoGen Project Page 设计方案**：
 
 ### 1. 核心设计理念： "One Trace, Infinite Views" (一次追踪，无限视界)
 网页的视觉流应该体现论文最牛的卖点：**中间层 (SVL) 的解耦能力**。
@@ -21,7 +15,7 @@
 #### **A. Hero Section (首屏即 Demo)**
 *   **背景**：不要用静态图片。直接嵌入一个 **全屏的、低多边形风格的 Three.js 交互场景**（比如一个巨大的动态图结构或粒子化的代码流）。鼠标移动会干扰粒子的流动（体现“交互性”）。
 *   **前景**：
-    *   大标题：**AIgoGen: LLMs as Tool Makers** (使用现代无衬线字体，如 Geist 或 Inter)。
+    *   大标题：**AlgoGen: LLMs as Tool Makers** (使用现代无衬线字体，如 Geist 或 Inter)。
     *   副标题：Automated Code Generation for Algorithm Visualization (99.5% Success Rate)。
     *   **Action Buttons**：Paper (Arxiv), Code (Github), **Live Demo** (高亮)。
     *   *丝滑细节*：文字出现时带有字符随机解密效果（Decryption text effect），呼应“Code Generation”。
@@ -31,9 +25,9 @@
 *   **左侧**：LLM 生成的 Python Tracker 代码 / SVL 中间层数据 (JSON)。
 *   **右侧**：渲染结果。
 *   **控制条**：用户可以点击切换右侧的渲染模式：
-    *   🔴 **Manim** (高质量视频流)
-    *   ⚪ **LaTeX/TikZ** (清晰的学术矢量图)
-    *   🔵 **Three.js** (用户可以用鼠标旋转缩放的 3D 场景)
+    *   **Manim** (高质量视频流)
+    *   **LaTeX/TikZ** (清晰的学术矢量图)
+    *   **Three.js** (用户可以用鼠标旋转缩放的 3D 场景)
 *   *体验*：切换时不要硬切，使用 **Framer Motion** 做布局平滑过渡（Layout Animation）。
 
 #### **C. Interactive Benchmark Gallery (交互式图库)**
@@ -77,7 +71,7 @@
 ### 核心叙事逻辑 (Based on Discussion)
 页面不应该只是罗列结果，而应该讲一个故事：
 1.  **痛点**：端到端（End-to-End）模型在长上下文下会“胡言乱语”（幻觉、逻辑漂移）。
-2.  **解法**：AIgoGen 不直接画图，而是**写工具 (Tracker)**。
+2.  **解法**：AlgoGen 不直接画图，而是**写工具 (Tracker)**。
 3.  **结果**：因为是代码执行出来的，所以**绝对可控、绝对丝滑**。
 
 ---
@@ -89,7 +83,7 @@
 #### 1. Hero Section: "The Architect, Not the Painter"
 *   **视觉**：左侧是代码在疯狂滚动（模拟 LLM 正在写 Python Tracker），右侧实时生成对应的 SVL 结构（像树根一样生长），最后“嘭”的一下，渲染出 Manim 视频或 Three.js 场景。
 *   **文案**：
-    *   **Title**: AIgoGen: LLMs as Tool Makers
+    *   **Title**: AlgoGen: LLMs as Tool Makers
     *   **Subtitle**: Decoupling Logic from Rendering for 99.5% Verifiable Algorithm Visualization.
     *   **Highlight**: 这里的关键词是 **"Verifiable" (可验证)** 和 **"Controllable" (可控)**，呼应会议记录。
 

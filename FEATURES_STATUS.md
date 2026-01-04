@@ -1,4 +1,4 @@
-# AIgoGen Project Page - 功能实现状态
+# AlgoGen Project Page - 功能实现状态
 
 ## ✅ 已实现功能
 
