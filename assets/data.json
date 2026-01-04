@@ -8,7 +8,8 @@
       "tree",
       "sorting",
       "hashtable"
-    ]
+    ],
+    "algorithm_analysis_selected": 30
   },
   "samples": [
     {
@@ -2084,6 +2085,463 @@
       "video_file": "tree_leetcode_3703_seed_01.mp4",
       "original_trace_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/tracker__tree_leetcode_3703_seed_01_v2_trace.json",
       "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/deepseek-ai_DeepSeek-V3.1-Terminus/videos_720p/tree_leetcode_3703_seed_01.mp4"
+    }
+  ],
+  "pipeline_demos": [
+    {
+      "id": "pipeline_demo__mergesort",
+      "kind": "sorting",
+      "title": "MergeSort",
+      "source": {
+        "dataset": "exp/algorithm_analysis",
+        "chapter": "chapter_4",
+        "task_tag": "4__mergesort_tracker"
+      },
+      "artifacts": {
+        "trace_file": "tracker__4__mergesort_tracker_v2_trace.json",
+        "video_file": "4__mergesort_tracker.mp4"
+      },
+      "digests": {
+        "input": [
+          "Dataset: exp/algorithm_analysis",
+          "Domain: Sorting",
+          "Goal: visualize divide-and-conquer recursion + merge"
+        ],
+        "extract": [
+          "Parsed algorithm blocks: 1",
+          "Derived task tag: 4__mergesort_tracker",
+          "Outputs: tracker.py → trace.json → mp4"
+        ],
+        "tool": [
+          "Tracker emits SVL ops (compare/overwrite ranges)",
+          "Trace is backend-agnostic IR",
+          "Deterministic playback"
+        ],
+        "trace": [
+          "SVL 5.0 compliant trace.json",
+          "Frames = deltas.length",
+          "Ops are grouped per frame (operations[][])"
+        ],
+        "render": [
+          "Manim: rendered mp4",
+          "Three.js: interactive playback",
+          "Same trace, multiple backends"
+        ]
+      }
+    },
+    {
+      "id": "pipeline_demo__mst",
+      "kind": "graph",
+      "title": "Minimum Spanning Tree",
+      "source": {
+        "dataset": "exp/algorithm_analysis",
+        "chapter": "chapter_8",
+        "task_tag": "8__mst_tracker"
+      },
+      "artifacts": {
+        "trace_file": "tracker__8__mst_tracker_v2_trace.json",
+        "video_file": "8__mst_tracker.mp4"
+      },
+      "digests": {
+        "input": [
+          "Dataset: exp/algorithm_analysis",
+          "Domain: Graph",
+          "Goal: visualize edge selection + connectivity"
+        ],
+        "extract": [
+          "Parsed algorithm blocks: 1",
+          "Derived task tag: 8__mst_tracker",
+          "Outputs: tracker.py → trace.json → mp4"
+        ],
+        "tool": [
+          "Tracker emits SVL graph ops (nodes/edges/styles)",
+          "Trace captures algorithm decisions step-by-step",
+          "Deterministic rendering"
+        ],
+        "trace": [
+          "SVL 5.0 compliant trace.json",
+          "Frames = deltas.length",
+          "Ops describe structural updates (not pixels)"
+        ],
+        "render": [
+          "Manim: rendered mp4",
+          "Three.js: interactive playback",
+          "Same trace, multiple backends"
+        ]
+      }
+    },
+    {
+      "id": "pipeline_demo__lcs",
+      "kind": "dp",
+      "title": "Longest Common Subsequence",
+      "source": {
+        "dataset": "exp/algorithm_analysis",
+        "chapter": "chapter_7",
+        "task_tag": "7__lcs_tracker"
+      },
+      "artifacts": {
+        "trace_file": "tracker__7__lcs_tracker_v2_trace.json",
+        "video_file": "7__lcs_tracker.mp4"
+      },
+      "digests": {
+        "input": [
+          "Dataset: exp/algorithm_analysis",
+          "Domain: Dynamic Programming",
+          "Goal: visualize DP table fill + dependencies"
+        ],
+        "extract": [
+          "Parsed algorithm blocks: 1",
+          "Derived task tag: 7__lcs_tracker",
+          "Outputs: tracker.py → trace.json → mp4"
+        ],
+        "tool": [
+          "Tracker emits SVL table ops (update/highlight)",
+          "Trace encodes dependency arrows",
+          "Deterministic playback"
+        ],
+        "trace": [
+          "SVL 5.0 compliant trace.json",
+          "Frames = deltas.length",
+          "Ops grouped per frame (operations[][])"
+        ],
+        "render": [
+          "Manim: rendered mp4",
+          "Three.js: interactive playback",
+          "Same trace, multiple backends"
+        ]
+      }
+    }
+  ],
+  "algorithm_analysis_videos": [
+    {
+      "id": "algorithm_analysis__11__circuit_board_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "11__circuit_board_tracker",
+      "group": "chapter_11",
+      "display_title": "circuit_board",
+      "video_file": "11__circuit_board_tracker.mp4",
+      "duration_s": 150.55,
+      "size_mb": 72.67,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/11__circuit_board_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__12__bnb_tsp_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "12__bnb_tsp_tracker",
+      "group": "chapter_12",
+      "display_title": "bnb_tsp",
+      "video_file": "12__bnb_tsp_tracker.mp4",
+      "duration_s": 74.4,
+      "size_mb": 59.84,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/12__bnb_tsp_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__13__symbol_triangle_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "13__symbol_triangle_tracker",
+      "group": "chapter_13",
+      "display_title": "symbol_triangle",
+      "video_file": "13__symbol_triangle_tracker.mp4",
+      "duration_s": 79.2,
+      "size_mb": 67.59,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/13__symbol_triangle_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__14__mean_value_integration_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "14__mean_value_integration_tracker",
+      "group": "chapter_14",
+      "display_title": "mean_value_integration",
+      "video_file": "14__mean_value_integration_tracker.mp4",
+      "duration_s": 41.9,
+      "size_mb": 34.04,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/14__mean_value_integration_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__4__bigint_mul_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "4__bigint_mul_tracker",
+      "group": "chapter_4",
+      "display_title": "bigint_mul",
+      "video_file": "4__bigint_mul_tracker.mp4",
+      "duration_s": 60.45,
+      "size_mb": 43.19,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/4__bigint_mul_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__5__dp_tracker__dup08",
+      "category": "algorithm_analysis",
+      "task_id": "5__dp_tracker__dup08",
+      "group": "chapter_5",
+      "display_title": "dp_tracker__dup08",
+      "video_file": "5__dp_tracker__dup08.mp4",
+      "duration_s": 48.3,
+      "size_mb": 39.8,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/5__dp_tracker__dup08.mp4"
+    },
+    {
+      "id": "algorithm_analysis__6__mod4_path_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "6__mod4_path_tracker",
+      "group": "chapter_6",
+      "display_title": "mod4_path",
+      "video_file": "6__mod4_path_tracker.mp4",
+      "duration_s": 69.0,
+      "size_mb": 57.55,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/6__mod4_path_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__7__lcs_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "7__lcs_tracker",
+      "group": "chapter_7",
+      "display_title": "lcs",
+      "video_file": "7__lcs_tracker.mp4",
+      "duration_s": 73.2,
+      "size_mb": 59.41,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/7__lcs_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__8__mst_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "8__mst_tracker",
+      "group": "chapter_8",
+      "display_title": "mst",
+      "video_file": "8__mst_tracker.mp4",
+      "duration_s": 32.7,
+      "size_mb": 25.61,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/8__mst_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__9__graph_tracker__dup06",
+      "category": "algorithm_analysis",
+      "task_id": "9__graph_tracker__dup06",
+      "group": "chapter_9",
+      "display_title": "graph_tracker__dup06",
+      "video_file": "9__graph_tracker__dup06.mp4",
+      "duration_s": 22.3,
+      "size_mb": 18.02,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/9__graph_tracker__dup06.mp4"
+    },
+    {
+      "id": "algorithm_analysis__darts_pi",
+      "category": "algorithm_analysis",
+      "task_id": "darts_pi",
+      "group": "misc",
+      "display_title": "darts_pi",
+      "video_file": "darts_pi.mp4",
+      "duration_s": 24.12,
+      "size_mb": 5.24,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/darts_pi.mp4"
+    },
+    {
+      "id": "algorithm_analysis__13__bnb_max_clique_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "13__bnb_max_clique_tracker",
+      "group": "chapter_13",
+      "display_title": "bnb_max_clique",
+      "video_file": "13__bnb_max_clique_tracker.mp4",
+      "duration_s": 61.75,
+      "size_mb": 54.8,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/13__bnb_max_clique_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__6__max_subarray_divide_conquer_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "6__max_subarray_divide_conquer_tracker",
+      "group": "chapter_6",
+      "display_title": "max_subarray_divide_conquer",
+      "video_file": "6__max_subarray_divide_conquer_tracker.mp4",
+      "duration_s": 61.55,
+      "size_mb": 38.57,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/6__max_subarray_divide_conquer_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__7__circuit_routing_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "7__circuit_routing_tracker",
+      "group": "chapter_7",
+      "display_title": "circuit_routing",
+      "video_file": "7__circuit_routing_tracker.mp4",
+      "duration_s": 60.45,
+      "size_mb": 49.43,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/7__circuit_routing_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__4__mergesort_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "4__mergesort_tracker",
+      "group": "chapter_4",
+      "display_title": "mergesort",
+      "video_file": "4__mergesort_tracker.mp4",
+      "duration_s": 58.6,
+      "size_mb": 44.96,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/4__mergesort_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__6__max_subarray_quadratic_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "6__max_subarray_quadratic_tracker",
+      "group": "chapter_6",
+      "display_title": "max_subarray_quadratic",
+      "video_file": "6__max_subarray_quadratic_tracker.mp4",
+      "duration_s": 54.0,
+      "size_mb": 42.81,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/6__max_subarray_quadratic_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__11__max_clique_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "11__max_clique_tracker",
+      "group": "chapter_11",
+      "display_title": "max_clique",
+      "video_file": "11__max_clique_tracker.mp4",
+      "duration_s": 47.2,
+      "size_mb": 38.66,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/11__max_clique_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__12__bnb_loading_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "12__bnb_loading_tracker",
+      "group": "chapter_12",
+      "display_title": "bnb_loading",
+      "video_file": "12__bnb_loading_tracker.mp4",
+      "duration_s": 43.1,
+      "size_mb": 31.16,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/12__bnb_loading_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__5__sort_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "5__sort_tracker",
+      "group": "chapter_5",
+      "display_title": "sort",
+      "video_file": "5__sort_tracker.mp4",
+      "duration_s": 37.35,
+      "size_mb": 30.51,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/5__sort_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__4__selection_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "4__selection_tracker",
+      "group": "chapter_4",
+      "display_title": "selection",
+      "video_file": "4__selection_tracker.mp4",
+      "duration_s": 37.25,
+      "size_mb": 29.22,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/4__selection_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__6__lcs_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "6__lcs_tracker",
+      "group": "chapter_6",
+      "display_title": "lcs",
+      "video_file": "6__lcs_tracker.mp4",
+      "duration_s": 36.6,
+      "size_mb": 29.52,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/6__lcs_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__6__multistage_graph_backward_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "6__multistage_graph_backward_tracker",
+      "group": "chapter_6",
+      "display_title": "multistage_graph_backward",
+      "video_file": "6__multistage_graph_backward_tracker.mp4",
+      "duration_s": 33.9,
+      "size_mb": 28.41,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/6__multistage_graph_backward_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__6__polygon_game_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "6__polygon_game_tracker",
+      "group": "chapter_6",
+      "display_title": "polygon_game",
+      "video_file": "6__polygon_game_tracker.mp4",
+      "duration_s": 32.25,
+      "size_mb": 21.1,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/6__polygon_game_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__14__nqueens_lv_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "14__nqueens_lv_tracker",
+      "group": "chapter_14",
+      "display_title": "nqueens_lv",
+      "video_file": "14__nqueens_lv_tracker.mp4",
+      "duration_s": 31.95,
+      "size_mb": 29.58,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/14__nqueens_lv_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__13__max_clique_bt_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "13__max_clique_bt_tracker",
+      "group": "chapter_13",
+      "display_title": "max_clique_bt",
+      "video_file": "13__max_clique_bt_tracker.mp4",
+      "duration_s": 29.6,
+      "size_mb": 22.67,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/13__max_clique_bt_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__13__bnb_routing_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "13__bnb_routing_tracker",
+      "group": "chapter_13",
+      "display_title": "bnb_routing",
+      "video_file": "13__bnb_routing_tracker.mp4",
+      "duration_s": 29.55,
+      "size_mb": 29.0,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/13__bnb_routing_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__11__knapsack_bt_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "11__knapsack_bt_tracker",
+      "group": "chapter_11",
+      "display_title": "knapsack_bt",
+      "video_file": "11__knapsack_bt_tracker.mp4",
+      "duration_s": 28.8,
+      "size_mb": 22.06,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/11__knapsack_bt_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__7__image_compression_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "7__image_compression_tracker",
+      "group": "chapter_7",
+      "display_title": "image_compression",
+      "video_file": "7__image_compression_tracker.mp4",
+      "duration_s": 28.5,
+      "size_mb": 22.5,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/7__image_compression_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__13__bnb_tsp_tracker",
+      "category": "algorithm_analysis",
+      "task_id": "13__bnb_tsp_tracker",
+      "group": "chapter_13",
+      "display_title": "bnb_tsp",
+      "video_file": "13__bnb_tsp_tracker.mp4",
+      "duration_s": 27.2,
+      "size_mb": 24.13,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/13__bnb_tsp_tracker.mp4"
+    },
+    {
+      "id": "algorithm_analysis__5__array_tracker__dup05",
+      "category": "algorithm_analysis",
+      "task_id": "5__array_tracker__dup05",
+      "group": "chapter_5",
+      "display_title": "array_tracker__dup05",
+      "video_file": "5__array_tracker__dup05.mp4",
+      "duration_s": 27.15,
+      "size_mb": 21.88,
+      "original_video_path": "/data/lkp/paper/AIgoGen_final/tracker_v2/algorithm_analysis/videos/5__array_tracker__dup05.mp4"
     }
   ]
 }

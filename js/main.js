@@ -6,6 +6,11 @@ createApp({
         const samples = ref([]);
         const allVideos = ref([]);
         const selectedSample = ref(null);
+        const pipelineDemos = ref([]);
+        const selectedPipelineDemoId = ref('');
+        const pipelineStepIndex = ref(0);
+        const pipelineAutoplay = ref(false);
+        const assetCacheVersion = ref('');
         const filterCategory = ref('All');
         const visibleLimit = ref(9);
         const loading = ref(false);
@@ -13,19 +18,41 @@ createApp({
         const speed = ref(1.0);
         const scrolled = ref(false);
         const selectedVideoModal = ref(null);
-        const activeRenderMode = ref('three');
+        const activeRenderMode = ref('manim');
         const comparisonPosition = ref(55);
         const renderModes = [
-            { id: 'three', label: 'Three.js', badge: 'Live 3D' },
             { id: 'manim', label: 'Manim', badge: 'HD Video' },
+            { id: 'three', label: 'Three.js', badge: 'Live 3D' },
             { id: 'tikz', label: 'TikZ', badge: 'Paper Figure' }
         ];
+
+        const appendCacheBust = (url, version) => {
+            if (!version) return url;
+            const sep = url.includes('?') ? '&' : '?';
+            return `${url}${sep}v=${encodeURIComponent(version)}`;
+        };
+
+        const resolveVideoUrl = (fileOrUrl) => {
+            if (!fileOrUrl) return '';
+            if (fileOrUrl.startsWith('http://') || fileOrUrl.startsWith('https://') || fileOrUrl.startsWith('assets/')) {
+                return fileOrUrl;
+            }
+            return `assets/videos/${fileOrUrl}`;
+        };
+
+        const resolveTraceUrl = (fileOrUrl) => {
+            if (!fileOrUrl) return '';
+            if (fileOrUrl.startsWith('http://') || fileOrUrl.startsWith('https://') || fileOrUrl.startsWith('assets/')) {
+                return fileOrUrl;
+            }
+            return `assets/traces/${fileOrUrl}`;
+        };
         
         // Renderer instance
         let renderer = null;
 
         // Categories
-        const categories = ['All', 'array', 'dp', 'graph', 'tree', 'sorting', 'hashtable'];
+        const categories = ['All', 'array', 'dp', 'graph', 'tree', 'sorting', 'hashtable', 'algorithm_analysis'];
 
         // Computed
         const currentSampleInfo = computed(() => selectedSample.value || {});
@@ -71,7 +98,8 @@ createApp({
 
         const currentVideoPath = computed(() => {
             if (!selectedSample.value) return '';
-            return `assets/videos/${selectedSample.value.video_file}`;
+            const url = resolveVideoUrl(selectedSample.value.video_file);
+            return appendCacheBust(url, assetCacheVersion.value);
         });
 
         const currentImagePath = computed(() => {
@@ -104,7 +132,7 @@ createApp({
             if (!selectedSample.value) return;
             
             loading.value = true;
-            const tracePath = `assets/traces/${selectedSample.value.trace_file}`;
+            const tracePath = appendCacheBust(resolveTraceUrl(selectedSample.value.trace_file), assetCacheVersion.value);
             
             try {
                 const response = await fetch(tracePath);
@@ -213,9 +241,25 @@ createApp({
 
         const playVideoPreview = (event) => {
             const video = event.target;
+            if (!video) return;
             if (video.paused) {
                 video.muted = true; // Ensure muted for autoplay
-                video.play().catch(e => console.log("Autoplay prevented:", e));
+                try {
+                    if (video.readyState < 2) {
+                        video.load();
+                        return;
+                    }
+                } catch (e) {
+                }
+                video.play().catch(e => {
+                    try {
+                        if (e && e.name === 'NotSupportedError') {
+                            video.load();
+                        }
+                    } catch (err) {
+                    }
+                    console.log("Autoplay prevented:", e);
+                });
             }
         };
 
@@ -223,7 +267,27 @@ createApp({
             const video = event.target;
             if (!video.paused) {
                 video.pause();
-                video.currentTime = 0; // Reset to start
+                try {
+                    video.currentTime = 0.01;
+                } catch (e) {
+                }
+            }
+        };
+
+        const primeVideoPreviewFrame = (event) => {
+            const video = event.target;
+            if (!video) return;
+            if (video.dataset && video.dataset.previewPrimed === '1') return;
+            if (video.dataset) video.dataset.previewPrimed = '1';
+
+            try {
+                if (!Number.isFinite(video.duration) || video.duration <= 0) {
+                    video.currentTime = 0.01;
+                    return;
+                }
+                const t = Math.min(0.1, Math.max(0.01, video.duration * 0.01));
+                video.currentTime = t;
+            } catch (e) {
             }
         };
 
@@ -237,17 +301,51 @@ createApp({
                 handleScroll();
                 // Load manifest
                 const res = await fetch('assets/data.json');
+                const lastModified = res.headers ? res.headers.get('Last-Modified') : null;
+                const lastModifiedEpoch = lastModified ? Date.parse(lastModified) : NaN;
                 const data = await res.json();
+
+                const cacheVersion = Number.isNaN(lastModifiedEpoch)
+                    ? ((data.stats && data.stats.assets_version) ? String(data.stats.assets_version) : '')
+                    : String(lastModifiedEpoch);
+
+                assetCacheVersion.value = cacheVersion;
                 
-                samples.value = data.samples;
-                
-                // Gallery: Only show samples for now (videos are in assets/videos/)
-                // For production, either copy all videos or use CDN
-                allVideos.value = data.samples.map(v => ({
+                pipelineDemos.value = data.pipeline_demos || [];
+                if (pipelineDemos.value.length > 0) {
+                    selectedPipelineDemoId.value = pipelineDemos.value[0].id;
+                }
+
+                const pipelineDemoSamples = (pipelineDemos.value || []).map(d => ({
+                    id: d.id,
+                    category: d.kind,
+                    task_id: (d.source && d.source.task_tag) ? d.source.task_tag : d.id,
+                    seed: 'demo',
+                    trace_file: (d.artifacts && d.artifacts.trace_file) ? d.artifacts.trace_file : '',
+                    video_file: (d.artifacts && d.artifacts.video_file) ? d.artifacts.video_file : ''
+                }));
+
+                samples.value = [...(data.samples || []), ...pipelineDemoSamples];
+
+                const sampleVideos = (data.samples || []).map(v => ({
                     ...v,
-                    video_file: `assets/videos/${v.video_file}`,
+                    video_file: appendCacheBust(`assets/videos/${v.video_file}`, cacheVersion),
                     isSample: true
                 }));
+
+                const algoAnalysisVideos = (data.algorithm_analysis_videos || []).map(v => ({
+                    ...v,
+                    video_file: appendCacheBust(`assets/videos/${v.video_file}`, cacheVersion),
+                    isSample: false
+                }));
+
+                // Gallery: 默认展示精选的 algorithm_analysis 视频（如果存在）
+                if (algoAnalysisVideos.length > 0) {
+                    filterCategory.value = 'algorithm_analysis';
+                    visibleLimit.value = 9;
+                }
+
+                allVideos.value = [...algoAnalysisVideos, ...sampleVideos];
 
                 // Select first sample
                 if (samples.value.length > 0) {
@@ -272,10 +370,120 @@ createApp({
 
         onBeforeUnmount(() => {
             window.removeEventListener('scroll', handleScroll);
+            stopPipelineAutoplay();
         });
 
         const isSample = (v) => {
             return samples.value.some(s => s.id === v.id);
+        };
+
+        const pipelineSteps = [
+            { id: 'input', title: 'Input Digest', subtitle: 'Dataset + goal summarized as structured signals.', badge: 'Digest' },
+            { id: 'extract', title: 'Extract & Route', subtitle: 'Blocks parsed; tags derived; artifacts routed.', badge: 'Parser' },
+            { id: 'tool', title: 'Tool (Tracker) Digest', subtitle: 'Tracker capabilities summarized as ops + views.', badge: 'Tool' },
+            { id: 'trace', title: 'SVL Trace Digest', subtitle: 'IR statistics and key operation patterns.', badge: 'IR' },
+            { id: 'render', title: 'Render Outputs', subtitle: 'Deterministic backends: video + interactive playback.', badge: 'Render' }
+        ];
+
+        const currentPipelineDemo = computed(() => {
+            if (!pipelineDemos.value || pipelineDemos.value.length === 0) return null;
+            const id = selectedPipelineDemoId.value;
+            return pipelineDemos.value.find(d => d.id === id) || pipelineDemos.value[0];
+        });
+
+        const currentPipelineStep = computed(() => pipelineSteps[pipelineStepIndex.value] || pipelineSteps[0]);
+
+        const currentPipelineDigest = computed(() => {
+            const demo = currentPipelineDemo.value;
+            const step = currentPipelineStep.value;
+            if (!demo || !step || !demo.digests) return [];
+            const lines = demo.digests[step.id];
+            return Array.isArray(lines) ? lines : [];
+        });
+
+        const currentPipelineVideoSrc = computed(() => {
+            const demo = currentPipelineDemo.value;
+            if (!demo || !demo.artifacts || !demo.artifacts.video_file) return '';
+            return appendCacheBust(resolveVideoUrl(demo.artifacts.video_file), assetCacheVersion.value);
+        });
+
+        let pipelineAutoplayTimer = null;
+
+        const stopPipelineAutoplay = () => {
+            pipelineAutoplay.value = false;
+            if (pipelineAutoplayTimer) {
+                clearInterval(pipelineAutoplayTimer);
+                pipelineAutoplayTimer = null;
+            }
+        };
+
+        const startPipelineAutoplay = () => {
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion) {
+                stopPipelineAutoplay();
+                return;
+            }
+            stopPipelineAutoplay();
+            pipelineAutoplay.value = true;
+            pipelineAutoplayTimer = setInterval(() => {
+                pipelineStepIndex.value = (pipelineStepIndex.value + 1) % pipelineSteps.length;
+            }, 2500);
+        };
+
+        const togglePipelineAutoplay = () => {
+            if (pipelineAutoplay.value) {
+                stopPipelineAutoplay();
+            } else {
+                startPipelineAutoplay();
+            }
+        };
+
+        const setPipelineStep = (idx) => {
+            stopPipelineAutoplay();
+            const n = pipelineSteps.length;
+            const clamped = Math.max(0, Math.min(n - 1, idx));
+            pipelineStepIndex.value = clamped;
+        };
+
+        const pipelineStepPrev = () => {
+            stopPipelineAutoplay();
+            const n = pipelineSteps.length;
+            pipelineStepIndex.value = (pipelineStepIndex.value - 1 + n) % n;
+        };
+
+        const pipelineStepNext = () => {
+            stopPipelineAutoplay();
+            const n = pipelineSteps.length;
+            pipelineStepIndex.value = (pipelineStepIndex.value + 1) % n;
+        };
+
+        const selectPipelineDemo = (demoId) => {
+            stopPipelineAutoplay();
+            selectedPipelineDemoId.value = demoId;
+            pipelineStepIndex.value = 0;
+        };
+
+        const openPipelineDemoInSandbox = async () => {
+            stopPipelineAutoplay();
+            const demo = currentPipelineDemo.value;
+            if (!demo) return;
+
+            const sample = samples.value.find(s => s.id === demo.id);
+            if (!sample) return;
+
+            selectedSample.value = sample;
+            activeRenderMode.value = 'manim';
+
+            await nextTick();
+            await loadSample();
+
+            try {
+                const el = document.getElementById('interactive');
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } catch (e) {
+            }
         };
 
         const setupAnimations = () => {
@@ -587,6 +795,15 @@ createApp({
             samples,
             allVideos,
             selectedSample,
+            pipelineDemos,
+            selectedPipelineDemoId,
+            pipelineSteps,
+            pipelineStepIndex,
+            pipelineAutoplay,
+            currentPipelineDemo,
+            currentPipelineStep,
+            currentPipelineDigest,
+            currentPipelineVideoSrc,
             filterCategory,
             visibleLimit,
             loading,
@@ -616,7 +833,14 @@ createApp({
             closeVideo,
             heroTitle,
             playVideoPreview,
-            pauseVideoPreview
+            pauseVideoPreview,
+            primeVideoPreviewFrame,
+            selectPipelineDemo,
+            setPipelineStep,
+            pipelineStepPrev,
+            pipelineStepNext,
+            togglePipelineAutoplay,
+            openPipelineDemoInSandbox
         };
     }
 }).mount('#app');

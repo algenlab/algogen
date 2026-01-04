@@ -1,0 +1,2138 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Merge Sort",
+    "family": "sorting"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-array"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "array",
+      "structure": [
+        {
+          "index": 0,
+          "value": 49,
+          "styleKey": "idle"
+        },
+        {
+          "index": 1,
+          "value": 38,
+          "styleKey": "idle"
+        },
+        {
+          "index": 2,
+          "value": 65,
+          "styleKey": "idle"
+        },
+        {
+          "index": 3,
+          "value": 97,
+          "styleKey": "idle"
+        },
+        {
+          "index": 4,
+          "value": 76,
+          "styleKey": "idle"
+        },
+        {
+          "index": 5,
+          "value": 13,
+          "styleKey": "idle"
+        },
+        {
+          "index": 6,
+          "value": 27,
+          "styleKey": "idle"
+        }
+      ]
+    },
+    "auxiliary_views": [],
+    "variables_schema": [],
+    "pseudocode": [
+      "def mergeSort(arr, l, r):",
+      "    if l < r:",
+      "        mid = (l + r) // 2",
+      "        mergeSort(arr, l, mid)",
+      "        mergeSort(arr, mid + 1, r)",
+      "        merge(arr, l, mid, r)"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "backgroundColor": "#F0F0F0",
+          "textColor": "#000000"
+        },
+        "comparing": {
+          "backgroundColor": "#FFD700",
+          "textColor": "#000000"
+        },
+        "writing": {
+          "backgroundColor": "#90EE90",
+          "textColor": "#000000"
+        },
+        "sorted": {
+          "backgroundColor": "#CCCCCC",
+          "textColor": "#000000"
+        }
+      },
+      "tempStyles": {
+        "recursive_zone": {
+          "backgroundColor": "#e6f3ff",
+          "borderColor": "#4d94ff",
+          "borderWidth": 2
+        },
+        "merge_left_zone": {
+          "backgroundColor": "#fff0e6",
+          "borderColor": "#ff6600",
+          "borderWidth": 2
+        },
+        "merge_right_zone": {
+          "backgroundColor": "#f9f2ff",
+          "borderColor": "#9933ff",
+          "borderWidth": 2
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                0,
+                6
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[0,6]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                0,
+                3
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[0,3]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                0,
+                1
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[0,1]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                0,
+                0
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[0,0]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "sorted"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                1,
+                1
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[1,1]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "sorted"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 10,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 11,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_left",
+              "range": [
+                0,
+                0
+              ],
+              "styleKey": "merge_left_zone",
+              "label": "L[0:0]"
+            }
+          },
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_right",
+              "range": [
+                1,
+                1
+              ],
+              "styleKey": "merge_right_zone",
+              "label": "R[1:1]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 12,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 0,
+                  "value": 38
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 1,
+                  "value": 49
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 16,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 17,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_left"
+            }
+          },
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_right"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 19,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                2,
+                3
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[2,3]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 20,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                2,
+                2
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[2,2]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 21,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "sorted"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                3,
+                3
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[3,3]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 24,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "sorted"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 25,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 26,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_left",
+              "range": [
+                2,
+                2
+              ],
+              "styleKey": "merge_left_zone",
+              "label": "L[2:2]"
+            }
+          },
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_right",
+              "range": [
+                3,
+                3
+              ],
+              "styleKey": "merge_right_zone",
+              "label": "R[3:3]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 28,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 2,
+                  "value": 65
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 29,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 30,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 3,
+                  "value": 97
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_left"
+            }
+          },
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_right"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 33,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_left",
+              "range": [
+                0,
+                1
+              ],
+              "styleKey": "merge_left_zone",
+              "label": "L[0:1]"
+            }
+          },
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_right",
+              "range": [
+                2,
+                3
+              ],
+              "styleKey": "merge_right_zone",
+              "label": "R[2:3]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 35,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 36,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 0,
+                  "value": 38
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 37,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 38,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 39,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 1,
+                  "value": 49
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 40,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 41,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 2,
+                  "value": 65
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 42,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 43,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 3,
+                  "value": 97
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 44,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 45,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_left"
+            }
+          },
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_right"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 46,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 47,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                4,
+                6
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[4,6]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 48,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                4,
+                5
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[4,5]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 49,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                4,
+                4
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[4,4]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 50,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "sorted"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 51,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 52,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                5,
+                5
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[5,5]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 53,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "sorted"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 54,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 55,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_left",
+              "range": [
+                4,
+                4
+              ],
+              "styleKey": "merge_left_zone",
+              "label": "L[4:4]"
+            }
+          },
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_right",
+              "range": [
+                5,
+                5
+              ],
+              "styleKey": "merge_right_zone",
+              "label": "R[5:5]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 56,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 57,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 4,
+                  "value": 13
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 58,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 59,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 5,
+                  "value": 76
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 60,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 61,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_left"
+            }
+          },
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_right"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 62,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 63,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "recursive",
+              "range": [
+                6,
+                6
+              ],
+              "styleKey": "recursive_zone",
+              "label": "[6,6]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 64,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "sorted"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 65,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 66,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_left",
+              "range": [
+                4,
+                5
+              ],
+              "styleKey": "merge_left_zone",
+              "label": "L[4:5]"
+            }
+          },
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_right",
+              "range": [
+                6,
+                6
+              ],
+              "styleKey": "merge_right_zone",
+              "label": "R[6:6]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 67,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 68,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 4,
+                  "value": 13
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 69,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 70,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 71,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 5,
+                  "value": 27
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 72,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 73,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 6,
+                  "value": 76
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 74,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 75,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_left"
+            }
+          },
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_right"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 76,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 77,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_left",
+              "range": [
+                0,
+                3
+              ],
+              "styleKey": "merge_left_zone",
+              "label": "L[0:3]"
+            }
+          },
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "merge_right",
+              "range": [
+                4,
+                6
+              ],
+              "styleKey": "merge_right_zone",
+              "label": "R[4:6]"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 78,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 79,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 0,
+                  "value": 13
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 80,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 81,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 82,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 1,
+                  "value": 27
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 83,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 84,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 85,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 2,
+                  "value": 38
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 86,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 87,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 88,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 3,
+                  "value": 49
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 89,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 90,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 91,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 4,
+                  "value": 65
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 92,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 93,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 94,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 5,
+                  "value": 76
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 95,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 96,
+      "operations": [
+        [
+          {
+            "op": "updateValues",
+            "params": {
+              "updates": [
+                {
+                  "index": 6,
+                  "value": 97
+                }
+              ]
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "writing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 97,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "idle"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 98,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_left"
+            }
+          },
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "merge_right"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 99,
+      "operations": [
+        [
+          {
+            "op": "removeBoundary",
+            "params": {
+              "type": "recursive"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 100,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "styleKey": "sorted"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

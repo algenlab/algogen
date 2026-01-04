@@ -1,0 +1,2561 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Prim's MST",
+    "family": "graph"
+  },
+  "required_extensions": [
+    "svl-ext-primitive-graph",
+    "svl-ext-view-list",
+    "svl-ext-view-table"
+  ],
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "graph",
+      "structure": {
+        "nodes": [
+          {
+            "id": "A",
+            "label": "A",
+            "styleKey": "included_node",
+            "properties": {}
+          },
+          {
+            "id": "B",
+            "label": "B",
+            "styleKey": "idle_node",
+            "properties": {}
+          },
+          {
+            "id": "C",
+            "label": "C",
+            "styleKey": "idle_node",
+            "properties": {}
+          },
+          {
+            "id": "D",
+            "label": "D",
+            "styleKey": "idle_node",
+            "properties": {}
+          },
+          {
+            "id": "E",
+            "label": "E",
+            "styleKey": "idle_node",
+            "properties": {}
+          },
+          {
+            "id": "F",
+            "label": "F",
+            "styleKey": "idle_node",
+            "properties": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "A",
+            "to": "B",
+            "directed": false,
+            "label": "4",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "A",
+            "to": "C",
+            "directed": false,
+            "label": "2",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "directed": false,
+            "label": "1",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "B",
+            "to": "D",
+            "directed": false,
+            "label": "5",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "directed": false,
+            "label": "8",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "C",
+            "to": "E",
+            "directed": false,
+            "label": "10",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "directed": false,
+            "label": "2",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "D",
+            "to": "F",
+            "directed": false,
+            "label": "6",
+            "styleKey": "normal_edge"
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "directed": false,
+            "label": "3",
+            "styleKey": "normal_edge"
+          }
+        ]
+      }
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "S_set",
+        "type": "list",
+        "title": "Visited Set S",
+        "data": [
+          "A"
+        ]
+      },
+      {
+        "view_id": "mst_edges",
+        "type": "list",
+        "title": "MST Edges",
+        "data": []
+      },
+      {
+        "view_id": "frontier",
+        "type": "list",
+        "title": "Candidate Edges",
+        "data": []
+      },
+      {
+        "view_id": "vars_panel",
+        "type": "table",
+        "title": "Variables",
+        "data": [
+          [
+            "current_u",
+            "A"
+          ],
+          [
+            "min_edge",
+            "None"
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "current_u",
+            "min_edge"
+          ],
+          "col_headers": [
+            "name",
+            "value"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "current_u",
+        "initial_value": "A"
+      },
+      {
+        "name": "min_edge",
+        "initial_value": null
+      }
+    ],
+    "pseudocode": [
+      "def prim(graph, start):",
+      "    visited = set([start])",
+      "    mst_edges = []",
+      "    while len(visited) < len(graph.nodes):",
+      "        min_edge = None",
+      "        for u in visited:",
+      "            for v, w in graph.adj[u]:",
+      "                if v not in visited and (min_edge is None or w < min_edge[2]):",
+      "                    min_edge = (u, v, w)",
+      "        if min_edge:",
+      "            visited.add(min_edge[1])",
+      "            mst_edges.append(min_edge)",
+      "    return mst_edges"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle_node": {
+          "backgroundColor": "#E3F2FD",
+          "textColor": "#000000",
+          "borderColor": "#000000"
+        },
+        "included_node": {
+          "backgroundColor": "#4CAF50",
+          "textColor": "#FFFFFF",
+          "borderColor": "#000000"
+        },
+        "current_node": {
+          "backgroundColor": "#FF9800",
+          "textColor": "#FFFFFF",
+          "borderColor": "#000000"
+        }
+      },
+      "edgeStyles": {
+        "normal_edge": {
+          "stroke": "#BDBDBD",
+          "textColor": "#000000"
+        },
+        "candidate_edge": {
+          "stroke": "#2196F3",
+          "textColor": "#2196F3",
+          "strokeWidth": 2.5
+        },
+        "mst_edge": {
+          "stroke": "#4CAF50",
+          "textColor": "#4CAF50",
+          "strokeWidth": 3
+        }
+      }
+    }
+  },
+  "deltas": [
+    {
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Prim's MST starting from node A",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 3,
+      "operations": [
+        [
+          {
+            "op": "clearList",
+            "params": {
+              "view_id": "frontier"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Finding next edge to add to MST (S size: 1/6)",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 4,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node A",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "C"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "A-C(2)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge A-C weight 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "A-C(2)"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "New minimum edge found: A-C weight 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "C"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 8,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "B"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "A-B(4)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge A-B weight 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Edge A-B weight 4 not better than current minimum 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 10,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "B"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 11,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 12,
+      "operations": [
+        [
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "S_set",
+              "value": "C"
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "included_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "C"
+                }
+              ],
+              "styleKey": "mst_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "mst_edges",
+              "value": "A-C(2)"
+            }
+          },
+          {
+            "op": "clearList",
+            "params": {
+              "view_id": "frontier"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": null
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "A-C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Added edge A-C (weight 2) to MST",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "clearList",
+            "params": {
+              "view_id": "frontier"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Finding next edge to add to MST (S size: 2/6)",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node A",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 15,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "B"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "A-B(4)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge A-B weight 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 16,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "A-B(4)"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "New minimum edge found: A-B weight 4",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 17,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "A",
+                  "to": "B"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 18,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 19,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node C",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 20,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "B"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "C-B(1)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge C-B weight 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 21,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "C-B(1)"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "New minimum edge found: C-B weight 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 22,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "B"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 23,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "C-D(8)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge C-D weight 8",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 24,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Edge C-D weight 8 not better than current minimum 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 25,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 26,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "E"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "C-E(10)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge C-E weight 10",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 27,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Edge C-E weight 10 not better than current minimum 1",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 28,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "E"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 29,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 30,
+      "operations": [
+        [
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "S_set",
+              "value": "B"
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "included_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "B"
+                }
+              ],
+              "styleKey": "mst_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "mst_edges",
+              "value": "C-B(1)"
+            }
+          },
+          {
+            "op": "clearList",
+            "params": {
+              "view_id": "frontier"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": null
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "C-B"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Added edge C-B (weight 1) to MST",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 31,
+      "operations": [
+        [
+          {
+            "op": "clearList",
+            "params": {
+              "view_id": "frontier"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Finding next edge to add to MST (S size: 3/6)",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 32,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node A",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 33,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 34,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "B"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node B",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 35,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "B",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "B-D(5)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge B-D weight 5",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 36,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "B-D(5)"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "New minimum edge found: B-D weight 5",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 37,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "B",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 38,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 39,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node C",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 40,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "C-D(8)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge C-D weight 8",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 41,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Edge C-D weight 8 not better than current minimum 5",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 42,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 43,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "E"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "C-E(10)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge C-E weight 10",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 44,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Edge C-E weight 10 not better than current minimum 5",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 45,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "E"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 46,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 47,
+      "operations": [
+        [
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "S_set",
+              "value": "D"
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "included_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "B",
+                  "to": "D"
+                }
+              ],
+              "styleKey": "mst_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "mst_edges",
+              "value": "B-D(5)"
+            }
+          },
+          {
+            "op": "clearList",
+            "params": {
+              "view_id": "frontier"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": null
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "B-D"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Added edge B-D (weight 5) to MST",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 48,
+      "operations": [
+        [
+          {
+            "op": "clearList",
+            "params": {
+              "view_id": "frontier"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Finding next edge to add to MST (S size: 4/6)",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 49,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node A",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 50,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 51,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "B"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node B",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 52,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 53,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node C",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 54,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "E"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "C-E(10)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge C-E weight 10",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 55,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "C-E(10)"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "New minimum edge found: C-E weight 10",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 56,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "C",
+                  "to": "E"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 57,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 58,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node D",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 59,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "D",
+                  "to": "E"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "D-E(2)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge D-E weight 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 60,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "D-E(2)"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "New minimum edge found: D-E weight 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 61,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "D",
+                  "to": "E"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 62,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "D",
+                  "to": "F"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "D-F(6)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge D-F weight 6",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 63,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Edge D-F weight 6 not better than current minimum 2",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 64,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "D",
+                  "to": "F"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 65,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 66,
+      "operations": [
+        [
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "S_set",
+              "value": "E"
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "E"
+              ],
+              "styleKey": "included_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "D",
+                  "to": "E"
+                }
+              ],
+              "styleKey": "mst_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "mst_edges",
+              "value": "D-E(2)"
+            }
+          },
+          {
+            "op": "clearList",
+            "params": {
+              "view_id": "frontier"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": null
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "D-E"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Added edge D-E (weight 2) to MST",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 67,
+      "operations": [
+        [
+          {
+            "op": "clearList",
+            "params": {
+              "view_id": "frontier"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Finding next edge to add to MST (S size: 5/6)",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 68,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "A"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node A",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 69,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "A"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 70,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "B"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node B",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 71,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "B"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 72,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node C",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 73,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "C"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 74,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "D"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node D",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 75,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "D",
+                  "to": "F"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "D-F(6)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge D-F weight 6",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 76,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "D-F(6)"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "New minimum edge found: D-F weight 6",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 77,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "D",
+                  "to": "F"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 78,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "D"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 79,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "E"
+              ],
+              "styleKey": "current_node"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "E"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Checking edges from node E",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 80,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "E",
+                  "to": "F"
+                }
+              ],
+              "styleKey": "candidate_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "frontier",
+              "value": "E-F(3)"
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Candidate edge E-F weight 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 81,
+      "operations": [
+        [
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "E-F(3)"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "New minimum edge found: E-F weight 3",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 82,
+      "operations": [
+        [
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "E",
+                  "to": "F"
+                }
+              ],
+              "styleKey": "normal_edge"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 83,
+      "operations": [
+        [
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "E"
+              ],
+              "styleKey": "included_node"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 84,
+      "operations": [
+        [
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "S_set",
+              "value": "F"
+            }
+          },
+          {
+            "op": "updateNodeStyle",
+            "params": {
+              "ids": [
+                "F"
+              ],
+              "styleKey": "included_node"
+            }
+          },
+          {
+            "op": "updateEdgeStyle",
+            "params": {
+              "edges": [
+                {
+                  "from": "E",
+                  "to": "F"
+                }
+              ],
+              "styleKey": "mst_edge"
+            }
+          },
+          {
+            "op": "appendToList",
+            "params": {
+              "view_id": "mst_edges",
+              "value": "E-F(3)"
+            }
+          },
+          {
+            "op": "clearList",
+            "params": {
+              "view_id": "frontier"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": null
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "E-F"
+                }
+              ]
+            }
+          },
+          {
+            "op": "showComment",
+            "params": {
+              "text": "Added edge E-F (weight 3) to MST",
+              "anchor": "global"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "code_highlight": 85,
+      "operations": [
+        [
+          {
+            "op": "showComment",
+            "params": {
+              "text": "MST completed! Total weight: 13",
+              "anchor": "global"
+            }
+          },
+          {
+            "op": "updateTableCell",
+            "params": {
+              "view_id": "vars_panel",
+              "updates": [
+                {
+                  "row": 0,
+                  "col": 1,
+                  "value": "Done"
+                },
+                {
+                  "row": 1,
+                  "col": 1,
+                  "value": "Done"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}
