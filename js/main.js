@@ -402,7 +402,7 @@ createApp({
 
                 // Gallery: 默认展示精选的 algorithm_analysis 视频（如果存在）
                 if (algoAnalysisVideos.length > 0) {
-                    filterCategory.value = 'algorithm_analysis';
+                    filterCategory.value = 'All';
                     visibleLimit.value = 9;
                 }
 
